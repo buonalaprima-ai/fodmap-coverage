@@ -2,11 +2,13 @@
 <html lang="it">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
 <title>FODMAP Scanner</title>
 <style>
   :root { color-scheme: light dark; }
   * { box-sizing: border-box; }
+  /* Zoom disabilitato: consenti solo lo scorrimento, niente pinch/double-tap zoom */
+  html { touch-action: pan-x pan-y; -webkit-text-size-adjust: 100%; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     max-width: 640px; margin: 0 auto; padding: 16px; line-height: 1.45;
@@ -124,6 +126,12 @@
     <button id="retry-reports" class="secondary">Riprova invio</button>
   </div>
 
+  <script>
+    // Blocca il pinch-zoom su iOS Safari (che ignora user-scalable=no).
+    document.addEventListener("gesturestart", function (e) { e.preventDefault(); });
+    document.addEventListener("gesturechange", function (e) { e.preventDefault(); });
+    document.addEventListener("gestureend", function (e) { e.preventDefault(); });
+  </script>
   <script type="module" src="src/main.js"></script>
 </body>
 </html>
