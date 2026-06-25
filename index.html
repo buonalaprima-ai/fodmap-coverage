@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Test copertura Open Food Facts</title>
+<style>
+  :root { color-scheme: light dark; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    max-width: 760px; margin: 0 auto; padding: 16px; line-height: 1.45;
+  }
+  h1 { font-size: 1.25rem; margin: 0 0 4px; }
+  .sub { opacity: 0.7; font-size: 0.85rem; margin: 0 0 16px; }
+  .row { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+  input[type="text"] {
+    flex: 1; min-width: 160px; padding: 12px; font-size: 1rem;
+    border: 1px solid #8888; border-radius: 8px; background: transparent; color: inherit;
+  }
+  button {
+    padding: 12px 16px; font-size: 1rem; border: 0; border-radius: 8px;
+    background: #2563eb; color: #fff; cursor: pointer;
+  }
+  button.secondary { background: #6b7280; }
+  button:disabled { opacity: 0.5; cursor: default; }
+  #stats {
+    display: flex; gap: 12px; flex-wrap: wrap; margin: 12px 0;
+    font-size: 0.9rem;
+  }
+  .stat { padding: 8px 12px; border: 1px solid #8884; border-radius: 8px; }
+  .stat b { font-size: 1.15rem; }
+  table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 0.85rem; }
+  th, td { text-align: left; padding: 8px 6px; border-bottom: 1px solid #8883; vertical-align: top; }
+  th { opacity: 0.7; font-weight: 600; }
+  .ok { color: #16a34a; font-weight: 600; }
+  .no { color: #dc2626; font-weight: 600; }
+  .warn { color: #d97706; font-weight: 600; }
+  #video { width: 100%; max-height: 240px; background: #000; border-radius: 8px; display: none; margin-bottom: 12px; }
+  .hint { font-size: 0.8rem; opacity: 0.7; margin-top: 4px; }
+  code { background: #8882; padding: 1px 5px; border-radius: 4px; }
+</style>
+</head>
+<body>
+  <h1>Test copertura Open Food Facts</h1>
+  <p class="sub">Inserisci (o scansiona) i codici a barre dei prodotti che compri davvero. Lo strumento dice se ognuno è nel database e, soprattutto, se ha la lista ingredienti. Obiettivo: scoprire la copertura reale sul tuo carrello prima di costruire l'app.</p>
+
+  <video id="video" playsinline></video>
+
+  <div class="row">
+    <input id="barcode" type="text" inputmode="numeric" placeholder="Codice a barre (EAN), poi Invio" autocomplete="off" />
+    <button id="testBtn">Testa</button>
+    <button id="scanBtn" class="secondary">📷 Scansiona</button>
+  </div>
+  <p class="hint">La fotocamera funziona solo se la pagina è servita via <code>https</code> o <code>localhost</code>. L'inserimento manuale funziona sempre, anche aprendo il file direttamente.</p>
+
+  <div id="stats">
+    <div class="stat">Testati<br><b id="nTot">0</b></div>
+    <div class="stat">Trovati<br><b id="nFound">0</b></div>
+    <div class="stat">Con ingredienti<br><b id="nIng">0</b></div>
+    <div class="stat">Copertura utile<br><b id="pct">—</b></div>
+  </div>
+
+  <table>
+    <thead>
+      <tr><th>Codice</th><th>Prodotto</th><th>Nel DB</th><th>Ingredienti</th><th>In IT</th></tr>
+    </thead>
+    <tbody id="results"></tbody>
+  </table>
+
+<script type="module">
+  const $ = id => document.getElementById(id);
+  let nTot = 0, nFound = 0, nIng = 0;
+
+  function refreshStats() {
+    $("nTot").textContent = nTot;
+    $("nFound").textContent = nFound;
+    $("nIng").textContent = nIng;
+    // "Copertura utile" = % di prodotti testati che sono USABILI (trovati E con ingredienti)
+    $("pct").textContent = nTot ? Math.round((nIng / nTot) * 100) + "%" : "—";
+  }
+
+  function addRow(code, found, name, hasIng, hasIt) {
+    const tr = document.createElement("tr");
+    const cell = (html) => { const td = document.createElement("td"); td.innerHTML = html; tr.appendChild(td); };
+    cell(code);
+    cell(name || "—");
+    cell(found ? '<span class="ok">sì</span>' : '<span class="no">no</span>');
+    cell(found ? (hasIng ? '<span class="ok">sì</span>' : '<span class="warn">mancanti</span>') : "—");
+    cell(found && hasIng ? (hasIt ? '<span class="ok">sì</span>' : 'solo altra lingua') : "—");
+    $("results").prepend(tr);
+  }
+
+  async function testBarcode(raw) {
+    const code = (raw || "").trim().replace(/\s+/g, "");
+    if (!code) return;
+    $("testBtn").disabled = true;
+    const url = `https://world.openfoodfacts.org/api/v2/product/${encodeURIComponent(code)}.json`
+      + `?fields=product_name,product_name_it,brands,ingredients_text,ingredients_text_it,ingredients,countries_tags`;
+    try {
+      const res = await fetch(url, { headers: { "Accept": "application/json" } });
+      const data = await res.json();
+      const found = data.status === 1 && data.product;
+      let name = "", hasIng = false, hasIt = false;
+      if (found) {
+        const p = data.product;
+        name = p.product_name_it || p.product_name || p.brands || "";
+        const txt = (p.ingredients_text || "").trim();
+        const arr = Array.isArray(p.ingredients) ? p.ingredients : [];
+        hasIng = txt.length > 0 || arr.length > 0;
+        hasIt = (p.ingredients_text_it || "").trim().length > 0;
+      }
+      nTot++; if (found) nFound++; if (found && hasIng) nIng++;
+      addRow(code, found, name, hasIng, hasIt);
+      refreshStats();
+    } catch (e) {
+      nTot++;
+      addRow(code, false, "errore rete", false, false);
+      refreshStats();
+    } finally {
+      $("testBtn").disabled = false;
+      $("barcode").value = "";
+      $("barcode").focus();
+    }
+  }
+
+  $("testBtn").addEventListener("click", () => testBarcode($("barcode").value));
+  $("barcode").addEventListener("keydown", e => { if (e.key === "Enter") testBarcode($("barcode").value); });
+
+  // Scansione opzionale con ZXing (caricato solo al click)
+  let scanning = false, codeReader = null;
+  $("scanBtn").addEventListener("click", async () => {
+    if (scanning) {
+      scanning = false;
+      if (codeReader) codeReader.reset();
+      $("video").style.display = "none";
+      $("scanBtn").textContent = "📷 Scansiona";
+      return;
+    }
+    try {
+      const { BrowserMultiFormatReader } = await import("https://unpkg.com/@zxing/browser@0.1.5/esm/index.js");
+      codeReader = new BrowserMultiFormatReader();
+      $("video").style.display = "block";
+      $("scanBtn").textContent = "✕ Ferma";
+      scanning = true;
+      codeReader.decodeFromVideoDevice(undefined, $("video"), (result, err) => {
+        if (result && scanning) {
+          const code = result.getText();
+          testBarcode(code);
+          // breve pausa per non rifare subito lo stesso codice
+          scanning = false;
+          codeReader.reset();
+          $("video").style.display = "none";
+          $("scanBtn").textContent = "📷 Scansiona";
+        }
+      });
+    } catch (e) {
+      alert("Fotocamera non disponibile. Servi la pagina via https/localhost, oppure usa l'inserimento manuale.\n\n" + e.message);
+      $("video").style.display = "none";
+      $("scanBtn").textContent = "📷 Scansiona";
+      scanning = false;
+    }
+  });
+
+  // Codice d'esempio funzionante (prodotto USA) per verificare subito che lo strumento gira
+  $("barcode").value = "737628064502";
+</script>
+</body>
+</html>
