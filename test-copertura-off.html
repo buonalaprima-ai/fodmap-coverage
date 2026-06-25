@@ -128,7 +128,8 @@
   $("barcode").addEventListener("keydown", e => { if (e.key === "Enter") testBarcode($("barcode").value); });
 
   // Scansione opzionale con ZXing (caricato solo al click)
-  let scanning = false, codeReader = null, zxingPromise = null;
+  let scanning = false, zxingPromise = null, ZXlib = null,
+      scanReader = null, scanHints = null, scanStream = null, scanTimer = null;
 
   // Carica la build UMD di ZXing via <script> (niente ES module / bare specifier):
   // espone il global window.ZXing. Risolto una volta sola e messo in cache.
@@ -163,64 +164,121 @@
     } catch (e) { /* ottimizzazione best-effort: ignora */ }
   }
 
+  // Canvas riusati: uno per il frame catturato, uno per la sua versione ruotata 90°.
+  const grabCanvas = document.createElement("canvas");
+  const grabCtx = grabCanvas.getContext("2d", { willReadFrequently: true });
+  const rotCanvas = document.createElement("canvas");
+  const rotCtx = rotCanvas.getContext("2d", { willReadFrequently: true });
+
+  // Decodifica un singolo canvas con ZXing; ritorna il testo del codice o null.
+  function decodeCanvas(canvas) {
+    try {
+      const source = new ZXlib.HTMLCanvasElementLuminanceSource(canvas);
+      const bitmap = new ZXlib.BinaryBitmap(new ZXlib.HybridBinarizer(source));
+      const result = scanReader.decode(bitmap, scanHints);
+      return result ? result.getText() : null;
+    } catch (e) {
+      return null; // NotFound/Format/Checksum: nessun codice valido in questo frame
+    }
+  }
+
+  function stopScan() {
+    scanning = false;
+    if (scanTimer) {
+      clearTimeout(scanTimer);
+      scanTimer = null;
+    }
+    if (scanStream) {
+      scanStream.getTracks().forEach(t => t.stop());
+      scanStream = null;
+    }
+    $("video").srcObject = null;
+    $("video").style.display = "none";
+    $("scanBtn").textContent = "📷 Scansiona";
+  }
+
+  // Loop di scansione: ~10 volte/sec cattura un frame e prova 0° E 90°, cosi'
+  // i codici a barre 1D si leggono sia col telefono in verticale sia in orizzontale.
+  function scanFrame() {
+    if (!scanning) {
+      return;
+    }
+    const video = $("video");
+    const vw = video.videoWidth, vh = video.videoHeight;
+    if (vw && vh) {
+      // ridimensiona il lato lungo a ~800px: piu' veloce, sufficiente per gli EAN
+      const scale = Math.min(1, 800 / Math.max(vw, vh));
+      const w = Math.max(1, Math.round(vw * scale));
+      const h = Math.max(1, Math.round(vh * scale));
+      grabCanvas.width = w;
+      grabCanvas.height = h;
+      grabCtx.drawImage(video, 0, 0, w, h);
+
+      let code = decodeCanvas(grabCanvas); // orientamento naturale
+      if (!code) {
+        rotCanvas.width = h; // stessa immagine ruotata di 90°
+        rotCanvas.height = w;
+        rotCtx.save();
+        rotCtx.translate(h / 2, w / 2);
+        rotCtx.rotate(Math.PI / 2);
+        rotCtx.drawImage(grabCanvas, -w / 2, -h / 2);
+        rotCtx.restore();
+        code = decodeCanvas(rotCanvas);
+      }
+      if (code) {
+        stopScan();
+        testBarcode(code);
+        return;
+      }
+    }
+    scanTimer = setTimeout(scanFrame, 100);
+  }
+
   $("scanBtn").addEventListener("click", async () => {
     if (scanning) {
-      scanning = false;
-      if (codeReader) codeReader.reset();
-      $("video").style.display = "none";
-      $("scanBtn").textContent = "📷 Scansiona";
+      stopScan();
       return;
     }
     try {
-      const ZX = await loadZXing();
+      ZXlib = await loadZXing();
 
-      // Limita ai formati dei codici a barre dei prodotti + TRY_HARDER: ZXing non
-      // spreca tempo a cercare QR/Aztec ecc. e decodifica molto piu' in fretta,
-      // sfruttando le brevi finestre in cui l'immagine e' a fuoco.
-      const hints = new Map();
-      hints.set(ZX.DecodeHintType.POSSIBLE_FORMATS, [
-        ZX.BarcodeFormat.EAN_13, ZX.BarcodeFormat.EAN_8,
-        ZX.BarcodeFormat.UPC_A, ZX.BarcodeFormat.UPC_E,
-        ZX.BarcodeFormat.CODE_128, ZX.BarcodeFormat.CODE_39
-      ]);
-      hints.set(ZX.DecodeHintType.TRY_HARDER, true);
-      // 2o argomento: ms tra un tentativo e l'altro (default 500). Piu' basso = piu' scansioni/sec.
-      codeReader = new ZX.BrowserMultiFormatReader(hints, 150);
+      // Reader 1D limitato ai formati dei prodotti + TRY_HARDER (decodifica piu' rapida).
+      if (!scanReader) {
+        scanHints = new Map();
+        scanHints.set(ZXlib.DecodeHintType.POSSIBLE_FORMATS, [
+          ZXlib.BarcodeFormat.EAN_13, ZXlib.BarcodeFormat.EAN_8,
+          ZXlib.BarcodeFormat.UPC_A, ZXlib.BarcodeFormat.UPC_E,
+          ZXlib.BarcodeFormat.CODE_128, ZXlib.BarcodeFormat.CODE_39
+        ]);
+        scanHints.set(ZXlib.DecodeHintType.TRY_HARDER, true);
+        scanReader = new ZXlib.MultiFormatReader();
+        scanReader.setHints(scanHints);
+      }
 
       // Camera posteriore ad alta risoluzione: piu' pixel sul codice = lettura
       // possibile anche quando il fuoco non e' perfetto.
-      const constraints = {
+      scanStream = await navigator.mediaDevices.getUserMedia({
         audio: false,
         video: {
           facingMode: { ideal: "environment" },
           width: { ideal: 1920 },
           height: { ideal: 1080 }
         }
-      };
+      });
 
-      $("video").style.display = "block";
+      const video = $("video");
+      video.srcObject = scanStream;
+      video.setAttribute("playsinline", "true");
+      video.muted = true;
+      video.style.display = "block";
       $("scanBtn").textContent = "✕ Ferma";
       scanning = true;
-
-      // Quando lo stream parte, prova ad attivare la messa a fuoco continua.
-      $("video").addEventListener("playing", () => applyContinuousFocus($("video")), { once: true });
-
-      await codeReader.decodeFromConstraints(constraints, $("video"), (result, err) => {
-        if (result && scanning) {
-          const code = result.getText();
-          testBarcode(code);
-          // stop dopo una lettura riuscita
-          scanning = false;
-          codeReader.reset();
-          $("video").style.display = "none";
-          $("scanBtn").textContent = "📷 Scansiona";
-        }
-      });
+      await video.play().catch(() => {});
+      applyContinuousFocus(video); // messa a fuoco continua dove supportata
+      scanFrame();
     } catch (e) {
       alert("Fotocamera non disponibile. Servi la pagina via https/localhost, oppure usa l'inserimento manuale.\n\n" + e.message);
-      $("video").style.display = "none";
-      $("scanBtn").textContent = "📷 Scansiona";
-      scanning = false;
+      stopScan();
     }
   });
 
