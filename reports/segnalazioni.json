@@ -46,5 +46,17 @@
       }
     ],
     "analyzedIngredients": "Agenti lievitanti (difosfato disodico (E 450), carbonato acido di sodio (E 500)), amido, stabilizzante (sali di sodio, di potassio e di calcio degli acidi grassi (E 470a)), aroma. Può contenere SOIA."
+  },
+  {
+    "receivedAt": "2026-06-25T21:50:22.800Z",
+    "message": "Ma il burro di cacao non contiene lattosio? Chiedo per sicurezza.",
+    "barcode": "8003160540012",
+    "verdict": "green",
+    "product": {
+      "name": "Cacao in polvere amaro",
+      "brand": "Conad, co.ind"
+    },
+    "triggers": [],
+    "analyzedIngredients": "Cacao in polvere (burro di cacao 22-24%), correttore di acidità: carbonato di potassio."
   }
 ]
