@@ -21,6 +21,7 @@
     "Bevanda di soia (da fagioli)": { "stato": "si" },
     "Bevanda di avena": { "stato": "si" },
     "Amaranto": { "stato": "si" },
+    "Kefir": { "stato": "si" },
 
     "Mandorle": { "stato": "limite", "dose": "max 10 pezzi" },
     "Nocciole": { "stato": "limite", "dose": "max 10 pezzi" },
@@ -29,6 +30,7 @@
     "Banana matura": { "stato": "limite", "dose": "1 banana media" },
     "Fragola": { "stato": "limite", "dose": "circa 1 mano" },
     "Mais dolce": { "stato": "limite", "dose": "1/2 pannocchia" },
+    "Piselli": { "stato": "limite", "dose": "1/3 di tazza" },
     "Barbabietola": { "stato": "limite", "dose": "1/2" },
     "Cavoletti di Bruxelles": { "stato": "limite", "dose": "1/2 tazza" },
     "Sedano": { "stato": "limite", "dose": "1 gamba" },

@@ -195,18 +195,31 @@ export function analyze(input, db, personal) {
     }
   }
 
-  // 5) Verdetto: rosso se almeno un 'no'; giallo se nessun 'no' ma almeno un 'limite';
+  // 5) Claim "senza lattosio": se il prodotto e' dichiarato delattosato, i trigger
+  //    di categoria lattosio (latticini) non si applicano — la dieta consente i
+  //    latticini senza lattosio. NB: non tocca i FODMAP non-caseari (es. Lattulosio).
+  const lactoseFree =
+    haystack.indexOf(" senza lattosio ") >= 0 ||
+    haystack.indexOf(" delattosat") >= 0 ||
+    haystack.indexOf(" lactose free ") >= 0 ||
+    haystack.indexOf(" zero lattosio ") >= 0 ||
+    haystack.indexOf("contenuto di lattosio") >= 0;
+  const finalTriggers = lactoseFree
+    ? triggers.filter(function (t) { return t.categoryKey !== "lattosio"; })
+    : triggers;
+
+  // 6) Verdetto: rosso se almeno un 'no'; giallo se nessun 'no' ma almeno un 'limite';
   //    altrimenti verde.
   let verdict = "green";
-  if (triggers.some(function (t) { return t.stato === "no"; })) {
+  if (finalTriggers.some(function (t) { return t.stato === "no"; })) {
     verdict = "red";
-  } else if (triggers.some(function (t) { return t.stato === "limite"; })) {
+  } else if (finalTriggers.some(function (t) { return t.stato === "limite"; })) {
     verdict = "yellow";
   }
 
   return {
     verdict: verdict,
-    triggers: triggers,
+    triggers: finalTriggers,
     product: product,
     analyzedIngredients: input.ingredientsText || ""
   };
