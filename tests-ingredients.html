@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>FODMAP — test ingredienti (sweep reale)</title>
+<style>
+  body { font-family: -apple-system, system-ui, sans-serif; max-width: 900px; margin: 0 auto; padding: 16px; }
+  h1 { font-size: 1.2rem; } h2 { font-size: 1rem; margin-top: 20px; }
+  .ok { color: #16a34a; } .bad { color: #dc2626; font-weight: 700; }
+  .row { font-size: 0.82rem; padding: 2px 0; }
+  .sum { margin: 8px 0 4px; font-weight: 800; }
+  .pill { display:inline-block; padding:1px 6px; border-radius:8px; font-size:0.75rem; }
+  .red{background:#dc262633;} .yellow{background:#d9770633;} .green{background:#16a34a22;}
+  code { background: #8882; padding: 1px 5px; border-radius: 4px; }
+  details { margin: 6px 0; }
+</style>
+</head>
+<body>
+  <h1>Test ingredienti — sweep su dati reali Open Food Facts</h1>
+  <p>Servi via <code>http(s)</code>. Due livelli: (A) <b>verità indipendente</b> su ingredienti noti;
+     (B) <b>regressione</b> su un corpus di ~300 ingredienti reali raccolti da Open Food Facts,
+     confrontati con uno snapshot rivisto a mano.</p>
+  <div id="out">Carico…</div>
+
+<script type="module">
+  import { analyze } from "./src/engine.js";
+  import { normalizeProduct } from "./src/openfoodfacts.js";
+
+  // (A) VERITÀ INDIPENDENTE — atteso da conoscenza umana, non dal motore.
+  const SAFE = ["water","salt","sea salt","sugar","glucose","glucose syrup","dextrose","sunflower oil","olive oil","palm oil","rapeseed oil","cocoa","cocoa butter","soya lecithin","starch","wheat starch","rice","rice flour","maize","corn starch","polenta","potato","potato starch","tapioca","buckwheat","millet","quinoa","sorghum","oat","egg","chicken","beef","tuna","salmon","tomato","carrot","zucchini","eggplant","lettuce","cucumber","spinach","basil","oregano","parsley","rosemary","thyme","black pepper","ginger","vinegar","mustard","maple syrup","dark chocolate","coffee","tea","baking powder","citric acid","ascorbic acid","pectin","guar gum","xanthan gum","carrageenan","maltodextrin","latte senza lattosio","soy milk","tofu","tempeh","lemon","orange","kiwi","grape","blueberry","raspberry"];
+  const REDS = ["onion","garlic","leek","shallot","asparagus","artichoke","cauliflower","mushroom","chicory","wheat","wheat flour","barley","rye","spelt","couscous","chickpeas","lentils","beans","milk","cream","yogurt","honey","agave syrup","high fructose corn syrup","glucose fructose syrup","sorbitol","mannitol","xylitol","inulin","fructose","apple","pear","mango","watermelon","fig","avocado","cashew"];
+  const YELL = ["almond","hazelnut","banana","strawberry","sweetcorn","beetroot","celery","grapefruit","peas","pine nuts"];
+
+  const tx = t => ({ status: 1, product: { product_name: "X", ingredients_text: t } });
+
+  function el(tag, cls, txt) { const n = document.createElement(tag); if (cls) n.className = cls; if (txt != null) n.textContent = txt; return n; }
+
+  async function run() {
+    const out = document.getElementById("out");
+    let db, personal, corpus, expected;
+    try {
+      db = await (await fetch("high-fodmap.json")).json();
+      personal = await (await fetch("personal-fodmap.json")).json();
+      corpus = await (await fetch("tests/off-ingredients.json")).json();
+      expected = await (await fetch("tests/off-expected.json")).json();
+    } catch (e) {
+      out.textContent = "Errore nel caricare i dati: " + e.message + " (servi via http, non file://).";
+      return;
+    }
+    out.innerHTML = "";
+    const v = n => analyze(normalizeProduct(tx(n)), db, personal).verdict;
+
+    // ---- (A) verità indipendente ----
+    out.appendChild(el("h2", null, "A) Verità indipendente (safe→verde, FODMAP→rosso, dose→giallo)"));
+    let aFail = 0;
+    const checkSet = (names, want, label) => {
+      names.forEach(n => {
+        const got = v(n);
+        if (got !== want) {
+          aFail++;
+          out.appendChild(el("div", "row bad", "✗ " + label + ": " + n + " → " + got + " (atteso " + want + ")"));
+        }
+      });
+    };
+    checkSet(SAFE, "green", "safe");
+    checkSet(REDS, "red", "fodmap");
+    checkSet(YELL, "yellow", "dose");
+    const aTot = SAFE.length + REDS.length + YELL.length;
+    out.appendChild(el("div", "sum " + (aFail ? "bad" : "ok"),
+      (aFail ? "✗ " : "✓ ") + (aTot - aFail) + "/" + aTot + " ok (safe " + SAFE.length + ", fodmap " + REDS.length + ", dose " + YELL.length + ")"));
+
+    // ---- (B) regressione sul corpus reale ----
+    out.appendChild(el("h2", null, "B) Regressione su " + corpus.length + " ingredienti reali (vs snapshot)"));
+    let bFail = 0;
+    const counts = { red: 0, yellow: 0, green: 0 };
+    const triggered = [];
+    corpus.forEach(n => {
+      const res = analyze(normalizeProduct(tx(n)), db, personal);
+      counts[res.verdict] = (counts[res.verdict] || 0) + 1;
+      if (res.verdict !== "green") {
+        triggered.push({ n, v: res.verdict, t: res.triggers.map(x => x.nome).join(", ") });
+      }
+      if (expected[n] && expected[n] !== res.verdict) {
+        bFail++;
+        out.appendChild(el("div", "row bad", "✗ regressione: " + n + " → " + res.verdict + " (snapshot: " + expected[n] + ")"));
+      }
+    });
+    out.appendChild(el("div", "sum " + (bFail ? "bad" : "ok"),
+      (bFail ? "✗ " + bFail + " regressioni" : "✓ nessuna regressione") +
+      " — verde " + counts.green + " · giallo " + counts.yellow + " · rosso " + counts.red));
+
+    // dettaglio: cosa scatta (per revisione manuale falsi positivi)
+    const det = el("details");
+    det.appendChild(el("summary", null, "Mostra i " + triggered.length + " ingredienti che scattano (per revisione)"));
+    triggered.sort((a, b) => a.v.localeCompare(b.v)).forEach(x => {
+      const r = el("div", "row");
+      r.appendChild(el("span", "pill " + x.v, x.v));
+      r.appendChild(document.createTextNode(" " + x.n + " → " + x.t));
+      det.appendChild(r);
+    });
+    out.appendChild(det);
+
+    const overall = el("div", "sum " + (aFail + bFail ? "bad" : "ok"));
+    overall.textContent = (aFail + bFail === 0) ? "✅ TUTTO OK" : "❌ " + (aFail + bFail) + " problemi";
+    out.appendChild(overall);
+  }
+  run();
+</script>
+</body>
+</html>

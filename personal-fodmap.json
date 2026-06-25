@@ -49,6 +49,7 @@
     { "nome": "Idrolizzati di amido idrogenato (HSH)", "stato": "no", "categoryLabel": "Polioli", "match": ["hydrogenated starch hydrolysates", "idrolizzati di amido idrogenato"] },
     { "nome": "Kamut", "stato": "no", "categoryLabel": "Fruttani", "match": ["kamut", "khorasan"] },
     { "nome": "Semolina", "stato": "no", "categoryLabel": "Fruttani", "match": ["semolina"] },
-    { "nome": "Birra", "stato": "no", "categoryLabel": "Fruttani/GOS", "match": ["birra", "beer"] }
+    { "nome": "Birra", "stato": "no", "categoryLabel": "Fruttani/GOS", "match": ["birra", "beer"] },
+    { "nome": "Fruttosio", "stato": "no", "categoryLabel": "Fruttosio in eccesso", "match": ["fructose", "crystalline fructose", "fructose syrup", "glucose fructose syrup", "fruttosio cristallino"] }
   ]
 }

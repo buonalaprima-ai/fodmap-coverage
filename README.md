@@ -44,7 +44,10 @@ src/
   engine.js              # motore di matching + verdetto personalizzato a 3 stati
   normalize.js           # normalizzazione testo (lowercase, accenti, confine di parola)
   render.js              # rendering del risultato (3 colori + dose)
-tests.html               # test del motore in-browser (personalizzato)
+tests.html               # test del motore in-browser (casi personalizzati)
+tests-ingredients.html   # sweep su ~300 ingredienti reali OFF + verità indipendente + regressione
+tests/off-ingredients.json  # corpus ingredienti reali raccolti da Open Food Facts
+tests/off-expected.json     # snapshot verdetti rivisti (baseline di regressione)
 test-copertura-off.html  # vecchio strumento di test copertura OFF (standalone)
 ```
 
