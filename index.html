@@ -52,7 +52,7 @@
     <button id="testBtn">Testa</button>
     <button id="scanBtn" class="secondary">📷 Scansiona</button>
   </div>
-  <p class="hint">La fotocamera funziona solo se la pagina è servita via <code>https</code> o <code>localhost</code>. L'inserimento manuale funziona sempre, anche aprendo il file direttamente.</p>
+  <p class="hint">Suggerimento scansione: tieni il telefono a ~15–20&nbsp;cm dal codice (troppo vicino l'iPhone non mette a fuoco) e con buona luce. La fotocamera richiede <code>https</code> o <code>localhost</code>; l'inserimento manuale funziona sempre.</p>
 
   <div id="stats">
     <div class="stat">Testati<br><b id="nTot">0</b></div>
@@ -146,6 +146,23 @@
     });
     return zxingPromise;
   }
+
+  // Attiva la messa a fuoco continua sul track video, se il dispositivo la espone.
+  // Best-effort: su parecchi iPhone "focusMode" non e' tra le capabilities e si ignora.
+  function applyContinuousFocus(video) {
+    try {
+      const stream = video && video.srcObject;
+      const track = stream && stream.getVideoTracks && stream.getVideoTracks()[0];
+      if (!track || !track.getCapabilities) {
+        return;
+      }
+      const caps = track.getCapabilities();
+      if (caps.focusMode && caps.focusMode.includes("continuous")) {
+        track.applyConstraints({ advanced: [{ focusMode: "continuous" }] }).catch(() => {});
+      }
+    } catch (e) { /* ottimizzazione best-effort: ignora */ }
+  }
+
   $("scanBtn").addEventListener("click", async () => {
     if (scanning) {
       scanning = false;
@@ -156,15 +173,43 @@
     }
     try {
       const ZX = await loadZXing();
-      codeReader = new ZX.BrowserMultiFormatReader();
+
+      // Limita ai formati dei codici a barre dei prodotti + TRY_HARDER: ZXing non
+      // spreca tempo a cercare QR/Aztec ecc. e decodifica molto piu' in fretta,
+      // sfruttando le brevi finestre in cui l'immagine e' a fuoco.
+      const hints = new Map();
+      hints.set(ZX.DecodeHintType.POSSIBLE_FORMATS, [
+        ZX.BarcodeFormat.EAN_13, ZX.BarcodeFormat.EAN_8,
+        ZX.BarcodeFormat.UPC_A, ZX.BarcodeFormat.UPC_E,
+        ZX.BarcodeFormat.CODE_128, ZX.BarcodeFormat.CODE_39
+      ]);
+      hints.set(ZX.DecodeHintType.TRY_HARDER, true);
+      // 2o argomento: ms tra un tentativo e l'altro (default 500). Piu' basso = piu' scansioni/sec.
+      codeReader = new ZX.BrowserMultiFormatReader(hints, 150);
+
+      // Camera posteriore ad alta risoluzione: piu' pixel sul codice = lettura
+      // possibile anche quando il fuoco non e' perfetto.
+      const constraints = {
+        audio: false,
+        video: {
+          facingMode: { ideal: "environment" },
+          width: { ideal: 1920 },
+          height: { ideal: 1080 }
+        }
+      };
+
       $("video").style.display = "block";
       $("scanBtn").textContent = "✕ Ferma";
       scanning = true;
-      codeReader.decodeFromVideoDevice(null, $("video"), (result, err) => {
+
+      // Quando lo stream parte, prova ad attivare la messa a fuoco continua.
+      $("video").addEventListener("playing", () => applyContinuousFocus($("video")), { once: true });
+
+      await codeReader.decodeFromConstraints(constraints, $("video"), (result, err) => {
         if (result && scanning) {
           const code = result.getText();
           testBarcode(code);
-          // breve pausa per non rifare subito lo stesso codice
+          // stop dopo una lettura riuscita
           scanning = false;
           codeReader.reset();
           $("video").style.display = "none";
