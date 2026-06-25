@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "receivedAt": "2026-06-25T21:31:25.884Z",
+    "message": "TEST CORS preflight (Claude)",
+    "barcode": "0000000000000",
+    "verdict": "green",
+    "product": {
+      "name": "Test CORS",
+      "brand": ""
+    },
+    "triggers": [],
+    "analyzedIngredients": "x"
+  }
+]
