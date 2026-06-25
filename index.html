@@ -2,288 +2,95 @@
 <html lang="it">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Test copertura Open Food Facts</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>FODMAP Scanner</title>
 <style>
   :root { color-scheme: light dark; }
   * { box-sizing: border-box; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    max-width: 760px; margin: 0 auto; padding: 16px; line-height: 1.45;
+    max-width: 640px; margin: 0 auto; padding: 16px; line-height: 1.45;
   }
   h1 { font-size: 1.25rem; margin: 0 0 4px; }
   .sub { opacity: 0.7; font-size: 0.85rem; margin: 0 0 16px; }
-  .row { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+
+  #video {
+    width: 100%; max-height: 300px; background: #000;
+    border-radius: 12px; display: none; margin-bottom: 12px; object-fit: cover;
+  }
+
+  .row { display: flex; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
   input[type="text"] {
-    flex: 1; min-width: 160px; padding: 12px; font-size: 1rem;
-    border: 1px solid #8888; border-radius: 8px; background: transparent; color: inherit;
+    flex: 1; min-width: 150px; padding: 12px; font-size: 1rem;
+    border: 1px solid #8888; border-radius: 10px; background: transparent; color: inherit;
   }
   button {
-    padding: 12px 16px; font-size: 1rem; border: 0; border-radius: 8px;
-    background: #2563eb; color: #fff; cursor: pointer;
+    padding: 12px 16px; font-size: 1rem; border: 0; border-radius: 10px;
+    background: #2563eb; color: #fff; cursor: pointer; font-weight: 600;
   }
   button.secondary { background: #6b7280; }
   button:disabled { opacity: 0.5; cursor: default; }
-  #stats {
-    display: flex; gap: 12px; flex-wrap: wrap; margin: 12px 0;
-    font-size: 0.9rem;
-  }
-  .stat { padding: 8px 12px; border: 1px solid #8884; border-radius: 8px; }
-  .stat b { font-size: 1.15rem; }
-  table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 0.85rem; }
-  th, td { text-align: left; padding: 8px 6px; border-bottom: 1px solid #8883; vertical-align: top; }
-  th { opacity: 0.7; font-weight: 600; }
-  .ok { color: #16a34a; font-weight: 600; }
-  .no { color: #dc2626; font-weight: 600; }
-  .warn { color: #d97706; font-weight: 600; }
-  #video { width: 100%; max-height: 240px; background: #000; border-radius: 8px; display: none; margin-bottom: 12px; }
-  .hint { font-size: 0.8rem; opacity: 0.7; margin-top: 4px; }
+  .hint { font-size: 0.8rem; opacity: 0.7; margin: 4px 0 16px; }
   code { background: #8882; padding: 1px 5px; border-radius: 4px; }
+
+  /* --- Risultato --- */
+  #result { margin-top: 8px; }
+  .status {
+    padding: 16px; border-radius: 10px; border: 1px solid #8884; font-size: 0.95rem;
+  }
+  .status.error { border-color: #dc2626; color: #dc2626; }
+  .status.loading { opacity: 0.8; }
+
+  .verdict {
+    display: flex; align-items: center; gap: 12px;
+    padding: 20px 18px; border-radius: 14px; color: #fff; margin-bottom: 12px;
+  }
+  .verdict-icon { font-size: 1.8rem; line-height: 1; }
+  .verdict-word { font-size: 1.3rem; font-weight: 800; letter-spacing: 0.2px; }
+  .verdict-red { background: #dc2626; }
+  .verdict-green { background: #16a34a; }
+  .verdict-unknown { background: #6b7280; }
+
+  .product { display: flex; gap: 12px; align-items: center; margin-bottom: 12px; }
+  .product-img { width: 56px; height: 56px; object-fit: cover; border-radius: 8px; background: #8882; }
+  .product-name { font-weight: 700; }
+  .product-brand { opacity: 0.7; font-size: 0.85rem; }
+
+  .triggers { border: 1px solid #dc262644; border-radius: 12px; padding: 12px; margin-bottom: 12px; }
+  .triggers-title { font-weight: 700; margin-bottom: 8px; }
+  .trigger { padding: 8px 0; border-top: 1px solid #8883; }
+  .trigger:first-of-type { border-top: 0; }
+  .trigger-name { font-weight: 700; }
+  .trigger-cat {
+    display: inline-block; margin-left: 8px; font-size: 0.75rem; opacity: 0.85;
+    background: #8882; padding: 2px 8px; border-radius: 999px;
+  }
+  .trigger-nota { font-size: 0.8rem; opacity: 0.75; margin-top: 4px; }
+
+  .unknown-note { margin-bottom: 12px; }
+  .unknown-note .muted { opacity: 0.7; font-size: 0.9rem; }
+
+  .ingredients { border: 1px solid #8884; border-radius: 10px; padding: 10px 12px; }
+  .ingredients summary { cursor: pointer; font-weight: 600; }
+  .ingredients-body { margin-top: 8px; font-size: 0.85rem; opacity: 0.9; white-space: pre-wrap; }
+  p { margin: 6px 0; }
 </style>
 </head>
 <body>
-  <h1>Test copertura Open Food Facts</h1>
-  <p class="sub">Inserisci (o scansiona) i codici a barre dei prodotti che compri davvero. Lo strumento dice se ognuno è nel database e, soprattutto, se ha la lista ingredienti. Obiettivo: scoprire la copertura reale sul tuo carrello prima di costruire l'app.</p>
+  <h1>FODMAP Scanner</h1>
+  <p class="sub">Scansiona o digita il codice a barre di un prodotto: ti dico se contiene ingredienti FODMAP, con l'elenco completo. Se trova anche un solo FODMAP, il verdetto è rosso.</p>
 
   <video id="video" playsinline></video>
 
   <div class="row">
     <input id="barcode" type="text" inputmode="numeric" placeholder="Codice a barre (EAN), poi Invio" autocomplete="off" />
-    <button id="testBtn">Testa</button>
+    <button id="analyzeBtn">Analizza</button>
     <button id="scanBtn" class="secondary">📷 Scansiona</button>
   </div>
-  <p class="hint">Suggerimento scansione: tieni il telefono a ~15–20&nbsp;cm dal codice (troppo vicino l'iPhone non mette a fuoco) e con buona luce. La fotocamera richiede <code>https</code> o <code>localhost</code>; l'inserimento manuale funziona sempre.</p>
+  <p class="hint">La fotocamera richiede <code>https</code> (funziona qui); l'inserimento manuale funziona sempre. Per scansionare: ~15–20&nbsp;cm dal codice, con buona luce. Legge sia in verticale sia in orizzontale.</p>
 
-  <div id="stats">
-    <div class="stat">Testati<br><b id="nTot">0</b></div>
-    <div class="stat">Trovati<br><b id="nFound">0</b></div>
-    <div class="stat">Con ingredienti<br><b id="nIng">0</b></div>
-    <div class="stat">Copertura utile<br><b id="pct">—</b></div>
-  </div>
+  <div id="result"></div>
 
-  <table>
-    <thead>
-      <tr><th>Codice</th><th>Prodotto</th><th>Nel DB</th><th>Ingredienti</th><th>In IT</th></tr>
-    </thead>
-    <tbody id="results"></tbody>
-  </table>
-
-<script type="module">
-  const $ = id => document.getElementById(id);
-  let nTot = 0, nFound = 0, nIng = 0;
-
-  function refreshStats() {
-    $("nTot").textContent = nTot;
-    $("nFound").textContent = nFound;
-    $("nIng").textContent = nIng;
-    // "Copertura utile" = % di prodotti testati che sono USABILI (trovati E con ingredienti)
-    $("pct").textContent = nTot ? Math.round((nIng / nTot) * 100) + "%" : "—";
-  }
-
-  function addRow(code, found, name, hasIng, hasIt) {
-    const tr = document.createElement("tr");
-    const cell = (html) => { const td = document.createElement("td"); td.innerHTML = html; tr.appendChild(td); };
-    cell(code);
-    cell(name || "—");
-    cell(found ? '<span class="ok">sì</span>' : '<span class="no">no</span>');
-    cell(found ? (hasIng ? '<span class="ok">sì</span>' : '<span class="warn">mancanti</span>') : "—");
-    cell(found && hasIng ? (hasIt ? '<span class="ok">sì</span>' : 'solo altra lingua') : "—");
-    $("results").prepend(tr);
-  }
-
-  async function testBarcode(raw) {
-    const code = (raw || "").trim().replace(/\s+/g, "");
-    if (!code) return;
-    $("testBtn").disabled = true;
-    const url = `https://world.openfoodfacts.org/api/v2/product/${encodeURIComponent(code)}.json`
-      + `?fields=product_name,product_name_it,brands,ingredients_text,ingredients_text_it,ingredients,countries_tags`;
-    try {
-      const res = await fetch(url, { headers: { "Accept": "application/json" } });
-      const data = await res.json();
-      const found = data.status === 1 && data.product;
-      let name = "", hasIng = false, hasIt = false;
-      if (found) {
-        const p = data.product;
-        name = p.product_name_it || p.product_name || p.brands || "";
-        const txt = (p.ingredients_text || "").trim();
-        const arr = Array.isArray(p.ingredients) ? p.ingredients : [];
-        hasIng = txt.length > 0 || arr.length > 0;
-        hasIt = (p.ingredients_text_it || "").trim().length > 0;
-      }
-      nTot++; if (found) nFound++; if (found && hasIng) nIng++;
-      addRow(code, found, name, hasIng, hasIt);
-      refreshStats();
-    } catch (e) {
-      nTot++;
-      addRow(code, false, "errore rete", false, false);
-      refreshStats();
-    } finally {
-      $("testBtn").disabled = false;
-      $("barcode").value = "";
-      $("barcode").focus();
-    }
-  }
-
-  $("testBtn").addEventListener("click", () => testBarcode($("barcode").value));
-  $("barcode").addEventListener("keydown", e => { if (e.key === "Enter") testBarcode($("barcode").value); });
-
-  // Scansione opzionale con ZXing (caricato solo al click)
-  let scanning = false, zxingPromise = null, ZXlib = null,
-      scanReader = null, scanHints = null, scanStream = null, scanTimer = null;
-
-  // Carica la build UMD di ZXing via <script> (niente ES module / bare specifier):
-  // espone il global window.ZXing. Risolto una volta sola e messo in cache.
-  function loadZXing() {
-    if (window.ZXing) return Promise.resolve(window.ZXing);
-    if (zxingPromise) return zxingPromise;
-    zxingPromise = new Promise((resolve, reject) => {
-      const s = document.createElement("script");
-      s.src = "https://cdn.jsdelivr.net/npm/@zxing/library@0.20.0/umd/index.min.js";
-      s.onload = () => window.ZXing
-        ? resolve(window.ZXing)
-        : reject(new Error("Libreria di scansione caricata ma 'ZXing' non disponibile."));
-      s.onerror = () => reject(new Error("Impossibile caricare la libreria di scansione (controlla la rete)."));
-      document.head.appendChild(s);
-    });
-    return zxingPromise;
-  }
-
-  // Attiva la messa a fuoco continua sul track video, se il dispositivo la espone.
-  // Best-effort: su parecchi iPhone "focusMode" non e' tra le capabilities e si ignora.
-  function applyContinuousFocus(video) {
-    try {
-      const stream = video && video.srcObject;
-      const track = stream && stream.getVideoTracks && stream.getVideoTracks()[0];
-      if (!track || !track.getCapabilities) {
-        return;
-      }
-      const caps = track.getCapabilities();
-      if (caps.focusMode && caps.focusMode.includes("continuous")) {
-        track.applyConstraints({ advanced: [{ focusMode: "continuous" }] }).catch(() => {});
-      }
-    } catch (e) { /* ottimizzazione best-effort: ignora */ }
-  }
-
-  // Canvas riusati: uno per il frame catturato, uno per la sua versione ruotata 90°.
-  const grabCanvas = document.createElement("canvas");
-  const grabCtx = grabCanvas.getContext("2d", { willReadFrequently: true });
-  const rotCanvas = document.createElement("canvas");
-  const rotCtx = rotCanvas.getContext("2d", { willReadFrequently: true });
-
-  // Decodifica un singolo canvas con ZXing; ritorna il testo del codice o null.
-  function decodeCanvas(canvas) {
-    try {
-      const source = new ZXlib.HTMLCanvasElementLuminanceSource(canvas);
-      const bitmap = new ZXlib.BinaryBitmap(new ZXlib.HybridBinarizer(source));
-      const result = scanReader.decode(bitmap, scanHints);
-      return result ? result.getText() : null;
-    } catch (e) {
-      return null; // NotFound/Format/Checksum: nessun codice valido in questo frame
-    }
-  }
-
-  function stopScan() {
-    scanning = false;
-    if (scanTimer) {
-      clearTimeout(scanTimer);
-      scanTimer = null;
-    }
-    if (scanStream) {
-      scanStream.getTracks().forEach(t => t.stop());
-      scanStream = null;
-    }
-    $("video").srcObject = null;
-    $("video").style.display = "none";
-    $("scanBtn").textContent = "📷 Scansiona";
-  }
-
-  // Loop di scansione: ~10 volte/sec cattura un frame e prova 0° E 90°, cosi'
-  // i codici a barre 1D si leggono sia col telefono in verticale sia in orizzontale.
-  function scanFrame() {
-    if (!scanning) {
-      return;
-    }
-    const video = $("video");
-    const vw = video.videoWidth, vh = video.videoHeight;
-    if (vw && vh) {
-      // ridimensiona il lato lungo a ~800px: piu' veloce, sufficiente per gli EAN
-      const scale = Math.min(1, 800 / Math.max(vw, vh));
-      const w = Math.max(1, Math.round(vw * scale));
-      const h = Math.max(1, Math.round(vh * scale));
-      grabCanvas.width = w;
-      grabCanvas.height = h;
-      grabCtx.drawImage(video, 0, 0, w, h);
-
-      let code = decodeCanvas(grabCanvas); // orientamento naturale
-      if (!code) {
-        rotCanvas.width = h; // stessa immagine ruotata di 90°
-        rotCanvas.height = w;
-        rotCtx.save();
-        rotCtx.translate(h / 2, w / 2);
-        rotCtx.rotate(Math.PI / 2);
-        rotCtx.drawImage(grabCanvas, -w / 2, -h / 2);
-        rotCtx.restore();
-        code = decodeCanvas(rotCanvas);
-      }
-      if (code) {
-        stopScan();
-        testBarcode(code);
-        return;
-      }
-    }
-    scanTimer = setTimeout(scanFrame, 100);
-  }
-
-  $("scanBtn").addEventListener("click", async () => {
-    if (scanning) {
-      stopScan();
-      return;
-    }
-    try {
-      ZXlib = await loadZXing();
-
-      // Reader 1D limitato ai formati dei prodotti + TRY_HARDER (decodifica piu' rapida).
-      if (!scanReader) {
-        scanHints = new Map();
-        scanHints.set(ZXlib.DecodeHintType.POSSIBLE_FORMATS, [
-          ZXlib.BarcodeFormat.EAN_13, ZXlib.BarcodeFormat.EAN_8,
-          ZXlib.BarcodeFormat.UPC_A, ZXlib.BarcodeFormat.UPC_E,
-          ZXlib.BarcodeFormat.CODE_128, ZXlib.BarcodeFormat.CODE_39
-        ]);
-        scanHints.set(ZXlib.DecodeHintType.TRY_HARDER, true);
-        scanReader = new ZXlib.MultiFormatReader();
-        scanReader.setHints(scanHints);
-      }
-
-      // Camera posteriore ad alta risoluzione: piu' pixel sul codice = lettura
-      // possibile anche quando il fuoco non e' perfetto.
-      scanStream = await navigator.mediaDevices.getUserMedia({
-        audio: false,
-        video: {
-          facingMode: { ideal: "environment" },
-          width: { ideal: 1920 },
-          height: { ideal: 1080 }
-        }
-      });
-
-      const video = $("video");
-      video.srcObject = scanStream;
-      video.setAttribute("playsinline", "true");
-      video.muted = true;
-      video.style.display = "block";
-      $("scanBtn").textContent = "✕ Ferma";
-      scanning = true;
-      await video.play().catch(() => {});
-      applyContinuousFocus(video); // messa a fuoco continua dove supportata
-      scanFrame();
-    } catch (e) {
-      alert("Fotocamera non disponibile. Servi la pagina via https/localhost, oppure usa l'inserimento manuale.\n\n" + e.message);
-      stopScan();
-    }
-  });
-
-  // Codice d'esempio funzionante (prodotto USA) per verificare subito che lo strumento gira
-  $("barcode").value = "737628064502";
-</script>
+  <script type="module" src="src/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,1494 @@
+{
+  "_meta": {
+    "versione": "2.1",
+    "criterio": "Sono inclusi TUTTI gli alimenti che hanno un qualsiasi semaforo giallo o rosso Monash a una qualunque porzione. Sono ESCLUSI solo gli alimenti verdi a qualsiasi quantita' (es. mirtilli, uva, kiwi, lamponi, arance, carote, zucchine, parmigiano, macadamia, arachidi, noci). Esempio: le fragole sono incluse anche se verdi fino a ~65g.",
+    "avvertenza": "Lista compilata da fonti pubbliche (Monash divulgativo, Cleveland Clinic, Healthline, IBS Diets, Schar e altre) + conoscenza consolidata. NON e' una copia del database Monash, che e' proprietario, quantitativo e aggiornato periodicamente. Alcuni casi borderline possono essere imprecisi. Strumento di allerta, non sostituisce la app Monash ufficiale ne' un dietista.",
+    "uso": "Matching substring su lista ingredienti normalizzata (lowercase + accenti rimossi). Vedi campo 'warning' per evitare falsi positivi. 'nota' spiega perche' un alimento apparentemente 'sicuro' e' incluso.",
+    "categorie_label": {
+      "fruttani": "Fruttani (oligosaccaridi)",
+      "gos": "Galatto-oligosaccaridi (GOS)",
+      "lattosio": "Lattosio",
+      "fruttosio": "Fruttosio in eccesso",
+      "polioli": "Polioli (sorbitolo/mannitolo)",
+      "misto": "Piu' FODMAP"
+    },
+    "exclude_logic": "Il campo opzionale 'exclude' contiene frasi low-FODMAP che NON devono far scattare il trigger anche se contengono una sottostringa di 'match'. Il motore deve azzerare (sostituire con spazi) ogni frase di 'exclude' nel testo ingredienti PRIMA di cercare le stringhe 'match' di quella voce.",
+    "glucosio_nota": "Non trattare come FODMAP: glucosio, sciroppo di glucosio (senza fruttosio), destrosio, maltodestrine. La voce fruttosio/HFCS deve scattare solo su 'sciroppo di glucosio-fruttosio', 'sciroppo di fruttosio', 'fruttosio', 'hfcs', 'isoglucosio'."
+  },
+  "ingredienti": [
+    {
+      "gruppo": "frutta",
+      "nome": "Mela",
+      "category": "misto",
+      "match": [
+        "mela",
+        "mele",
+        "apple",
+        "apples",
+        "succo di mela",
+        "apple juice",
+        "concentrato di mela",
+        "purea di mela",
+        "apple puree"
+      ]
+    },
+    {
+      "gruppo": "frutta",
+      "nome": "Pera",
+      "category": "misto",
+      "match": [
+        "pera",
+        "pere",
+        "pear",
+        "pears",
+        "succo di pera",
+        "pear juice"
+      ]
+    },
+    {
+      "gruppo": "frutta",
+      "nome": "Pera Nashi",
+      "category": "misto",
+      "match": [
+        "pera nashi",
+        "nashi",
+        "nashi pear"
+      ]
+    },
+    {
+      "gruppo": "frutta",
+      "nome": "Mango",
+      "category": "fruttosio",
+      "match": [
+        "mango"
+      ]
+    },
+    {
+      "gruppo": "frutta",
+      "nome": "Anguria",
+      "category": "misto",
+      "match": [
+        "anguria",
+        "cocomero",
+        "watermelon"
+      ]
+    },
+    {
+      "gruppo": "frutta",
+      "nome": "Ciliegia",
+      "category": "polioli",
+      "match": [
+        "ciliegia",
+        "ciliegie",
+        "cherry",
+        "cherries"
+      ]
+    },
+    {
+      "gruppo": "frutta",
+      "nome": "Albicocca",
+      "category": "polioli",
+      "match": [
+        "albicocca",
+        "albicocche",
+        "apricot",
+        "apricots"
+      ]
+    },
+    {
+      "gruppo": "frutta",
+      "nome": "Pesca",
+      "category": "polioli",
+      "match": [
+        "pesca",
+        "pesche",
+        "peach",
+        "peaches",
+        "pesca bianca",
+        "white peach"
+      ]
+    },
+    {
+      "gruppo": "frutta",
+      "nome": "Nettarina",
+      "category": "polioli",
+      "match": [
+        "nettarina",
+        "nettarine",
+        "nectarine",
+        "nectarines",
+        "pescanoce"
+      ]
+    },
+    {
+      "gruppo": "frutta",
+      "nome": "Prugna / Susina",
+      "category": "polioli",
+      "match": [
+        "prugna",
+        "prugne",
+        "susina",
+        "susine",
+        "plum",
+        "plums"
+      ]
+    },
+    {
+      "gruppo": "frutta",
+      "nome": "Prugne secche",
+      "category": "polioli",
+      "match": [
+        "prugne secche",
+        "prune",
+        "prunes"
+      ]
+    },
+    {
+      "gruppo": "frutta",
+      "nome": "More",
+      "category": "polioli",
+      "match": [
+        "mora",
+        "more",
+        "blackberry",
+        "blackberries"
+      ]
+    },
+    {
+      "gruppo": "frutta",
+      "nome": "Boysenberry",
+      "category": "polioli",
+      "match": [
+        "boysenberry",
+        "boysenberries"
+      ]
+    },
+    {
+      "gruppo": "frutta",
+      "nome": "Fichi",
+      "category": "misto",
+      "match": [
+        "fico",
+        "fichi",
+        "fig",
+        "figs",
+        "fichi secchi",
+        "dried figs"
+      ]
+    },
+    {
+      "gruppo": "frutta",
+      "nome": "Datteri",
+      "category": "fruttani",
+      "match": [
+        "dattero",
+        "datteri",
+        "date",
+        "dates",
+        "medjool"
+      ]
+    },
+    {
+      "gruppo": "frutta",
+      "nome": "Cachi / Kaki",
+      "category": "misto",
+      "match": [
+        "caco",
+        "cachi",
+        "kaki",
+        "persimmon"
+      ]
+    },
+    {
+      "gruppo": "frutta",
+      "nome": "Avocado",
+      "category": "polioli",
+      "match": [
+        "avocado"
+      ],
+      "nota": "Verde solo a piccole porzioni (~30g)."
+    },
+    {
+      "gruppo": "frutta",
+      "nome": "Banana matura",
+      "category": "fruttani",
+      "match": [
+        "banana",
+        "banane"
+      ],
+      "nota": "La banana MATURA e' alta in fruttani; quella acerba e' low. Difficile distinguere da etichetta."
+    },
+    {
+      "gruppo": "frutta",
+      "nome": "Pompelmo",
+      "category": "fruttani",
+      "match": [
+        "pompelmo",
+        "grapefruit"
+      ],
+      "nota": "Verde solo a piccole porzioni."
+    },
+    {
+      "gruppo": "frutta",
+      "nome": "Melagrana",
+      "category": "fruttani",
+      "match": [
+        "melagrana",
+        "melograno",
+        "pomegranate"
+      ],
+      "nota": "Moderato a porzioni medie."
+    },
+    {
+      "gruppo": "frutta",
+      "nome": "Litchi",
+      "category": "fruttani",
+      "match": [
+        "litchi",
+        "lichi",
+        "lychee"
+      ]
+    },
+    {
+      "gruppo": "frutta",
+      "nome": "Tamarillo",
+      "category": "fruttosio",
+      "match": [
+        "tamarillo"
+      ]
+    },
+    {
+      "gruppo": "frutta",
+      "nome": "Feijoa",
+      "category": "fruttani",
+      "match": [
+        "feijoa"
+      ]
+    },
+    {
+      "gruppo": "frutta",
+      "nome": "Guava",
+      "category": "fruttosio",
+      "match": [
+        "guava"
+      ],
+      "nota": "La guava matura e' alta in fruttosio."
+    },
+    {
+      "gruppo": "frutta",
+      "nome": "Cocomero amaro / Karela",
+      "category": "misto",
+      "match": [
+        "karela",
+        "bitter melon"
+      ]
+    },
+    {
+      "gruppo": "frutta",
+      "nome": "Uvetta / Uva sultanina",
+      "category": "fruttani",
+      "match": [
+        "uvetta",
+        "uva sultanina",
+        "uva passa",
+        "sultanina",
+        "raisin",
+        "raisins",
+        "sultanas"
+      ]
+    },
+    {
+      "gruppo": "frutta",
+      "nome": "Ribes",
+      "category": "fruttosio",
+      "match": [
+        "ribes",
+        "currant",
+        "currants"
+      ]
+    },
+    {
+      "gruppo": "frutta",
+      "nome": "Goji",
+      "category": "fruttani",
+      "match": [
+        "goji",
+        "bacche di goji",
+        "goji berries"
+      ]
+    },
+    {
+      "gruppo": "frutta",
+      "nome": "Frutta disidratata (generica)",
+      "category": "misto",
+      "match": [
+        "frutta disidratata",
+        "frutta secca disidratata",
+        "dried fruit"
+      ],
+      "nota": "Quasi tutta la frutta essiccata concentra i FODMAP."
+    },
+    {
+      "gruppo": "frutta",
+      "nome": "Fragola",
+      "category": "fruttosio",
+      "match": [
+        "fragola",
+        "fragole",
+        "strawberry",
+        "strawberries"
+      ],
+      "nota": "Verde fino a ~65g, poi non piu'. Inclusa per tua scelta."
+    },
+    {
+      "gruppo": "verdura",
+      "nome": "Aglio",
+      "category": "fruttani",
+      "match": [
+        "aglio",
+        "garlic",
+        "aglio in polvere",
+        "garlic powder",
+        "estratto di aglio",
+        "garlic extract",
+        "garlic salt"
+      ]
+    },
+    {
+      "gruppo": "verdura",
+      "nome": "Cipolla",
+      "category": "fruttani",
+      "match": [
+        "cipolla",
+        "cipolle",
+        "onion",
+        "onions",
+        "cipolla in polvere",
+        "onion powder",
+        "estratto di cipolla",
+        "onion salt"
+      ]
+    },
+    {
+      "gruppo": "verdura",
+      "nome": "Scalogno",
+      "category": "fruttani",
+      "match": [
+        "scalogno",
+        "shallot",
+        "shallots"
+      ]
+    },
+    {
+      "gruppo": "verdura",
+      "nome": "Porro",
+      "category": "fruttani",
+      "match": [
+        "porro",
+        "porri",
+        "leek",
+        "leeks"
+      ]
+    },
+    {
+      "gruppo": "verdura",
+      "nome": "Cipollotto",
+      "category": "fruttani",
+      "match": [
+        "cipollotto",
+        "cipollotti",
+        "scallion",
+        "spring onion"
+      ],
+      "nota": "La parte bianca e' high; la parte verde e' low."
+    },
+    {
+      "gruppo": "verdura",
+      "nome": "Asparago",
+      "category": "misto",
+      "match": [
+        "asparago",
+        "asparagi",
+        "asparagus"
+      ]
+    },
+    {
+      "gruppo": "verdura",
+      "nome": "Carciofo",
+      "category": "fruttani",
+      "match": [
+        "carciofo",
+        "carciofi",
+        "artichoke",
+        "artichokes"
+      ]
+    },
+    {
+      "gruppo": "verdura",
+      "nome": "Topinambur",
+      "category": "fruttani",
+      "match": [
+        "topinambur",
+        "jerusalem artichoke"
+      ]
+    },
+    {
+      "gruppo": "verdura",
+      "nome": "Cavolfiore",
+      "category": "polioli",
+      "match": [
+        "cavolfiore",
+        "cauliflower"
+      ]
+    },
+    {
+      "gruppo": "verdura",
+      "nome": "Funghi",
+      "category": "polioli",
+      "match": [
+        "fungo",
+        "funghi",
+        "champignon",
+        "mushroom",
+        "mushrooms"
+      ],
+      "nota": "Funghi ostrica e funghi in scatola sono low; i comuni champignon sono high."
+    },
+    {
+      "gruppo": "verdura",
+      "nome": "Cavoletti di Bruxelles",
+      "category": "fruttani",
+      "match": [
+        "cavoletti di bruxelles",
+        "brussels sprouts"
+      ],
+      "nota": "Verde a piccole porzioni."
+    },
+    {
+      "gruppo": "verdura",
+      "nome": "Cavolo verza",
+      "category": "fruttani",
+      "match": [
+        "verza",
+        "cavolo verza",
+        "savoy cabbage"
+      ],
+      "nota": "Moderato a porzioni medie."
+    },
+    {
+      "gruppo": "verdura",
+      "nome": "Cavolo cappuccio",
+      "category": "fruttani",
+      "match": [
+        "cavolo cappuccio",
+        "cabbage"
+      ],
+      "nota": "Verde a piccole porzioni."
+    },
+    {
+      "gruppo": "verdura",
+      "nome": "Barbabietola",
+      "category": "fruttani",
+      "match": [
+        "barbabietola",
+        "barbabietole",
+        "beetroot",
+        "beet"
+      ],
+      "nota": "Verde solo a piccole porzioni."
+    },
+    {
+      "gruppo": "verdura",
+      "nome": "Sedano",
+      "category": "polioli",
+      "match": [
+        "sedano",
+        "celery"
+      ],
+      "nota": "Verde solo a ~1/2 gambo, poi mannitolo."
+    },
+    {
+      "gruppo": "verdura",
+      "nome": "Patata dolce",
+      "category": "polioli",
+      "match": [
+        "patata dolce",
+        "patate dolci",
+        "sweet potato"
+      ],
+      "nota": "Verde solo fino a ~70g."
+    },
+    {
+      "gruppo": "verdura",
+      "nome": "Mais dolce",
+      "category": "fruttani",
+      "match": [
+        "mais dolce",
+        "sweetcorn",
+        "sweet corn",
+        "granoturco dolce",
+        "corn on the cob"
+      ],
+      "nota": "Solo il mais dolce in chicchi/pannocchia. Amido, farina di mais e polenta sono low-FODMAP ed esclusi.",
+      "exclude": [
+        "amido di mais",
+        "fecola di mais",
+        "farina di mais",
+        "amido modificato di mais",
+        "corn starch",
+        "cornstarch",
+        "corn flour",
+        "polenta",
+        "maltodestrine di mais"
+      ]
+    },
+    {
+      "gruppo": "verdura",
+      "nome": "Zucca butternut",
+      "category": "polioli",
+      "match": [
+        "zucca butternut",
+        "butternut",
+        "butternut squash"
+      ],
+      "nota": "Verde solo a piccole porzioni (~30g)."
+    },
+    {
+      "gruppo": "verdura",
+      "nome": "Taccole",
+      "category": "misto",
+      "match": [
+        "taccole",
+        "snow peas",
+        "mangetout"
+      ]
+    },
+    {
+      "gruppo": "verdura",
+      "nome": "Taccole dolci",
+      "category": "fruttani",
+      "match": [
+        "sugar snap peas",
+        "piselli mangiatutto"
+      ]
+    },
+    {
+      "gruppo": "verdura",
+      "nome": "Piselli",
+      "category": "misto",
+      "match": [
+        "piselli",
+        "pisello",
+        "pea",
+        "peas",
+        "green peas"
+      ]
+    },
+    {
+      "gruppo": "verdura",
+      "nome": "Finocchio (bulbo)",
+      "category": "fruttani",
+      "match": [
+        "finocchio",
+        "fennel"
+      ],
+      "nota": "Il bulbo e' moderato a porzioni medie; semi e foglie low."
+    },
+    {
+      "gruppo": "verdura",
+      "nome": "Pomodori secchi",
+      "category": "fruttosio",
+      "match": [
+        "pomodori secchi",
+        "pomodoro secco",
+        "sun-dried tomatoes",
+        "sundried tomato"
+      ]
+    },
+    {
+      "gruppo": "verdura",
+      "nome": "Cicoria (foglie)",
+      "category": "fruttani",
+      "match": [
+        "cicoria",
+        "chicory"
+      ]
+    },
+    {
+      "gruppo": "verdura",
+      "nome": "Radicchio",
+      "category": "fruttani",
+      "match": [
+        "radicchio"
+      ],
+      "nota": "Borderline; incluso per prudenza."
+    },
+    {
+      "gruppo": "verdura",
+      "nome": "Tarassaco",
+      "category": "fruttani",
+      "match": [
+        "tarassaco",
+        "dente di leone",
+        "dandelion greens"
+      ]
+    },
+    {
+      "gruppo": "verdura",
+      "nome": "Taro",
+      "category": "fruttani",
+      "match": [
+        "taro"
+      ]
+    },
+    {
+      "gruppo": "verdura",
+      "nome": "Manioca / Cassava",
+      "category": "fruttani",
+      "match": [
+        "manioca",
+        "cassava",
+        "yuca"
+      ]
+    },
+    {
+      "gruppo": "legumi",
+      "nome": "Ceci",
+      "category": "gos",
+      "match": [
+        "ceci",
+        "chickpea",
+        "chickpeas",
+        "garbanzo",
+        "farina di ceci",
+        "chickpea flour"
+      ],
+      "nota": "I ceci in scatola, ben sciacquati, sono low a piccole porzioni."
+    },
+    {
+      "gruppo": "legumi",
+      "nome": "Lenticchie",
+      "category": "gos",
+      "match": [
+        "lenticchie",
+        "lenticchia",
+        "lentil",
+        "lentils",
+        "farina di lenticchie"
+      ],
+      "nota": "In scatola e a piccole porzioni sono low."
+    },
+    {
+      "gruppo": "legumi",
+      "nome": "Fagioli (generico)",
+      "category": "gos",
+      "match": [
+        "fagioli",
+        "fagiolo",
+        "bean",
+        "beans"
+      ]
+    },
+    {
+      "gruppo": "legumi",
+      "nome": "Fagioli rossi/kidney",
+      "category": "gos",
+      "match": [
+        "fagioli rossi",
+        "kidney beans",
+        "red kidney beans"
+      ]
+    },
+    {
+      "gruppo": "legumi",
+      "nome": "Fagioli neri",
+      "category": "gos",
+      "match": [
+        "fagioli neri",
+        "black beans"
+      ],
+      "nota": "In scatola e a piccole porzioni sono low."
+    },
+    {
+      "gruppo": "legumi",
+      "nome": "Borlotti",
+      "category": "gos",
+      "match": [
+        "borlotti",
+        "borlotto",
+        "cranberry beans"
+      ]
+    },
+    {
+      "gruppo": "legumi",
+      "nome": "Cannellini",
+      "category": "gos",
+      "match": [
+        "cannellini",
+        "cannellino"
+      ]
+    },
+    {
+      "gruppo": "legumi",
+      "nome": "Fagioli di Spagna / Lima",
+      "category": "gos",
+      "match": [
+        "fagioli di spagna",
+        "lima beans",
+        "butter beans",
+        "fagioli bianchi di spagna"
+      ]
+    },
+    {
+      "gruppo": "legumi",
+      "nome": "Fagioli navy / haricot",
+      "category": "gos",
+      "match": [
+        "navy beans",
+        "haricot beans"
+      ]
+    },
+    {
+      "gruppo": "legumi",
+      "nome": "Fave",
+      "category": "gos",
+      "match": [
+        "fave",
+        "fava",
+        "broad beans",
+        "fava beans"
+      ]
+    },
+    {
+      "gruppo": "legumi",
+      "nome": "Soia (fagioli)",
+      "category": "gos",
+      "match": [
+        "soia",
+        "fagioli di soia",
+        "soybean",
+        "soybeans",
+        "edamame"
+      ],
+      "warning": "Lecitina di soia, olio di soia, salsa di soia e proteine isolate di soia sono LOW: non segnalarle. Segnala solo i fagioli/latte di soia.",
+      "exclude": [
+        "lecitina di soia",
+        "soy lecithin",
+        "olio di soia",
+        "soybean oil",
+        "soy oil",
+        "salsa di soia",
+        "soy sauce",
+        "proteine della soia",
+        "proteine isolate della soia",
+        "soy protein",
+        "soy protein isolate"
+      ]
+    },
+    {
+      "gruppo": "legumi",
+      "nome": "Piselli spezzati",
+      "category": "gos",
+      "match": [
+        "piselli spezzati",
+        "split peas"
+      ]
+    },
+    {
+      "gruppo": "legumi",
+      "nome": "Fagioli mung",
+      "category": "gos",
+      "match": [
+        "fagioli mung",
+        "mung beans"
+      ],
+      "nota": "Verde a piccole porzioni."
+    },
+    {
+      "gruppo": "legumi",
+      "nome": "Fagioli al forno (baked beans)",
+      "category": "gos",
+      "match": [
+        "fagioli al forno",
+        "baked beans"
+      ]
+    },
+    {
+      "gruppo": "legumi",
+      "nome": "Falafel",
+      "category": "gos",
+      "match": [
+        "falafel"
+      ]
+    },
+    {
+      "gruppo": "legumi",
+      "nome": "Hummus",
+      "category": "misto",
+      "match": [
+        "hummus",
+        "humus"
+      ],
+      "nota": "Ceci + spesso aglio."
+    },
+    {
+      "gruppo": "legumi",
+      "nome": "Farina di lupini",
+      "category": "gos",
+      "match": [
+        "lupini",
+        "lupino",
+        "lupin",
+        "farina di lupini"
+      ]
+    },
+    {
+      "gruppo": "cereali",
+      "nome": "Frumento / Grano",
+      "category": "fruttani",
+      "match": [
+        "frumento",
+        "grano tenero",
+        "grano duro",
+        "wheat",
+        "farina di frumento",
+        "farina 00",
+        "farina 0",
+        "wheat flour",
+        "semola",
+        "semolino"
+      ],
+      "warning": "Onnipresente. Considera di segnalarlo solo se tra i primi 3 ingredienti, altrimenti l'app dira' 'rosso' su quasi tutto."
+    },
+    {
+      "gruppo": "cereali",
+      "nome": "Orzo",
+      "category": "fruttani",
+      "match": [
+        "orzo",
+        "barley",
+        "malto d'orzo",
+        "barley malt",
+        "estratto di malto d'orzo"
+      ]
+    },
+    {
+      "gruppo": "cereali",
+      "nome": "Segale",
+      "category": "fruttani",
+      "match": [
+        "segale",
+        "rye",
+        "farina di segale"
+      ]
+    },
+    {
+      "gruppo": "cereali",
+      "nome": "Farro / Spelta",
+      "category": "fruttani",
+      "match": [
+        "farro",
+        "spelta",
+        "spelt"
+      ],
+      "nota": "Lo spelt a lievitazione naturale (sourdough) e' meglio tollerato."
+    },
+    {
+      "gruppo": "cereali",
+      "nome": "Couscous",
+      "category": "fruttani",
+      "match": [
+        "couscous",
+        "cuscus"
+      ]
+    },
+    {
+      "gruppo": "cereali",
+      "nome": "Bulgur",
+      "category": "fruttani",
+      "match": [
+        "bulgur"
+      ]
+    },
+    {
+      "gruppo": "cereali",
+      "nome": "Freekeh",
+      "category": "fruttani",
+      "match": [
+        "freekeh",
+        "frikeh"
+      ]
+    },
+    {
+      "gruppo": "cereali",
+      "nome": "Crusca di frumento",
+      "category": "fruttani",
+      "match": [
+        "crusca di frumento",
+        "crusca",
+        "wheat bran"
+      ]
+    },
+    {
+      "gruppo": "cereali",
+      "nome": "Amaranto",
+      "category": "fruttani",
+      "match": [
+        "amaranto",
+        "amaranth"
+      ],
+      "nota": "Verde a piccole porzioni."
+    },
+    {
+      "gruppo": "cereali",
+      "nome": "Germe di grano",
+      "category": "fruttani",
+      "match": [
+        "germe di grano",
+        "wheat germ"
+      ]
+    },
+    {
+      "gruppo": "cereali",
+      "nome": "Muesli (con frutta secca/uvetta)",
+      "category": "misto",
+      "match": [
+        "muesli"
+      ],
+      "nota": "Dipende dagli ingredienti (uvetta, mela, frutta secca)."
+    },
+    {
+      "gruppo": "cereali",
+      "nome": "Seitan",
+      "category": "fruttani",
+      "match": [
+        "seitan",
+        "glutine di frumento",
+        "wheat gluten"
+      ]
+    },
+    {
+      "gruppo": "frutta_secca",
+      "nome": "Anacardi",
+      "category": "gos",
+      "match": [
+        "anacardi",
+        "anacardio",
+        "cashew",
+        "cashews"
+      ]
+    },
+    {
+      "gruppo": "frutta_secca",
+      "nome": "Pistacchi",
+      "category": "gos",
+      "match": [
+        "pistacchio",
+        "pistacchi",
+        "pistachio",
+        "pistachios"
+      ]
+    },
+    {
+      "gruppo": "frutta_secca",
+      "nome": "Mandorle",
+      "category": "gos",
+      "match": [
+        "mandorla",
+        "mandorle",
+        "almond",
+        "almonds",
+        "farina di mandorle"
+      ],
+      "nota": "Verde fino a ~10 mandorle (12g), poi GOS. La bevanda di mandorla e' low."
+    },
+    {
+      "gruppo": "frutta_secca",
+      "nome": "Nocciole",
+      "category": "gos",
+      "match": [
+        "nocciola",
+        "nocciole",
+        "hazelnut",
+        "hazelnuts"
+      ],
+      "nota": "Verde fino a ~10 nocciole."
+    },
+    {
+      "gruppo": "frutta_secca",
+      "nome": "Pinoli",
+      "category": "gos",
+      "match": [
+        "pinoli",
+        "pinolo",
+        "pine nuts"
+      ],
+      "nota": "Borderline a porzioni grandi."
+    },
+    {
+      "gruppo": "frutta_secca",
+      "nome": "Semi di lino",
+      "category": "misto",
+      "match": [
+        "semi di lino",
+        "lino",
+        "flaxseed",
+        "linseed"
+      ],
+      "nota": "Verde a piccole porzioni."
+    },
+    {
+      "gruppo": "frutta_secca",
+      "nome": "Semi di chia",
+      "category": "misto",
+      "match": [
+        "semi di chia",
+        "chia"
+      ],
+      "nota": "Verde a piccole porzioni."
+    },
+    {
+      "gruppo": "frutta_secca",
+      "nome": "Semi di girasole",
+      "category": "fruttani",
+      "match": [
+        "semi di girasole",
+        "sunflower seeds"
+      ],
+      "nota": "Verde a piccole porzioni."
+    },
+    {
+      "gruppo": "latticini",
+      "nome": "Latte vaccino/capra/pecora",
+      "category": "lattosio",
+      "match": [
+        "latte",
+        "milk",
+        "latte intero",
+        "latte scremato",
+        "latte parzialmente scremato",
+        "latte in polvere",
+        "milk powder",
+        "whole milk",
+        "skimmed milk",
+        "latte di capra",
+        "goat milk"
+      ],
+      "warning": "Escludi 'latte di soia/mandorla/riso/cocco/avena' e 'latte senza lattosio'.",
+      "exclude": [
+        "latte di soia",
+        "latte di mandorla",
+        "latte di mandorle",
+        "latte di riso",
+        "latte di cocco",
+        "latte di avena",
+        "latte di nocciola",
+        "latte vegetale",
+        "soy milk",
+        "almond milk",
+        "rice milk",
+        "coconut milk",
+        "oat milk",
+        "senza lattosio",
+        "delattosato",
+        "a ridotto contenuto di lattosio",
+        "lactose free",
+        "lactose-free",
+        "zero lattosio"
+      ]
+    },
+    {
+      "gruppo": "latticini",
+      "nome": "Latticello",
+      "category": "lattosio",
+      "match": [
+        "latticello",
+        "buttermilk"
+      ]
+    },
+    {
+      "gruppo": "latticini",
+      "nome": "Panna",
+      "category": "lattosio",
+      "match": [
+        "panna",
+        "cream",
+        "panna da cucina",
+        "panna montata",
+        "whipping cream"
+      ]
+    },
+    {
+      "gruppo": "latticini",
+      "nome": "Yogurt",
+      "category": "lattosio",
+      "match": [
+        "yogurt",
+        "yoghurt"
+      ],
+      "warning": "Lo yogurt senza lattosio e' low. Lo yogurt greco a piccole porzioni e' meglio tollerato."
+    },
+    {
+      "gruppo": "latticini",
+      "nome": "Gelato",
+      "category": "lattosio",
+      "match": [
+        "gelato",
+        "ice cream"
+      ]
+    },
+    {
+      "gruppo": "latticini",
+      "nome": "Crema pasticcera / Custard",
+      "category": "lattosio",
+      "match": [
+        "crema pasticcera",
+        "custard"
+      ]
+    },
+    {
+      "gruppo": "latticini",
+      "nome": "Ricotta",
+      "category": "lattosio",
+      "match": [
+        "ricotta"
+      ],
+      "nota": "Verde solo a porzioni piccole (~40g)."
+    },
+    {
+      "gruppo": "latticini",
+      "nome": "Fiocchi di latte / Cottage",
+      "category": "lattosio",
+      "match": [
+        "fiocchi di latte",
+        "cottage cheese"
+      ],
+      "nota": "Moderato a porzioni medie."
+    },
+    {
+      "gruppo": "latticini",
+      "nome": "Formaggio spalmabile / Cream cheese",
+      "category": "lattosio",
+      "match": [
+        "formaggio spalmabile",
+        "cream cheese",
+        "formaggio fresco spalmabile"
+      ],
+      "nota": "Verde solo a piccole porzioni."
+    },
+    {
+      "gruppo": "latticini",
+      "nome": "Mascarpone",
+      "category": "lattosio",
+      "match": [
+        "mascarpone"
+      ]
+    },
+    {
+      "gruppo": "latticini",
+      "nome": "Quark",
+      "category": "lattosio",
+      "match": [
+        "quark"
+      ]
+    },
+    {
+      "gruppo": "latticini",
+      "nome": "Kefir",
+      "category": "lattosio",
+      "match": [
+        "kefir"
+      ]
+    },
+    {
+      "gruppo": "latticini",
+      "nome": "Latte condensato/evaporato",
+      "category": "lattosio",
+      "match": [
+        "latte condensato",
+        "condensed milk",
+        "latte evaporato",
+        "evaporated milk"
+      ]
+    },
+    {
+      "gruppo": "latticini",
+      "nome": "Siero di latte (concentrato)",
+      "category": "lattosio",
+      "match": [
+        "siero di latte",
+        "whey",
+        "siero di latte in polvere",
+        "whey powder",
+        "whey concentrate"
+      ],
+      "warning": "Le proteine ISOLATE del siero (whey isolate) sono low."
+    },
+    {
+      "gruppo": "latticini",
+      "nome": "Halloumi",
+      "category": "lattosio",
+      "match": [
+        "halloumi"
+      ],
+      "nota": "Borderline; moderato a porzioni grandi."
+    },
+    {
+      "gruppo": "latticini",
+      "nome": "Caciotta / formaggi freschi molli",
+      "category": "lattosio",
+      "match": [
+        "formaggio fresco",
+        "stracchino",
+        "crescenza"
+      ],
+      "warning": "I formaggi STAGIONATI e duri (parmigiano, grana, pecorino, cheddar, emmental, brie, camembert) sono low: NON segnalarli."
+    },
+    {
+      "gruppo": "dolcificanti",
+      "nome": "Miele",
+      "category": "fruttosio",
+      "match": [
+        "miele",
+        "honey"
+      ]
+    },
+    {
+      "gruppo": "dolcificanti",
+      "nome": "Sciroppo di glucosio-fruttosio (HFCS)",
+      "category": "fruttosio",
+      "match": [
+        "sciroppo di glucosio-fruttosio",
+        "sciroppo di glucosio fruttosio",
+        "sciroppo di fruttosio",
+        "high fructose corn syrup",
+        "hfcs",
+        "isoglucosio",
+        "fruttosio"
+      ]
+    },
+    {
+      "gruppo": "dolcificanti",
+      "nome": "Agave",
+      "category": "fruttosio",
+      "match": [
+        "agave",
+        "sciroppo di agave",
+        "agave syrup",
+        "agave nectar"
+      ]
+    },
+    {
+      "gruppo": "dolcificanti",
+      "nome": "Melassa",
+      "category": "fruttosio",
+      "match": [
+        "melassa",
+        "molasses"
+      ],
+      "nota": "Moderata a porzioni medie."
+    },
+    {
+      "gruppo": "dolcificanti",
+      "nome": "Sorbitolo (E420)",
+      "category": "polioli",
+      "match": [
+        "sorbitolo",
+        "sorbitol",
+        "e420"
+      ]
+    },
+    {
+      "gruppo": "dolcificanti",
+      "nome": "Mannitolo (E421)",
+      "category": "polioli",
+      "match": [
+        "mannitolo",
+        "mannitol",
+        "e421"
+      ]
+    },
+    {
+      "gruppo": "dolcificanti",
+      "nome": "Xilitolo (E967)",
+      "category": "polioli",
+      "match": [
+        "xilitolo",
+        "xylitol",
+        "e967"
+      ]
+    },
+    {
+      "gruppo": "dolcificanti",
+      "nome": "Maltitolo (E965)",
+      "category": "polioli",
+      "match": [
+        "maltitolo",
+        "maltitol",
+        "e965",
+        "sciroppo di maltitolo",
+        "maltitol syrup"
+      ]
+    },
+    {
+      "gruppo": "dolcificanti",
+      "nome": "Isomalto (E953)",
+      "category": "polioli",
+      "match": [
+        "isomalto",
+        "isomalt",
+        "e953"
+      ]
+    },
+    {
+      "gruppo": "dolcificanti",
+      "nome": "Lattitolo (E966)",
+      "category": "polioli",
+      "match": [
+        "lattitolo",
+        "lactitol",
+        "e966"
+      ]
+    },
+    {
+      "gruppo": "dolcificanti",
+      "nome": "Eritritolo (E968)",
+      "category": "polioli",
+      "match": [
+        "eritritolo",
+        "erythritol",
+        "e968"
+      ],
+      "nota": "Borderline; alcune fonti lo danno tollerato a basse dosi, incluso per prudenza."
+    },
+    {
+      "gruppo": "dolcificanti",
+      "nome": "Inulina / fibra di cicoria",
+      "category": "fruttani",
+      "match": [
+        "inulina",
+        "inulin",
+        "fibra di cicoria",
+        "chicory root fibre",
+        "chicory root"
+      ]
+    },
+    {
+      "gruppo": "dolcificanti",
+      "nome": "FOS / oligofruttosio",
+      "category": "fruttani",
+      "match": [
+        "fruttoligosaccaridi",
+        "oligofruttosio",
+        "oligofructose",
+        "fos",
+        "fructooligosaccharides",
+        "fructo-oligosaccharides"
+      ]
+    },
+    {
+      "gruppo": "dolcificanti",
+      "nome": "Succo/concentrato di mela o pera",
+      "category": "fruttosio",
+      "match": [
+        "concentrato di mela",
+        "concentrato di pera",
+        "apple juice concentrate",
+        "pear juice concentrate",
+        "succo di frutta concentrato"
+      ]
+    },
+    {
+      "gruppo": "bevande",
+      "nome": "Succo di mela",
+      "category": "fruttosio",
+      "match": [
+        "succo di mela",
+        "apple juice"
+      ]
+    },
+    {
+      "gruppo": "bevande",
+      "nome": "Succo di pera",
+      "category": "fruttosio",
+      "match": [
+        "succo di pera",
+        "pear juice"
+      ]
+    },
+    {
+      "gruppo": "bevande",
+      "nome": "Rum",
+      "category": "fruttosio",
+      "match": [
+        "rum"
+      ],
+      "nota": "Moderato."
+    },
+    {
+      "gruppo": "bevande",
+      "nome": "Vini dolci / liquorosi",
+      "category": "fruttosio",
+      "match": [
+        "vino dolce",
+        "vino liquoroso",
+        "fortified wine",
+        "porto",
+        "sherry",
+        "dessert wine"
+      ]
+    },
+    {
+      "gruppo": "bevande",
+      "nome": "Kombucha",
+      "category": "misto",
+      "match": [
+        "kombucha"
+      ],
+      "nota": "Moderato a porzioni medie."
+    },
+    {
+      "gruppo": "bevande",
+      "nome": "Bevanda di avena",
+      "category": "fruttani",
+      "match": [
+        "bevanda di avena",
+        "latte di avena",
+        "oat milk"
+      ],
+      "nota": "Verde solo a piccole porzioni."
+    },
+    {
+      "gruppo": "bevande",
+      "nome": "Bevanda di soia (da fagioli)",
+      "category": "gos",
+      "match": [
+        "latte di soia",
+        "bevanda di soia",
+        "soy milk"
+      ],
+      "nota": "Alta solo se fatta con fagioli di soia interi; quella da proteine di soia e' low."
+    },
+    {
+      "gruppo": "bevande",
+      "nome": "Acqua di cocco",
+      "category": "polioli",
+      "match": [
+        "acqua di cocco",
+        "coconut water"
+      ],
+      "nota": "Moderata a porzioni grandi."
+    },
+    {
+      "gruppo": "bevande",
+      "nome": "Tisana al finocchio/camomilla/chai (forte)",
+      "category": "fruttani",
+      "match": [
+        "tisana al finocchio",
+        "chai",
+        "camomilla"
+      ],
+      "nota": "Moderate se concentrate; difficili da rilevare da etichetta."
+    }
+  ]
+}
