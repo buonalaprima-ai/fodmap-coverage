@@ -1,14 +1,1 @@
-[
-  {
-    "receivedAt": "2026-06-25T21:27:55.367Z",
-    "message": "TEST automatico — verifica ponte segnalazioni (Claude)",
-    "barcode": "0000000000000",
-    "verdict": "green",
-    "product": {
-      "name": "Prodotto di test",
-      "brand": "—"
-    },
-    "triggers": [],
-    "analyzedIngredients": "acqua, sale"
-  }
-]
+[]
