@@ -1,0 +1,52 @@
+{
+  "_meta": {
+    "fonte": "Dr.ssa Francesca Fanucchi — dieta FODMAP personale (eliminare 1 mese)",
+    "logica": "Livello personale applicato SOPRA high-fodmap.json. Stati: 'si' (verde, OK per te), 'limite' (giallo, OK in piccola dose con 'dose'), 'no' (rosso, da evitare). 'consentiti' = frasi della tua dieta SI da azzerare nell'haystack PRIMA del match generico (specificita': es. 'latte di mandorla' non deve far scattare 'Mandorle'). 'override' = rietichetta una voce generica per 'nome'. 'extra' = voci no/limite della tua dieta non presenti nel generico. Voci generiche non elencate restano 'no' (default_generico): sono comunque FODMAP che la nutrizionista non ha approvato.",
+    "stati_label": { "si": "OK per te", "limite": "OK in piccola dose", "no": "Da evitare" },
+    "default_generico": "no"
+  },
+
+  "consentiti": [
+    { "nome": "Latte di mandorla", "match": ["latte di mandorla", "latte di mandorle", "bevanda di mandorla", "bevanda alla mandorla", "almond milk", "almond drink"] },
+    { "nome": "Latte/gelato di soia", "match": ["latte di soia", "bevanda di soia", "gelato alla soia", "gelato di soia", "soy milk"] },
+    { "nome": "Latte di riso", "match": ["latte di riso", "rice milk"] },
+    { "nome": "Latte di avena", "match": ["latte di avena", "oat milk"] },
+    { "nome": "Amido di frumento", "match": ["amido di frumento", "amido di grano", "wheat starch"] },
+    { "nome": "Tamari / salsa di soia", "match": ["tamari", "salsa di soia", "soy sauce"] },
+    { "nome": "Amaretti alle mandorle", "match": ["amaretti alle mandorle", "amaretti"] }
+  ],
+
+  "override": {
+    "Cipollotto": { "stato": "si" },
+    "Bevanda di soia (da fagioli)": { "stato": "si" },
+    "Bevanda di avena": { "stato": "si" },
+    "Amaranto": { "stato": "si" },
+
+    "Mandorle": { "stato": "limite", "dose": "max 10 pezzi" },
+    "Nocciole": { "stato": "limite", "dose": "max 10 pezzi" },
+    "Pinoli": { "stato": "limite", "dose": "1 piccola mano" },
+    "Semi di girasole": { "stato": "limite", "dose": "1 piccola mano" },
+    "Banana matura": { "stato": "limite", "dose": "1 banana media" },
+    "Fragola": { "stato": "limite", "dose": "circa 1 mano" },
+    "Mais dolce": { "stato": "limite", "dose": "1/2 pannocchia" },
+    "Barbabietola": { "stato": "limite", "dose": "1/2" },
+    "Cavoletti di Bruxelles": { "stato": "limite", "dose": "1/2 tazza" },
+    "Sedano": { "stato": "limite", "dose": "1 gamba" },
+    "Finocchio (bulbo)": { "stato": "limite", "dose": "1/2 tazza" },
+    "Zucca butternut": { "stato": "limite", "dose": "1/4 di tazza" },
+    "Pompelmo": { "stato": "limite", "dose": "1 frutto medio" },
+    "Melagrana": { "stato": "limite", "dose": "pochi grani" }
+  },
+
+  "extra": [
+    { "nome": "Sciroppo di riso integrale", "stato": "no", "categoryLabel": "Fruttani", "match": ["sciroppo di riso integrale", "brown rice syrup"] },
+    { "nome": "Miso", "stato": "no", "categoryLabel": "Fruttani/GOS", "match": ["miso"] },
+    { "nome": "Glicerina (glicerolo)", "stato": "no", "categoryLabel": "Polioli", "match": ["glicerina", "glicerolo", "glycerol", "e422"] },
+    { "nome": "Lattulosio", "stato": "no", "categoryLabel": "Lattosio", "match": ["lattulosio", "lactulose"] },
+    { "nome": "Polidestrosio", "stato": "no", "categoryLabel": "Polioli", "match": ["polidestrosio", "polydextrose", "e1200"] },
+    { "nome": "Idrolizzati di amido idrogenato (HSH)", "stato": "no", "categoryLabel": "Polioli", "match": ["hydrogenated starch hydrolysates", "idrolizzati di amido idrogenato"] },
+    { "nome": "Kamut", "stato": "no", "categoryLabel": "Fruttani", "match": ["kamut", "khorasan"] },
+    { "nome": "Semolina", "stato": "no", "categoryLabel": "Fruttani", "match": ["semolina"] },
+    { "nome": "Birra", "stato": "no", "categoryLabel": "Fruttani/GOS", "match": ["birra", "beer"] }
+  ]
+}

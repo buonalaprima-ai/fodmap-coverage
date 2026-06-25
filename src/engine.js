@@ -38,6 +38,18 @@ function blankOut(hayPadded, phrasePadded) {
   return out;
 }
 
+// Ritorna il primo termine (originale) di `terms` presente come parola nell'haystack, o null.
+function matchOne(haystackPadded, terms) {
+  const list = Array.isArray(terms) ? terms : [];
+  for (const term of list) {
+    const needle = pad(normalizeText(term));
+    if (needle.trim() !== "" && haystackPadded.indexOf(needle) >= 0) {
+      return term;
+    }
+  }
+  return null;
+}
+
 // Cerca i trigger FODMAP in un haystack gia' normalizzato+paddato.
 // Ritorna un array di trigger deduplicati per `nome`.
 export function findTriggers(haystackPadded, db) {
@@ -82,9 +94,16 @@ export function findTriggers(haystackPadded, db) {
   return triggers;
 }
 
-// Analizza un prodotto normalizzato (vedi openfoodfacts.normalizeProduct) contro il db.
-// Ritorna { verdict, triggers, product, analyzedIngredients, reason? }.
-export function analyze(input, db) {
+// Analizza un prodotto normalizzato (vedi openfoodfacts.normalizeProduct) contro il db
+// generico e, se fornito, il livello PERSONALE (personal-fodmap.json).
+//
+// Senza `personal`: verdetto a 2 stati (red/green) come la lista generica.
+// Con `personal`: verdetto a 3 stati personalizzato:
+//   'red'    -> almeno un ingrediente "no" (da evitare per te)
+//   'yellow' -> nessun "no" ma almeno un "limite" (ok solo in piccola dose)
+//   'green'  -> tutto ok per te
+// I trigger riportano `stato` ('no'|'limite') e `dose` (per i 'limite').
+export function analyze(input, db, personal) {
   const product = {
     name: (input && input.name) || "",
     brand: (input && input.brand) || "",
@@ -112,11 +131,81 @@ export function analyze(input, db) {
   }
 
   const sources = Array.isArray(input.textSources) ? input.textSources : [];
-  const haystack = pad(normalizeText(sources.join("  ")));
-  const triggers = findTriggers(haystack, db);
+  let haystack = pad(normalizeText(sources.join("  ")));
+
+  // 1) Azzera le frasi "consentiti" (SI personali) per gestire la specificita'
+  //    (es. "latte di mandorla" non deve far scattare la voce "Mandorle").
+  if (personal && Array.isArray(personal.consentiti)) {
+    for (const c of personal.consentiti) {
+      const terms = Array.isArray(c.match) ? c.match : [];
+      for (const m of terms) {
+        haystack = blankOut(haystack, pad(normalizeText(m)));
+      }
+    }
+    haystack = pad(haystack.replace(/\s+/g, " ").trim());
+  }
+
+  // 2) Trigger generici sull'haystack (eventualmente ripulito dai "consentiti").
+  const generic = findTriggers(haystack, db);
+
+  // 3) Applica gli override personali per nome; default 'no' per le voci non elencate.
+  const overrides = (personal && personal.override) || {};
+  const defaultStato = (personal && personal._meta && personal._meta.default_generico) || "no";
+  const triggers = [];
+  const seen = {};
+  for (const t of generic) {
+    const ov = overrides[t.nome];
+    const stato = ov ? (typeof ov === "string" ? ov : ov.stato) : defaultStato;
+    if (stato === "si") {
+      continue; // OK per te: non e' un problema, non lo segnalo
+    }
+    if (!seen[t.nome]) {
+      seen[t.nome] = true;
+      triggers.push({
+        nome: t.nome,
+        categoryKey: t.categoryKey,
+        categoryLabel: t.categoryLabel,
+        nota: t.nota,
+        matchedOn: t.matchedOn,
+        stato: stato,
+        dose: ov && ov.dose ? ov.dose : undefined
+      });
+    }
+  }
+
+  // 4) Voci extra personali (no/limite) non presenti nel generico.
+  if (personal && Array.isArray(personal.extra)) {
+    for (const e of personal.extra) {
+      if (seen[e.nome]) {
+        continue;
+      }
+      const matchedOn = matchOne(haystack, e.match);
+      if (matchedOn) {
+        seen[e.nome] = true;
+        triggers.push({
+          nome: e.nome,
+          categoryKey: e.categoryKey,
+          categoryLabel: e.categoryLabel || "Personale",
+          nota: e.nota,
+          matchedOn: matchedOn,
+          stato: e.stato || "no",
+          dose: e.dose
+        });
+      }
+    }
+  }
+
+  // 5) Verdetto: rosso se almeno un 'no'; giallo se nessun 'no' ma almeno un 'limite';
+  //    altrimenti verde.
+  let verdict = "green";
+  if (triggers.some(function (t) { return t.stato === "no"; })) {
+    verdict = "red";
+  } else if (triggers.some(function (t) { return t.stato === "limite"; })) {
+    verdict = "yellow";
+  }
 
   return {
-    verdict: triggers.length ? "red" : "green",
+    verdict: verdict,
     triggers: triggers,
     product: product,
     analyzedIngredients: input.ingredientsText || ""

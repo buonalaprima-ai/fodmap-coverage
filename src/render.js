@@ -1,5 +1,6 @@
-// Rendering del risultato dell'analisi. Costruzione via nodi DOM + textContent:
-// niente innerHTML su dati esterni (nome prodotto, ingredienti) per evitare injection.
+// Rendering del risultato dell'analisi (verdetto personalizzato a 3 stati).
+// Costruzione via nodi DOM + textContent: niente innerHTML su dati esterni
+// (nome prodotto, ingredienti) per evitare injection.
 
 function el(tag, className, text) {
   const node = document.createElement(tag);
@@ -13,8 +14,9 @@ function el(tag, className, text) {
 }
 
 const VERDICT_META = {
-  red: { cls: "verdict-red", icon: "🔴", word: "CONTIENE FODMAP" },
-  green: { cls: "verdict-green", icon: "🟢", word: "Nessun FODMAP rilevato" },
+  red: { cls: "verdict-red", icon: "🔴", word: "DA EVITARE" },
+  yellow: { cls: "verdict-yellow", icon: "🟡", word: "OK in piccola dose" },
+  green: { cls: "verdict-green", icon: "🟢", word: "OK per te" },
   unknown: { cls: "verdict-unknown", icon: "⚪️", word: "Non determinabile" }
 };
 
@@ -23,6 +25,27 @@ export function renderStatus(container, message, kind) {
   container.innerHTML = "";
   const box = el("div", "status " + (kind || ""), message);
   container.appendChild(box);
+}
+
+// Costruisce un blocco di trigger (lista) con titolo e classe di colore.
+function triggerGroup(title, items, groupClass, showDose) {
+  const group = el("div", "triggers " + groupClass);
+  group.appendChild(el("div", "triggers-title", title));
+  items.forEach(function (t) {
+    const item = el("div", "trigger");
+    const head = el("div", "trigger-head");
+    head.appendChild(el("span", "trigger-name", t.nome));
+    if (showDose && t.dose) {
+      head.appendChild(el("span", "trigger-dose", t.dose));
+    }
+    head.appendChild(el("span", "trigger-cat", t.categoryLabel));
+    item.appendChild(head);
+    if (t.nota) {
+      item.appendChild(el("div", "trigger-nota", t.nota));
+    }
+    group.appendChild(item);
+  });
+  return group;
 }
 
 // Mostra il risultato completo dell'analisi nel container.
@@ -58,20 +81,16 @@ export function renderResult(container, result) {
     container.appendChild(row);
   }
 
-  // Verdetto rosso: elenco di TUTTI i trigger con categoria e nota.
-  if (result.verdict === "red") {
-    const list = el("div", "triggers");
-    list.appendChild(el("div", "triggers-title", "Ingredienti FODMAP trovati:"));
-    result.triggers.forEach(function (t) {
-      const item = el("div", "trigger");
-      item.appendChild(el("span", "trigger-name", t.nome));
-      item.appendChild(el("span", "trigger-cat", t.categoryLabel));
-      if (t.nota) {
-        item.appendChild(el("div", "trigger-nota", t.nota));
-      }
-      list.appendChild(item);
-    });
-    container.appendChild(list);
+  // Trigger raggruppati per stato: "Da evitare" (no) e "Solo in piccola dose" (limite).
+  const triggers = Array.isArray(result.triggers) ? result.triggers : [];
+  const toAvoid = triggers.filter(function (t) { return t.stato === "no"; });
+  const toLimit = triggers.filter(function (t) { return t.stato === "limite"; });
+
+  if (toAvoid.length) {
+    container.appendChild(triggerGroup("Da evitare:", toAvoid, "triggers-no", false));
+  }
+  if (toLimit.length) {
+    container.appendChild(triggerGroup("OK solo in piccola dose:", toLimit, "triggers-limit", true));
   }
 
   // Verdetto sconosciuto: spiegazione + invito a leggere l'etichetta.
@@ -84,14 +103,11 @@ export function renderResult(container, result) {
 
   // Sempre: testo ingredienti analizzato (collassabile) per verifica a occhio.
   const details = el("details", "ingredients");
-  const summary = el("summary", null, "Ingredienti analizzati");
-  details.appendChild(summary);
-  const body = el("div", "ingredients-body",
+  details.appendChild(el("summary", null, "Ingredienti analizzati"));
+  details.appendChild(el("div", "ingredients-body",
     result.analyzedIngredients && result.analyzedIngredients.trim()
       ? result.analyzedIngredients
-      : "— non disponibili —");
-  details.appendChild(body);
-  // su verdetto rosso/verde li teniamo chiusi; su unknown aperti per aiutare la verifica
+      : "— non disponibili —"));
   if (result.verdict === "unknown") {
     details.open = true;
   }

@@ -48,6 +48,7 @@
   .verdict-icon { font-size: 1.8rem; line-height: 1; }
   .verdict-word { font-size: 1.3rem; font-weight: 800; letter-spacing: 0.2px; }
   .verdict-red { background: #dc2626; }
+  .verdict-yellow { background: #d97706; }
   .verdict-green { background: #16a34a; }
   .verdict-unknown { background: #6b7280; }
 
@@ -56,13 +57,22 @@
   .product-name { font-weight: 700; }
   .product-brand { opacity: 0.7; font-size: 0.85rem; }
 
-  .triggers { border: 1px solid #dc262644; border-radius: 12px; padding: 12px; margin-bottom: 12px; }
+  .triggers { border: 1px solid #8884; border-radius: 12px; padding: 12px; margin-bottom: 12px; }
+  .triggers-no { border-color: #dc262666; }
+  .triggers-limit { border-color: #d9770666; }
   .triggers-title { font-weight: 700; margin-bottom: 8px; }
+  .triggers-no .triggers-title { color: #dc2626; }
+  .triggers-limit .triggers-title { color: #d97706; }
   .trigger { padding: 8px 0; border-top: 1px solid #8883; }
   .trigger:first-of-type { border-top: 0; }
+  .trigger-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
   .trigger-name { font-weight: 700; }
+  .trigger-dose {
+    font-size: 0.78rem; font-weight: 700; color: #fff; background: #d97706;
+    padding: 2px 8px; border-radius: 999px; white-space: nowrap;
+  }
   .trigger-cat {
-    display: inline-block; margin-left: 8px; font-size: 0.75rem; opacity: 0.85;
+    font-size: 0.75rem; opacity: 0.85;
     background: #8882; padding: 2px 8px; border-radius: 999px;
   }
   .trigger-nota { font-size: 0.8rem; opacity: 0.75; margin-top: 4px; }
@@ -78,7 +88,7 @@
 </head>
 <body>
   <h1>FODMAP Scanner</h1>
-  <p class="sub">Scansiona o digita il codice a barre di un prodotto: ti dico se contiene ingredienti FODMAP, con l'elenco completo. Se trova anche un solo FODMAP, il verdetto è rosso.</p>
+  <p class="sub">Scansiona o digita il codice a barre: il verdetto è personalizzato sulla tua dieta (Dr.ssa Fanucchi). 🔴 da evitare · 🟡 ok in piccola dose (con la dose) · 🟢 ok per te.</p>
 
   <video id="video" playsinline></video>
 

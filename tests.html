@@ -3,81 +3,87 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>FODMAP — test motore</title>
+<title>FODMAP — test motore (personalizzato)</title>
 <style>
-  body { font-family: -apple-system, system-ui, sans-serif; max-width: 760px; margin: 0 auto; padding: 16px; }
+  body { font-family: -apple-system, system-ui, sans-serif; max-width: 820px; margin: 0 auto; padding: 16px; }
   h1 { font-size: 1.2rem; }
   .case { padding: 6px 10px; border-radius: 6px; margin: 4px 0; font-size: 0.9rem; }
   .pass { background: #16a34a22; }
   .fail { background: #dc262633; font-weight: 700; }
-  .warn { background: #d9770622; }
   .sum { margin-top: 14px; font-weight: 800; font-size: 1.05rem; }
   code { background: #8882; padding: 1px 5px; border-radius: 4px; }
 </style>
 </head>
 <body>
-  <h1>Test del motore FODMAP</h1>
-  <p>Apri questa pagina servita via <code>http(s)</code> (su GitHub Pages o con un server locale). Verifica il motore di matching contro <code>high-fodmap.json</code>.</p>
+  <h1>Test del motore FODMAP (verdetto personalizzato)</h1>
+  <p>Apri questa pagina servita via <code>http(s)</code>. Verifica il motore contro <code>high-fodmap.json</code> + <code>personal-fodmap.json</code>.</p>
   <div id="out">Carico…</div>
 
 <script type="module">
   import { analyze } from "./src/engine.js";
   import { normalizeProduct } from "./src/openfoodfacts.js";
 
-  function off(product, status) {
-    return { status: status === undefined ? 1 : status, product: product };
-  }
+  function tx(t, tags) { const p = { product_name: "X", ingredients_text: t }; if (tags) { p.ingredients_tags = tags; } return { status: 1, product: p }; }
+  function notFound() { return { status: 0, product: null }; }
+  function noIngr() { return { status: 1, product: { product_name: "X", brands: "Y" } }; }
 
   const CASES = [
-    { name: "Cipolla → red", data: off({ product_name: "Sugo", ingredients_text: "Pomodoro, cipolla disidratata, sale" }), expect: "red", mustInclude: ["Cipolla"] },
-    { name: "Garlic powder → red", data: off({ product_name: "Snack", ingredients_text: "Tomato, garlic powder, salt" }), expect: "red", mustInclude: ["Aglio"] },
-    { name: "Inulina → red", data: off({ product_name: "Barretta", ingredients_text: "Cioccolato, inulina, aromi" }), expect: "red", mustInclude: ["Inulina / fibra di cicoria"] },
-    { name: "Farina di frumento → red", data: off({ product_name: "Pane", ingredients_text: "Farina di frumento, acqua, sale, lievito" }), expect: "red", mustInclude: ["Frumento / Grano"] },
-    { name: "Pulito (tonno/acqua/sale) → green", data: off({ product_name: "Tonno", ingredients_text: "Tonno, acqua, sale" }), expect: "green" },
-    { name: "Amido di mais → green (no falso)", data: off({ product_name: "Budino", ingredients_text: "Acqua, amido di mais, zucchero, sale" }), expect: "green" },
-    { name: "Lecitina di soia → green (no falso)", data: off({ product_name: "Cioccolato", ingredients_text: "Pasta di cacao, zucchero, lecitina di soia, aroma" }), expect: "green" },
-    { name: "Fosfato di calcio → green (no FOS)", data: off({ product_name: "Integratore", ingredients_text: "Maltodestrine, fosfato di calcio, aroma" }), expect: "green" },
-    { name: "Cacao → green (no falso 'caco')", data: off({ product_name: "Cacao", ingredients_text: "Cacao magro in polvere" }), expect: "green" },
-    { name: "Non trovato → unknown", data: off(null, 0), expect: "unknown" },
-    { name: "Trovato senza ingredienti → unknown", data: off({ product_name: "Misterioso", brands: "ACME" }), expect: "unknown" },
-    { name: "Match da TAG (en:onion) → red", data: off({ product_name: "Snack", ingredients_text: "Sugar", ingredients_tags: ["en:sugar", "en:onion"] }), expect: "red", mustInclude: ["Cipolla"] },
-    { name: "Wheat flour da TAG (en:wheat-flour) → red", data: off({ product_name: "Biscotti", ingredients_text: "Sugar, butter", ingredients_tags: ["en:sugar", "en:wheat-flour"] }), expect: "red", mustInclude: ["Frumento / Grano"] },
-    { name: "Latte intero → red", data: off({ product_name: "Latte", ingredients_text: "Latte intero" }), expect: "red", mustInclude: ["Latte vaccino/capra/pecora"] },
-    { name: "Latte di soia (soy milk) → red", data: off({ product_name: "Soia", ingredients_text: "Acqua, latte di soia" }), expect: "red" },
-    { name: "Multi (cipolla+aglio+latte) → red, ≥3 trigger", data: off({ product_name: "Zuppa", ingredients_text: "Acqua, cipolla, aglio, latte intero, sale" }), expect: "red", minTriggers: 3 },
-    { name: "Fragola → red (scelta utente)", data: off({ product_name: "Snack", ingredients_text: "Zucchero, fragola, aroma" }), expect: "red", mustInclude: ["Fragola"] },
-    // GAP NOTO: i dati attuali fanno scattare 'Mandorle' sulla parola "mandorla".
-    // La DoD vorrebbe green. In attesa di decisione sull'exclude (vedi README).
-    { name: "⚠️ Latte di mandorla → red (gap noto: DoD vorrebbe green)", data: off({ product_name: "Bevanda", ingredients_text: "Acqua, latte di mandorla, sale" }), expect: "red", known: true }
+    { n: "latte di mandorla → verde", d: tx("Acqua, latte di mandorla, sale"), v: "green" },
+    { n: "latte di soia → verde", d: tx("Acqua, latte di soia"), v: "green" },
+    { n: "amido di frumento → verde", d: tx("Amido di frumento, acqua"), v: "green" },
+    { n: "amaranto → verde", d: tx("Farina di amaranto, sale"), v: "green" },
+    { n: "cipollotto → verde", d: tx("Pomodoro, cipollotto"), v: "green" },
+    { n: "amido di mais → verde", d: tx("Acqua, amido di mais, zucchero"), v: "green" },
+    { n: "lecitina di soia → verde", d: tx("Cacao, zucchero, lecitina di soia"), v: "green" },
+    { n: "fosfato → verde (no FOS)", d: tx("Maltodestrine, fosfato di calcio"), v: "green" },
+    { n: "pulito (riso/carota/sale) → verde", d: tx("Riso, carota, sale"), v: "green" },
+
+    { n: "mandorle → GIALLO (max 10 pezzi)", d: tx("Mandorle, zucchero"), v: "yellow", dose: "Mandorle" },
+    { n: "banana → GIALLO (dose)", d: tx("Banana, zucchero"), v: "yellow", dose: "Banana matura" },
+    { n: "fragola → GIALLO (dose)", d: tx("Zucchero, fragola"), v: "yellow", dose: "Fragola" },
+
+    { n: "cipolla → ROSSO", d: tx("Pomodoro, cipolla"), v: "red", inc: "Cipolla" },
+    { n: "aglio (en:garlic tag) → ROSSO", d: tx("Tomato, salt", ["en:tomato","en:garlic"]), v: "red", inc: "Aglio" },
+    { n: "inulina → ROSSO", d: tx("Cioccolato, inulina"), v: "red", inc: "Inulina / fibra di cicoria" },
+    { n: "latte intero → ROSSO", d: tx("Latte intero"), v: "red", inc: "Latte vaccino/capra/pecora" },
+    { n: "avocado → ROSSO", d: tx("Avocado, sale"), v: "red", inc: "Avocado" },
+    { n: "miso → ROSSO (extra)", d: tx("Acqua, miso"), v: "red", inc: "Miso" },
+    { n: "glicerolo → ROSSO (extra)", d: tx("Zucchero, glicerolo"), v: "red", inc: "Glicerina (glicerolo)" },
+    { n: "kamut → ROSSO (extra)", d: tx("Pasta di kamut"), v: "red", inc: "Kamut" },
+    { n: "sciroppo di riso integrale → ROSSO", d: tx("Sciroppo di riso integrale"), v: "red" },
+    { n: "sciroppo di riso semplice → verde", d: tx("Sciroppo di riso, sale"), v: "green" },
+
+    { n: "non trovato → unknown", d: notFound(), v: "unknown" },
+    { n: "senza ingredienti → unknown", d: noIngr(), v: "unknown" }
   ];
 
   async function run() {
     const out = document.getElementById("out");
-    let db;
+    let db, personal;
     try {
-      const res = await fetch("high-fodmap.json");
-      db = await res.json();
+      db = await (await fetch("high-fodmap.json")).json();
+      personal = await (await fetch("personal-fodmap.json")).json();
     } catch (e) {
-      out.textContent = "Impossibile caricare high-fodmap.json: " + e.message + " (servi la pagina via http, non file://).";
+      out.textContent = "Impossibile caricare i JSON: " + e.message + " (servi via http, non file://).";
       return;
     }
 
     let pass = 0, fail = 0;
     const frag = document.createDocumentFragment();
     for (const c of CASES) {
-      const result = analyze(normalizeProduct(c.data), db);
-      const names = result.triggers.map(t => t.nome);
-      let ok = result.verdict === c.expect;
-      if (ok && c.mustInclude) {
-        ok = c.mustInclude.every(m => names.indexOf(m) >= 0);
+      const res = analyze(normalizeProduct(c.d), db, personal);
+      const names = res.triggers.map(t => t.nome + "(" + t.stato + (t.dose ? ":" + t.dose : "") + ")");
+      let ok = res.verdict === c.v;
+      if (ok && c.inc) {
+        ok = res.triggers.some(t => t.nome === c.inc);
       }
-      if (ok && c.minTriggers) {
-        ok = result.triggers.length >= c.minTriggers;
+      if (ok && c.dose) {
+        const tg = res.triggers.filter(t => t.nome === c.dose)[0];
+        ok = !!(tg && tg.stato === "limite" && tg.dose);
       }
       const div = document.createElement("div");
-      div.className = "case " + (ok ? (c.known ? "warn" : "pass") : "fail");
-      div.textContent = (ok ? (c.known ? "⚠︎ " : "✓ ") : "✗ ") + c.name
-        + "  →  " + result.verdict + (names.length ? " [" + names.join(", ") + "]" : "");
+      div.className = "case " + (ok ? "pass" : "fail");
+      div.textContent = (ok ? "✓ " : "✗ ") + c.n + "  →  " + res.verdict + (names.length ? " [" + names.join(", ") + "]" : "");
       frag.appendChild(div);
       if (ok) { pass++; } else { fail++; }
     }

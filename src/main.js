@@ -8,18 +8,29 @@ import { renderResult, renderStatus } from "./render.js";
 const $ = function (id) { return document.getElementById(id); };
 
 let db = null;
+let personal = null;
 let dbError = null;
 
-// Carica la base dati FODMAP una sola volta all'avvio.
+async function fetchJson(path) {
+  const res = await fetch(path, { headers: { Accept: "application/json" } });
+  if (!res.ok) {
+    throw new Error(path + " HTTP " + res.status);
+  }
+  return res.json();
+}
+
+// Carica la base dati generica + il livello personale una sola volta all'avvio.
 async function loadDb() {
   try {
-    const res = await fetch("high-fodmap.json", { headers: { Accept: "application/json" } });
-    if (!res.ok) {
-      throw new Error("HTTP " + res.status);
-    }
-    db = await res.json();
+    db = await fetchJson("high-fodmap.json");
   } catch (e) {
     dbError = e;
+  }
+  // Il livello personale e' opzionale: se manca, si ricade sul verdetto generico.
+  try {
+    personal = await fetchJson("personal-fodmap.json");
+  } catch (e) {
+    personal = null;
   }
 }
 
@@ -46,7 +57,7 @@ async function handleBarcode(raw) {
   renderStatus($("result"), "Cerco il prodotto " + code + "…", "loading");
   try {
     const product = await lookup(code, { timeoutMs: 12000 });
-    const result = analyze(product, db);
+    const result = analyze(product, db, personal);
     renderResult($("result"), result);
   } catch (e) {
     const offline = (typeof navigator !== "undefined" && navigator.onLine === false);
