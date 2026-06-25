@@ -84,11 +84,28 @@
   .ingredients summary { cursor: pointer; font-weight: 600; }
   .ingredients-body { margin-top: 8px; font-size: 0.85rem; opacity: 0.9; white-space: pre-wrap; }
   p { margin: 6px 0; }
+
+  /* Segnala un problema */
+  .report { margin-top: 14px; padding-top: 12px; border-top: 1px dashed #8884; }
+  .report-title { font-size: 0.9rem; font-weight: 600; opacity: 0.85; margin-bottom: 6px; }
+  textarea.report-text {
+    width: 100%; padding: 10px; font-size: 0.95rem; font-family: inherit; resize: vertical;
+    border: 1px solid #8888; border-radius: 10px; background: transparent; color: inherit;
+  }
+  .report-btn { margin-top: 8px; background: #6b7280; }
+  .report-btn:enabled { background: #b45309; }
+  .report-msg { margin-top: 6px; font-size: 0.85rem; color: #16a34a; }
+
+  #reports-bar {
+    margin-top: 16px; padding: 10px 12px; border: 1px solid #b4530966; border-radius: 10px;
+    font-size: 0.85rem; display: flex; gap: 10px; align-items: center; justify-content: space-between;
+  }
+  #reports-bar button { padding: 6px 10px; font-size: 0.85rem; }
 </style>
 </head>
 <body>
   <h1>FODMAP Scanner</h1>
-  <p class="sub">Scansiona o digita il codice a barre: il verdetto è personalizzato sulla tua dieta (Dr.ssa Fanucchi). 🔴 da evitare · 🟡 ok in piccola dose (con la dose) · 🟢 ok per te.</p>
+  <p class="sub">Scansiona o digita il codice a barre: il verdetto è personalizzato sulla tua dieta FODMAP. 🔴 da evitare · 🟡 ok in piccola dose (con la dose) · 🟢 ok per te.</p>
 
   <video id="video" playsinline></video>
 
@@ -100,6 +117,11 @@
   <p class="hint">La fotocamera richiede <code>https</code> (funziona qui); l'inserimento manuale funziona sempre. Per scansionare: ~15–20&nbsp;cm dal codice, con buona luce. Legge sia in verticale sia in orizzontale.</p>
 
   <div id="result"></div>
+
+  <div id="reports-bar" hidden>
+    <span id="reports-count"></span>
+    <button id="retry-reports" class="secondary">Riprova invio</button>
+  </div>
 
   <script type="module" src="src/main.js"></script>
 </body>

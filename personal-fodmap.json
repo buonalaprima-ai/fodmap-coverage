@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "fonte": "Dr.ssa Francesca Fanucchi — dieta FODMAP personale (eliminare 1 mese)",
+    "fonte": "dieta FODMAP personale (eliminare 1 mese)",
     "logica": "Livello personale applicato SOPRA high-fodmap.json. Stati: 'si' (verde, OK per te), 'limite' (giallo, OK in piccola dose con 'dose'), 'no' (rosso, da evitare). 'consentiti' = frasi della tua dieta SI da azzerare nell'haystack PRIMA del match generico (specificita': es. 'latte di mandorla' non deve far scattare 'Mandorle'). 'override' = rietichetta una voce generica per 'nome'. 'extra' = voci no/limite della tua dieta non presenti nel generico. Voci generiche non elencate restano 'no' (default_generico): sono comunque FODMAP che la nutrizionista non ha approvato.",
     "stati_label": { "si": "OK per te", "limite": "OK in piccola dose", "no": "Da evitare" },
     "default_generico": "no"

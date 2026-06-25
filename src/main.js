@@ -4,6 +4,7 @@ import { lookup } from "./openfoodfacts.js";
 import { analyze } from "./engine.js";
 import { startScanner, stopScanner, isScanning } from "./scanner.js";
 import { renderResult, renderStatus } from "./render.js";
+import { flushQueue, pendingCount } from "./reports.js";
 
 const $ = function (id) { return document.getElementById(id); };
 
@@ -58,7 +59,7 @@ async function handleBarcode(raw) {
   try {
     const product = await lookup(code, { timeoutMs: 12000 });
     const result = analyze(product, db, personal);
-    renderResult($("result"), result);
+    renderResult($("result"), result, code);
   } catch (e) {
     const offline = (typeof navigator !== "undefined" && navigator.onLine === false);
     renderStatus($("result"),
@@ -93,6 +94,21 @@ function toggleScan() {
   });
 }
 
+// Barra "segnalazioni in attesa di invio" (coda offline non ancora inviata).
+function refreshReportsBar() {
+  const bar = $("reports-bar");
+  if (!bar) {
+    return;
+  }
+  const n = pendingCount();
+  if (n > 0) {
+    $("reports-count").textContent = n + (n === 1 ? " segnalazione" : " segnalazioni") + " in attesa di invio";
+    bar.hidden = false;
+  } else {
+    bar.hidden = true;
+  }
+}
+
 function init() {
   $("scanBtn").addEventListener("click", toggleScan);
   $("analyzeBtn").addEventListener("click", function () { handleBarcode($("barcode").value); });
@@ -101,7 +117,19 @@ function init() {
       handleBarcode($("barcode").value);
     }
   });
+  $("retry-reports").addEventListener("click", async function () {
+    $("reports-count").textContent = "Invio in corso…";
+    await flushQueue();
+    refreshReportsBar();
+  });
+  document.addEventListener("fodmap-report-saved", async function () {
+    await flushQueue();
+    refreshReportsBar();
+  });
+
   loadDb();
+  // Prova a reinviare eventuali segnalazioni rimaste in coda da una sessione precedente.
+  flushQueue().then(refreshReportsBar);
 }
 
 init();

@@ -2,7 +2,7 @@
 
 Web app **statica, interamente client-side** (nessun backend): scansiona o digita il codice
 a barre di un prodotto, recupera gli ingredienti da **Open Food Facts** e dà un verdetto
-**personalizzato sulla dieta della Dr.ssa Francesca Fanucchi**.
+**personalizzato sulla dieta FODMAP personale dell'utente**.
 
 **URL pubblico:** https://buonalaprima-ai.github.io/fodmap-coverage/
 
@@ -36,7 +36,7 @@ Per aggiornare la dieta basta editare `personal-fodmap.json` (nessun build).
 ```
 index.html               # app (shell + UI), carica src/main.js
 high-fodmap.json         # base FODMAP generica (v2.1) — NON modificare
-personal-fodmap.json     # livello personale (dieta Fanucchi): si / limite(+dose) / no
+personal-fodmap.json     # livello personale (dieta personale): si / limite(+dose) / no
 src/
   main.js                # wiring UI + eventi (carica entrambi i JSON)
   scanner.js             # fotocamera + ZXing, decodifica a 2 orientamenti (portrait/landscape)

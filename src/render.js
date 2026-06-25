@@ -2,6 +2,8 @@
 // Costruzione via nodi DOM + textContent: niente innerHTML su dati esterni
 // (nome prodotto, ingredienti) per evitare injection.
 
+import { submitReport } from "./reports.js";
+
 function el(tag, className, text) {
   const node = document.createElement(tag);
   if (className) {
@@ -48,8 +50,59 @@ function triggerGroup(title, items, groupClass, showDose) {
   return group;
 }
 
+// Blocco "Segnala un problema": textarea + pulsante (attivo solo se c'e' testo).
+// All'invio raccoglie il contesto del risultato e lo manda via reports.submitReport.
+function reportBlock(result, barcode) {
+  const wrap = el("div", "report");
+  wrap.appendChild(el("div", "report-title", "Qualcosa non torna?"));
+  const ta = el("textarea", "report-text");
+  ta.placeholder = "Descrivi il problema (es. verdetto sbagliato, ingrediente non riconosciuto, dose errata…).";
+  ta.rows = 2;
+  const btn = el("button", "report-btn", "Segnala un problema");
+  btn.type = "button";
+  btn.disabled = true;
+  const msg = el("div", "report-msg");
+
+  ta.addEventListener("input", function () {
+    btn.disabled = ta.value.trim().length === 0;
+  });
+
+  btn.addEventListener("click", async function () {
+    const text = ta.value.trim();
+    if (!text) {
+      return;
+    }
+    btn.disabled = true;
+    msg.textContent = "Invio…";
+    const report = {
+      barcode: barcode || "",
+      verdict: result.verdict,
+      product: {
+        name: (result.product && result.product.name) || "",
+        brand: (result.product && result.product.brand) || ""
+      },
+      triggers: (result.triggers || []).map(function (t) {
+        return { nome: t.nome, stato: t.stato, dose: t.dose || "" };
+      }),
+      analyzedIngredients: result.analyzedIngredients || "",
+      message: text
+    };
+    const res = await submitReport(report);
+    ta.value = "";
+    msg.textContent = res.remote
+      ? "✓ Segnalazione inviata. Grazie!"
+      : "✓ Segnalazione salvata: verrà inviata appena c'è rete (" + (res.pending || 0) + " in coda).";
+    document.dispatchEvent(new CustomEvent("fodmap-report-saved"));
+  });
+
+  wrap.appendChild(ta);
+  wrap.appendChild(btn);
+  wrap.appendChild(msg);
+  return wrap;
+}
+
 // Mostra il risultato completo dell'analisi nel container.
-export function renderResult(container, result) {
+export function renderResult(container, result, barcode) {
   container.innerHTML = "";
   const meta = VERDICT_META[result.verdict] || VERDICT_META.unknown;
 
@@ -112,4 +165,7 @@ export function renderResult(container, result) {
     details.open = true;
   }
   container.appendChild(details);
+
+  // Segnala un problema (sempre, qualunque sia il verdetto).
+  container.appendChild(reportBlock(result, barcode));
 }
