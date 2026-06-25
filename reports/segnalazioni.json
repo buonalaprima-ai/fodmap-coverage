@@ -28,5 +28,23 @@
       }
     ],
     "analyzedIngredients": "Semi di chia"
+  },
+  {
+    "receivedAt": "2026-06-25T21:47:41.882Z",
+    "message": "Mi viene segnalata la soia, ma in realtà non è contenuta. C’è scritto solo “può contenere tracce” quindi non va presa in considerazione.",
+    "barcode": "8003000360800",
+    "verdict": "red",
+    "product": {
+      "name": "Lievito",
+      "brand": "Dr. Oetker, Cameo, Paneangeli"
+    },
+    "triggers": [
+      {
+        "nome": "Soia (fagioli)",
+        "stato": "no",
+        "dose": ""
+      }
+    ],
+    "analyzedIngredients": "Agenti lievitanti (difosfato disodico (E 450), carbonato acido di sodio (E 500)), amido, stabilizzante (sali di sodio, di potassio e di calcio degli acidi grassi (E 470a)), aroma. Può contenere SOIA."
   }
 ]
