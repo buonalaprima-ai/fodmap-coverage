@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "receivedAt": "2026-06-25T21:45:12.576Z",
+    "message": "Segnalazione finta, è solo una prova",
+    "barcode": "8001120828958",
+    "verdict": "green",
+    "product": {
+      "name": "Fiocchi d'avena integrale",
+      "brand": "Vivi verde Bio"
+    },
+    "triggers": [],
+    "analyzedIngredients": "Fiocchi di avena integrale"
+  }
+]
