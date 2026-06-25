@@ -10,5 +10,23 @@
     },
     "triggers": [],
     "analyzedIngredients": "Fiocchi di avena integrale"
+  },
+  {
+    "receivedAt": "2026-06-25T21:46:34.758Z",
+    "message": "Cosa vuol dire “più fodmap”? E cosa vuol dire “verde a piccole dosi”?",
+    "barcode": "8003170063754",
+    "verdict": "red",
+    "product": {
+      "name": "Semi di chia biologici",
+      "brand": "verso natura CONAD"
+    },
+    "triggers": [
+      {
+        "nome": "Semi di chia",
+        "stato": "no",
+        "dose": ""
+      }
+    ],
+    "analyzedIngredients": "Semi di chia"
   }
 ]
