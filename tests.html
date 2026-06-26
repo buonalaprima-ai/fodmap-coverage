@@ -74,7 +74,19 @@
     { n: "beet sugar → verde (è zucchero, non barbabietola)", d: tx("Cacao, beet sugar, acqua"), v: "green" },
     { n: "sugar beet → verde", d: tx("Zucchero (sugar beet), acqua"), v: "green" },
     { n: "barbabietola vera → GIALLO (controllo: non sovra-azzerare)", d: tx("Barbabietola, acqua, sale"), v: "yellow", dose: "Barbabietola" },
-    { n: "beet juice (vero beetroot) → GIALLO", d: tx("Water, beet juice, salt"), v: "yellow", dose: "Barbabietola" }
+    { n: "beet juice (vero beetroot) → GIALLO", d: tx("Water, beet juice, salt"), v: "yellow", dose: "Barbabietola" },
+
+    // Whitelist estratto di malto d'orzo (segnalazione utente) — orzo vero resta rosso:
+    { n: "malto: prodotto segnalato (refuso 'matto') → verde", d: tx("Amido di mais, farina di riso, estratto di matto d'orzo senza glutine, sale"), v: "green" },
+    { n: "estratto di malto d'orzo (corretto) → verde", d: tx("Riso, estratto di malto d'orzo, sale"), v: "green" },
+    { n: "orzo (chicco) → ROSSO (controllo: non whitelistare l'orzo vero)", d: tx("Riso, orzo, sale"), v: "red", inc: "Orzo" },
+    { n: "malted barley flour → ROSSO (controllo)", d: tx("Wheat flour, malted barley flour, niacin"), v: "red", inc: "Orzo" },
+
+    // Plurali/varianti aggiunti a high-fodmap.json dopo l'audit 200k (falsi negativi):
+    { n: "beets (plurale EN) → GIALLO", d: tx("Beets, water, salt"), v: "yellow", dose: "Barbabietola" },
+    { n: "mangoes (plurale EN) → ROSSO", d: tx("Mangoes, water, sugar"), v: "red", inc: "Mango" },
+    { n: "champignons (FR) → ROSSO", d: tx("Eau, champignons, sel"), v: "red", inc: "Funghi" },
+    { n: "garbanzos (ceci ES) → ROSSO", d: tx("Garbanzos, water, salt"), v: "red", inc: "Ceci" }
   ];
 
   async function run() {
