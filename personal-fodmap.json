@@ -13,7 +13,13 @@
     { "nome": "Latte di avena", "match": ["latte di avena", "oat milk"] },
     { "nome": "Amido di frumento", "match": ["amido di frumento", "amido di grano", "wheat starch"] },
     { "nome": "Tamari / salsa di soia", "match": ["tamari", "salsa di soia", "soy sauce"] },
-    { "nome": "Amaretti alle mandorle", "match": ["amaretti alle mandorle", "amaretti"] }
+    { "nome": "Amaretti alle mandorle", "match": ["amaretti alle mandorle", "amaretti"] },
+    { "nome": "'bean' non-legumi (gomme/semi/tofu)", "match": ["locust bean gum", "locust bean", "carob bean gum", "carob bean", "carob beans", "vanilla beans", "vanilla bean", "cocoa beans", "cocoa bean", "coffee beans", "coffee bean", "tonka beans", "tonka bean", "bean curd", "beancurd", "bean sprouts", "bean sprout"] },
+    { "nome": "Banana pepper (peperoncino, non banana)", "match": ["banana peppers", "banana pepper"] },
+    { "nome": "Aceto di mele / aroma di mela", "match": ["apple cider vinegar", "aceto di mele", "aceto di mela", "natural apple flavour", "natural apple flavor", "apple flavour", "apple flavor", "aroma di mela", "aroma mela"] },
+    { "nome": "Honey crisp (varieta' di mela, non miele)", "match": ["honey crisp", "honeycrisp"] },
+    { "nome": "Proteine/fibre di pisello (low-FODMAP)", "match": ["pea protein", "pea fiber", "pea fibre", "pea starch", "proteine di pisello", "fibra di pisello"] },
+    { "nome": "'more information' (testo, non more)", "match": ["more information", "for more", "learn more"] }
   ],
 
   "override": {
