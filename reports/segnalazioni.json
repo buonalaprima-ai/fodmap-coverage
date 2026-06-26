@@ -1,1 +1,20 @@
-[]
+[
+  {
+    "receivedAt": "2026-06-26T09:26:40.550Z",
+    "message": "Altro errore. C’è scritto “può contenere soia” e me lo da come rosso. Bisogna incrementare la qualità dell’algoritmo per escludere le tracce di allergeni.",
+    "barcode": "8003000360800",
+    "verdict": "red",
+    "product": {
+      "name": "Lievito",
+      "brand": "Dr. Oetker, Cameo, Paneangeli"
+    },
+    "triggers": [
+      {
+        "nome": "Soia (fagioli)",
+        "stato": "no",
+        "dose": ""
+      }
+    ],
+    "analyzedIngredients": "Agenti lievitanti (difosfato disodico (E 450), carbonato acido di sodio (E 500)), amido, stabilizzante (sali di sodio, di potassio e di calcio degli acidi grassi (E 470a)), aroma. Può contenere SOIA."
+  }
+]
