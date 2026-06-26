@@ -72,6 +72,12 @@ export function normalizeProduct(data) {
 
   const hasIngredients = !!(rawIt || rawDefault || arr.length);
 
+  // I tag canonici OFF includono anche le CATEGORIE-genitore della tassonomia
+  // (es. kale -> "en:cabbage"; cipolla/aglio -> "en:onion-family-vegetable"), che
+  // generano falsi positivi. Quindi i tag si usano SOLO come RISERVA: se c'e' testo
+  // o array ingredienti reale, il match avviene esclusivamente su quello.
+  const realSources = [textIt, textDefault].concat(arrTexts).filter(Boolean);
+
   return {
     found: true,
     hasIngredients: hasIngredients,
@@ -80,8 +86,8 @@ export function normalizeProduct(data) {
     imageUrl: p.image_front_small_url || "",
     // testo mostrato all'utente per verifica a occhio (preferisci IT, poi default, poi array)
     ingredientsText: textIt || textDefault || arrTexts.join(", "),
-    // tutte le fonti testuali combinate per il matching (testo + array + tag canonici)
-    textSources: [textIt, textDefault].concat(arrTexts).concat(tagTexts).filter(Boolean)
+    // fonti per il matching: testo + array; i tag SOLO se non c'e' nient'altro
+    textSources: realSources.length ? realSources : tagTexts
   };
 }
 

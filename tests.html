@@ -52,7 +52,9 @@
     { n: "semi di chia → GIALLO (1 piccola mano)", d: tx("Semi di chia"), v: "yellow", dose: "Semi di chia" },
 
     { n: "cipolla → ROSSO", d: tx("Pomodoro, cipolla"), v: "red", inc: "Cipolla" },
-    { n: "aglio (en:garlic tag) → ROSSO", d: tx("Tomato, salt", ["en:tomato","en:garlic"]), v: "red", inc: "Aglio" },
+    { n: "aglio nel testo → ROSSO", d: tx("Tomato, garlic, salt"), v: "red", inc: "Aglio" },
+    { n: "tag-categoria ignorato: kale (+en:cabbage) → verde", d: tx("Kale", ["en:kale", "en:cabbage"]), v: "green" },
+    { n: "brussels sprouts (+en:cabbage) → GIALLO (Cavoletti, non Cavolo)", d: tx("Brussels sprouts", ["en:brassica", "en:cabbage"]), v: "yellow", dose: "Cavoletti di Bruxelles" },
     { n: "inulina → ROSSO", d: tx("Cioccolato, inulina"), v: "red", inc: "Inulina / fibra di cicoria" },
     { n: "latte intero → ROSSO", d: tx("Latte intero"), v: "red", inc: "Latte vaccino/capra/pecora" },
     { n: "avocado → ROSSO", d: tx("Avocado, sale"), v: "red", inc: "Avocado" },
