@@ -19,7 +19,8 @@
     { "nome": "Aceto di mele / aroma di mela", "match": ["apple cider vinegar", "aceto di mele", "aceto di mela", "natural apple flavour", "natural apple flavor", "apple flavour", "apple flavor", "aroma di mela", "aroma mela"] },
     { "nome": "Honey crisp (varieta' di mela, non miele)", "match": ["honey crisp", "honeycrisp"] },
     { "nome": "Proteine/fibre di pisello (low-FODMAP)", "match": ["pea protein", "pea fiber", "pea fibre", "pea starch", "proteine di pisello", "fibra di pisello"] },
-    { "nome": "'more information' (testo, non more)", "match": ["more information", "for more", "learn more"] }
+    { "nome": "'more' prosa inglese (non le more/frutto)", "match": ["or more", "and more", "more than", "more information", "for more", "learn more"] },
+    { "nome": "Zucchero di barbabietola (e' zucchero, non barbabietola)", "match": ["beet sugar", "sugar beet", "sugar-beet"] }
   ],
 
   "override": {

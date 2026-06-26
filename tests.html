@@ -65,7 +65,16 @@
     { n: "sciroppo di riso semplice → verde", d: tx("Sciroppo di riso, sale"), v: "green" },
 
     { n: "non trovato → unknown", d: notFound(), v: "unknown" },
-    { n: "senza ingredienti → unknown", d: noIngr(), v: "unknown" }
+    { n: "senza ingredienti → unknown", d: noIngr(), v: "unknown" },
+
+    // Falsi positivi emersi dall'audit su 200k prodotti reali:
+    { n: "'one or more of the following' (prosa EN) → verde", d: tx("Riso, olio vegetale (contains one or more of the following: canola oil, sunflower oil), sale"), v: "green" },
+    { n: "'one and more of the following' → verde", d: tx("Riso, olio (one and more of the following: canola, safflower), sale"), v: "green" },
+    { n: "'not more than 2% silicon dioxide' → verde", d: tx("Farina di riso, sale (not more than 2% silicon dioxide)"), v: "green" },
+    { n: "beet sugar → verde (è zucchero, non barbabietola)", d: tx("Cacao, beet sugar, acqua"), v: "green" },
+    { n: "sugar beet → verde", d: tx("Zucchero (sugar beet), acqua"), v: "green" },
+    { n: "barbabietola vera → GIALLO (controllo: non sovra-azzerare)", d: tx("Barbabietola, acqua, sale"), v: "yellow", dose: "Barbabietola" },
+    { n: "beet juice (vero beetroot) → GIALLO", d: tx("Water, beet juice, salt"), v: "yellow", dose: "Barbabietola" }
   ];
 
   async function run() {
