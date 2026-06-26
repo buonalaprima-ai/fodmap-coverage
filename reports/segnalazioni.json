@@ -92,5 +92,28 @@
     },
     "triggers": [],
     "analyzedIngredients": "Amidon de mais, farine de riz, eau de riz eau), farine de sarrasin, huile de toumesol, amidon de riz, sirop de glucose, épaississants hydroxypropylmethylcellulose, xanthane, levure, libre végétale (psyllium), sel iode(sel iodure de potassium), protéines de soja, dextrose, poudres à lever glucono delta-lactone bicarbonate acide de sodium; acidifiant: acide tartrique, arôme naturel. Peut contenir du moutarde SANS BLE SANS LACTOSE Conditionné sous atmosphère protectrice avec absorbeur d'oxyg A conserver dans frais et sec. Une fois ouvert, bien refermer l'emballage et consommer le pain dans les jours qui suvent, qu bien le congeler directement. Pan plano y redondo sin gluten. Elaborado especificamente para personas con intolerancia al gluten. INGREDIENTES: almidón de maíz, harina de amoz, aqua masa madre 13% (harina de arroz, agua), harina de alforfón, aceite de girasol, almidón de arroz jarabe de plumsa espesantes hidroxipropilmetilcelulosa, goma xantana; levadura, fibra vegetal (psyllium) sal yodadasal yoduro de potasio), proteina de soja, dextrosa, gasificantes: glucono-delta lactona, carbonato odo de sodio; acidulante: acido tartárico; aroma natural. Puede contener mostaza. SIN TRIGO SIN LACTOSAL Envasado en atmósfera protectora y con absorbedor de oxígeno. Conservar en lugar fresco y seco. Una vez abierto, volver a cerrar el envase y consumir el pan en un plazo de pocos días o congelar directamente"
+  },
+  {
+    "receivedAt": "2026-06-26T17:52:54.238Z",
+    "message": "Perché mi dice che c’è la crusca di frumento? E anche qui l’orzo non è orzo, ma estratto di malto.",
+    "barcode": "8002190002927",
+    "verdict": "red",
+    "product": {
+      "name": "ZeroGrano - Cracker integrali con riso soffiato SENZA GLUTINE",
+      "brand": "Galbusera"
+    },
+    "triggers": [
+      {
+        "nome": "Orzo",
+        "stato": "no",
+        "dose": ""
+      },
+      {
+        "nome": "Crusca di frumento",
+        "stato": "no",
+        "dose": ""
+      }
+    ],
+    "analyzedIngredients": "fecola di patate, amido di mais, riso soffiato 12%, farina di riso 12%, olio di girasole alto oleico, crusca di saraceno 6%, fibra alimentare, estratto di malto d'orzo, amido di riso 2%, sale marino integrale, agenti lievitanti (carbonato acido di ammonio, carbonato acido di sodio, tartrato mono potassico), lievito naturale. Emulsionante: lecitina di girasole, antiossidante, estratto di rosmarino."
   }
 ]
