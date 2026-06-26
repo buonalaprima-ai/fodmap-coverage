@@ -1,1 +1,20 @@
-[]
+[
+  {
+    "receivedAt": "2026-06-26T16:34:42.305Z",
+    "message": "Questo mi viene segnalato rosso perché mi dice che c’è orzo, ma in realtà sono senza glutine e dentro c’è solo estratto di malto d’orzo. È un falso positivo?",
+    "barcode": "8002190006178",
+    "verdict": "red",
+    "product": {
+      "name": "Zerograno senza Glutine Cracker con Mais e Riso",
+      "brand": "Galbusera"
+    },
+    "triggers": [
+      {
+        "nome": "Orzo",
+        "stato": "no",
+        "dose": ""
+      }
+    ],
+    "analyzedIngredients": "Amido di mais 48%, farina di riso 25%, olio di girasole alto oleico 14%, fecola di patate: estratto di matto d'orzo senza glutine, agenti lievitanti (carbonato acido di ammonio, carbonato acido di sodio, fosfato monocalcico, tartrato monopotassico), proteine vegetali di patate. lievito naturale, sale marino integrale 1,2%, emulsionante: lecitina di girasole, aromi, rosmarino."
+  }
+]
