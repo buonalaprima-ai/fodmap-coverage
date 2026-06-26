@@ -16,5 +16,23 @@
       }
     ],
     "analyzedIngredients": "Amido di mais 48%, farina di riso 25%, olio di girasole alto oleico 14%, fecola di patate: estratto di matto d'orzo senza glutine, agenti lievitanti (carbonato acido di ammonio, carbonato acido di sodio, fosfato monocalcico, tartrato monopotassico), proteine vegetali di patate. lievito naturale, sale marino integrale 1,2%, emulsionante: lecitina di girasole, aromi, rosmarino."
+  },
+  {
+    "receivedAt": "2026-06-26T17:28:03.170Z",
+    "message": "Ci sono tracce di soia, ma me lo dà rosso",
+    "barcode": "8056324082903",
+    "verdict": "red",
+    "product": {
+      "name": "Cous cous",
+      "brand": "Senatore Cappelli"
+    },
+    "triggers": [
+      {
+        "nome": "Soia (fagioli)",
+        "stato": "no",
+        "dose": ""
+      }
+    ],
+    "analyzedIngredients": "Soia\nSenape"
   }
 ]
