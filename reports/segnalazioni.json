@@ -34,5 +34,28 @@
       }
     ],
     "analyzedIngredients": "Soia\nSenape"
+  },
+  {
+    "receivedAt": "2026-06-26T17:35:21.334Z",
+    "message": "Lo segno da analizzare perché secondo me qui non c’è il lattosio. È fra parentesi riferito al parmigiano.",
+    "barcode": "8005110001550",
+    "verdict": "red",
+    "product": {
+      "name": "Pesto rosso di pomodoro",
+      "brand": "Mutti"
+    },
+    "triggers": [
+      {
+        "nome": "Mandorle",
+        "stato": "limite",
+        "dose": "max 10 pezzi"
+      },
+      {
+        "nome": "Latte vaccino/capra/pecora",
+        "stato": "no",
+        "dose": ""
+      }
+    ],
+    "analyzedIngredients": "Passata di pomodoro 54%, olo diseni girasole, pomodoro semi-secco 8%, triplo concentrato di pomodoro, Grana Padano DOP 4.5% (latte, lisozima da uovo), mandorle 23%, fbre vegetali (piello, carota, bambu), capperi, aromi naturali, sale, zucchero, succione concentrato, origano"
   }
 ]
