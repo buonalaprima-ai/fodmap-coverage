@@ -109,7 +109,42 @@ function refreshReportsBar() {
   }
 }
 
+// Auto-aggiornamento: confronta la versione caricata (window.APP_VERSION) con
+// version.json (letto sempre fresco). Se differiscono, la pagina in cache è vecchia
+// → ricarica una volta. Se dopo il reload è ancora vecchia, mostra un avviso tappabile.
+async function checkForUpdate() {
+  const current = window.APP_VERSION || "";
+  const verEl = $("appver");
+  if (verEl) {
+    verEl.textContent = current ? "v" + current : "";
+  }
+  try {
+    const res = await fetch("version.json?ts=" + Date.now(), { cache: "no-store" });
+    if (!res.ok) {
+      return;
+    }
+    const data = await res.json();
+    const latest = data && data.version;
+    if (!latest || latest === current) {
+      return;
+    }
+    const key = "fodmap-reloaded-" + latest;
+    if (!sessionStorage.getItem(key)) {
+      sessionStorage.setItem(key, "1");
+      location.reload();
+    } else if (verEl) {
+      verEl.innerHTML = "";
+      const a = document.createElement("a");
+      a.href = "#";
+      a.textContent = "Nuova versione disponibile — tocca per aggiornare";
+      a.addEventListener("click", function (e) { e.preventDefault(); location.reload(); });
+      verEl.appendChild(a);
+    }
+  } catch (e) { /* offline: ignora */ }
+}
+
 function init() {
+  checkForUpdate();
   $("scanBtn").addEventListener("click", toggleScan);
   $("analyzeBtn").addEventListener("click", function () { handleBarcode($("barcode").value); });
   $("barcode").addEventListener("keydown", function (e) {

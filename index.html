@@ -104,6 +104,9 @@
   }
   #reports-bar[hidden] { display: none; } /* fa rispettare l'attributo hidden (vince su display:flex) */
   #reports-bar button { padding: 6px 10px; font-size: 0.85rem; }
+
+  .appver { margin-top: 24px; text-align: center; font-size: 0.72rem; opacity: 0.45; }
+  .appver a { color: inherit; }
 </style>
 </head>
 <body>
@@ -126,7 +129,11 @@
     <button id="retry-reports" class="secondary">Riprova invio</button>
   </div>
 
+  <div id="appver" class="appver"></div>
+
   <script>
+    // Versione della pagina attualmente caricata (deve combaciare con version.json).
+    window.APP_VERSION = "2026.06.26-1";
     // Blocca il pinch-zoom su iOS Safari (che ignora user-scalable=no).
     document.addEventListener("gesturestart", function (e) { e.preventDefault(); });
     document.addEventListener("gesturechange", function (e) { e.preventDefault(); });
