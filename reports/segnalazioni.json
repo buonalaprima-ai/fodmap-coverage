@@ -16,5 +16,23 @@
       }
     ],
     "analyzedIngredients": "Agenti lievitanti (difosfato disodico (E 450), carbonato acido di sodio (E 500)), amido, stabilizzante (sali di sodio, di potassio e di calcio degli acidi grassi (E 470a)), aroma. Può contenere SOIA."
+  },
+  {
+    "receivedAt": "2026-06-26T09:27:47.253Z",
+    "message": "Puoi togliere la scritta “più tipi di fodmap”? Secondo me non serve a nulla",
+    "barcode": "8003170063754",
+    "verdict": "yellow",
+    "product": {
+      "name": "Semi di chia biologici",
+      "brand": "verso natura CONAD"
+    },
+    "triggers": [
+      {
+        "nome": "Semi di chia",
+        "stato": "limite",
+        "dose": "1 piccola mano"
+      }
+    ],
+    "analyzedIngredients": "Semi di chia"
   }
 ]
