@@ -29,6 +29,14 @@ export function renderStatus(container, message, kind) {
   container.appendChild(box);
 }
 
+// Etichetta categoria leggibile (chiarisce "Piu' FODMAP" della categoria 'misto').
+function catLabel(t) {
+  if (t.categoryKey === "misto") {
+    return "Più tipi di FODMAP";
+  }
+  return t.categoryLabel;
+}
+
 // Costruisce un blocco di trigger (lista) con titolo e classe di colore.
 function triggerGroup(title, items, groupClass, showDose) {
   const group = el("div", "triggers " + groupClass);
@@ -40,11 +48,8 @@ function triggerGroup(title, items, groupClass, showDose) {
     if (showDose && t.dose) {
       head.appendChild(el("span", "trigger-dose", t.dose));
     }
-    head.appendChild(el("span", "trigger-cat", t.categoryLabel));
+    head.appendChild(el("span", "trigger-cat", catLabel(t)));
     item.appendChild(head);
-    if (t.nota) {
-      item.appendChild(el("div", "trigger-nota", t.nota));
-    }
     group.appendChild(item);
   });
   return group;

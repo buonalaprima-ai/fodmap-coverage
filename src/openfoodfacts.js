@@ -28,6 +28,18 @@ function tagToText(tag) {
   return String(tag).replace(/^[a-z]{2,3}:/, "").replace(/-/g, " ");
 }
 
+// Avvertenze allergeni di tipo "puo' contenere tracce di...": NON sono ingredienti e
+// non interessano ai fini FODMAP. Taglia il testo dalla prima avvertenza in poi.
+const TRACES_RE = /(pu[oò]'?\s+contenere|potrebbe\s+contenere|tracce\s+(?:eventuali\s+)?di|may\s+contain|prodott[oi]\s+in\s+uno\s+stabilimento|in\s+uno\s+stabilimento\s+che|produced\s+in\s+a?\s*facilit|made\s+in\s+a?\s*facilit)/i;
+
+function stripTraces(text) {
+  if (!text) {
+    return "";
+  }
+  const m = text.match(TRACES_RE);
+  return m ? text.slice(0, m.index).replace(/[\s,;.]+$/, "").trim() : text;
+}
+
 // Trasforma la risposta OFF { status, product } nell'input normalizzato per il motore.
 // "Prodotto trovato" = status === 1 && product presente.
 // "Ha ingredienti" = ingredients_text(_it) non vuoto OPPURE array ingredients non vuoto.
@@ -46,8 +58,11 @@ export function normalizeProduct(data) {
   }
 
   const p = data.product;
-  const textIt = (p.ingredients_text_it || "").trim();
-  const textDefault = (p.ingredients_text || "").trim();
+  const rawIt = (p.ingredients_text_it || "").trim();
+  const rawDefault = (p.ingredients_text || "").trim();
+  // Toglie le avvertenze "puo' contenere tracce di..." (allergeni, non ingredienti).
+  const textIt = stripTraces(rawIt);
+  const textDefault = stripTraces(rawDefault);
   const arr = Array.isArray(p.ingredients) ? p.ingredients : [];
   const arrTexts = arr
     .map(function (i) { return i && i.text ? String(i.text).trim() : ""; })
@@ -55,7 +70,7 @@ export function normalizeProduct(data) {
   const tags = Array.isArray(p.ingredients_tags) ? p.ingredients_tags : [];
   const tagTexts = tags.map(tagToText).filter(Boolean);
 
-  const hasIngredients = !!(textIt || textDefault || arr.length);
+  const hasIngredients = !!(rawIt || rawDefault || arr.length);
 
   return {
     found: true,
