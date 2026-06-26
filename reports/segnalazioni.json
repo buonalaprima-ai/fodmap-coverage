@@ -57,5 +57,28 @@
       }
     ],
     "analyzedIngredients": "Passata di pomodoro 54%, olo diseni girasole, pomodoro semi-secco 8%, triplo concentrato di pomodoro, Grana Padano DOP 4.5% (latte, lisozima da uovo), mandorle 23%, fbre vegetali (piello, carota, bambu), capperi, aromi naturali, sale, zucchero, succione concentrato, origano"
+  },
+  {
+    "receivedAt": "2026-06-26T17:49:03.955Z",
+    "message": "C’è davvero la mela? Verificare.",
+    "barcode": "8008698011065",
+    "verdict": "red",
+    "product": {
+      "name": "MAESTRO VITAL - Pain aux graines tranché",
+      "brand": "Schär"
+    },
+    "triggers": [
+      {
+        "nome": "Mela",
+        "stato": "no",
+        "dose": ""
+      },
+      {
+        "nome": "Semi di girasole",
+        "stato": "limite",
+        "dose": "1 piccola mano"
+      }
+    ],
+    "analyzedIngredients": "maize starch, sourdough 20% (rice flour, water), water, rice flour, sunflower seeds 6,6%, flax seeds 6,6%, vegetable fiber (psyllium), quinoa flour 2,9%, apple extract, sorghum flour 2,6%, yeast, sunflower oil, thickener: hydroxypropyl methylcellulose, chestnut flour 1,0%, iodized salt (salt, potassium iodide), natural flavor,"
   }
 ]
