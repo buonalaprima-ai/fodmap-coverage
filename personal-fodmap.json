@@ -61,6 +61,23 @@
     { "nome": "Kamut", "stato": "no", "categoryLabel": "Fruttani", "match": ["kamut", "khorasan"] },
     { "nome": "Semolina", "stato": "no", "categoryLabel": "Fruttani", "match": ["semolina"] },
     { "nome": "Birra", "stato": "no", "categoryLabel": "Fruttani/GOS", "match": ["birra", "beer"] },
-    { "nome": "Fruttosio", "stato": "no", "categoryLabel": "Fruttosio in eccesso", "match": ["fructose", "crystalline fructose", "fructose syrup", "glucose fructose syrup", "fruttosio cristallino"] }
+    { "nome": "Fruttosio", "stato": "no", "categoryLabel": "Fruttosio in eccesso", "match": ["fructose", "crystalline fructose", "fructose syrup", "glucose fructose syrup", "fruttosio cristallino"] },
+    { "nome": "Crusca d'avena", "stato": "limite", "dose": "~2 cucchiai (22 g)", "categoryLabel": "Fruttani/GOS", "match": ["crusca di avena", "crusca d'avena", "oat bran"] }
+  ],
+
+  "_formaggi_stagionati_nota": "Formaggi STAGIONATI/duri a lattosio trascurabile (la lunga stagionatura lo degrada): il 'latte'/'milk' elencato come loro sotto-ingrediente NON e' un trigger lattosio. Il motore azzera solo i token latte/milk ENTRO 5 token DOPO il nome del formaggio, quindi il latte di una besciamella/panna separata (es. lasagna) resta rosso. Esclusi di proposito i freschi/molli (mozzarella, ricotta, mascarpone, feta, brie, ecc.) e i borderline con versione giovane (pecorino generico, asiago, manchego, edam, fontina, gorgonzola, taleggio).",
+  "formaggi_stagionati": [
+    "parmigiano reggiano", "parmigiano-reggiano", "parmigiano", "parmesan", "parmesan cheese", "grated parmesan", "formaggio parmigiano",
+    "grana padano", "grana padano dop", "grana padano cheese",
+    "pecorino romano", "pecorino romano dop", "pecorino romano cheese",
+    "cheddar stagionato", "cheddar aged", "aged cheddar", "mature cheddar", "cheddar maturo",
+    "emmental", "emmentaler", "emmenthal", "emmenthaler", "emmental cheese", "emmentaler cheese",
+    "gruyère", "gruyere", "gruyère cheese", "gruyere cheese", "groviera",
+    "comté", "comte", "comté cheese", "comte cheese",
+    "provolone stagionato", "provolone piccante", "provolone invecchiato", "aged provolone", "matured provolone",
+    "gouda aged", "aged gouda", "gouda invecchiato", "oude gouda", "gouda stagionato", "matured gouda",
+    "montasio", "montasio dop", "montasio stagionato", "montasio cheese",
+    "sbrinz", "sbrinz cheese",
+    "caciocavallo stagionato", "caciocavallo silano", "aged caciocavallo"
   ]
 }

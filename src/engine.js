@@ -145,6 +145,47 @@ export function analyze(input, db, personal) {
     haystack = pad(haystack.replace(/\s+/g, " ").trim());
   }
 
+  // 1b) Formaggi stagionati ~senza lattosio: il "latte"/"milk" elencato come
+  //     sotto-ingrediente di un formaggio stagionato (Grana, Parmigiano, Pecorino,
+  //     Cheddar stagionato...) ha lattosio trascurabile. Azzera i token latte/milk
+  //     che compaiono ENTRO una finestra di token DOPO il nome del formaggio, cosi'
+  //     il latte di una besciamella separata (es. lasagna) resta un trigger valido.
+  if (personal && Array.isArray(personal.formaggi_stagionati)) {
+    // Finestra stretta + si azzera SOLO il primo token-latte dopo il nome (= il latte
+    // del formaggio). Cosi' una besciamella/panna elencata poco dopo conserva il suo
+    // latte e resta un trigger valido (es. lasagna -> rossa).
+    const WINDOW = 3;
+    const MILK = { latte: true, milk: true };
+    const toks = haystack.trim().split(/\s+/);
+    for (const cheese of personal.formaggi_stagionati) {
+      const cToks = normalizeText(cheese).split(" ").filter(function (x) { return x !== ""; });
+      if (cToks.length === 0) {
+        continue;
+      }
+      for (let i = 0; i + cToks.length <= toks.length; i++) {
+        let hit = true;
+        for (let j = 0; j < cToks.length; j++) {
+          if (toks[i + j] !== cToks[j]) {
+            hit = false;
+            break;
+          }
+        }
+        if (!hit) {
+          continue;
+        }
+        const start = i + cToks.length;
+        const end = Math.min(start + WINDOW, toks.length);
+        for (let k = start; k < end; k++) {
+          if (MILK[toks[k]]) {
+            toks[k] = "";
+            break; // solo il latte del formaggio, non quello di ingredienti successivi
+          }
+        }
+      }
+    }
+    haystack = pad(toks.filter(function (x) { return x !== ""; }).join(" "));
+  }
+
   // 2) Trigger generici sull'haystack (eventualmente ripulito dai "consentiti").
   const generic = findTriggers(haystack, db);
 

@@ -936,6 +936,16 @@
         "crusca di frumento",
         "crusca",
         "wheat bran"
+      ],
+      "exclude": [
+        "crusca di avena",
+        "crusca d avena",
+        "oat bran",
+        "crusca di saraceno",
+        "crusca di grano saraceno",
+        "crusca di riso",
+        "rice bran",
+        "buckwheat bran"
       ]
     },
     {

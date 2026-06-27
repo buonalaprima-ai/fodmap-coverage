@@ -86,7 +86,16 @@
     { n: "beets (plurale EN) → GIALLO", d: tx("Beets, water, salt"), v: "yellow", dose: "Barbabietola" },
     { n: "mangoes (plurale EN) → ROSSO", d: tx("Mangoes, water, sugar"), v: "red", inc: "Mango" },
     { n: "champignons (FR) → ROSSO", d: tx("Eau, champignons, sel"), v: "red", inc: "Funghi" },
-    { n: "garbanzos (ceci ES) → ROSSO", d: tx("Garbanzos, water, salt"), v: "red", inc: "Ceci" }
+    { n: "garbanzos (ceci ES) → ROSSO", d: tx("Garbanzos, water, salt"), v: "red", inc: "Ceci" },
+
+    // Formaggi stagionati (~senza lattosio): il latte DEL formaggio non scatta; freschi e latte separato sì.
+    { n: "Parmigiano Reggiano (latte) → verde", d: tx("Pomodoro, parmigiano reggiano dop (latte, sale, caglio), basilico"), v: "green" },
+    { n: "Parmesan cheese EN (pasteurized milk) → verde", d: tx("Tomato, parmesan cheese (pasteurized milk, salt, enzymes), basil"), v: "green" },
+    { n: "Pecorino Romano (latte di pecora) → verde", d: tx("Pasta, pecorino romano (latte di pecora, sale, caglio), pepe"), v: "green" },
+    { n: "Mozzarella (fresco) → ROSSO (lattosio)", d: tx("Pomodoro, mozzarella (latte, sale)"), v: "red", inc: "Latte vaccino/capra/pecora" },
+    { n: "Pecorino FRESCO → ROSSO (solo 'pecorino romano' whitelistato)", d: tx("Pasta, pecorino fresco (latte di pecora, sale)"), v: "red", inc: "Latte vaccino/capra/pecora" },
+    { n: "LASAGNA: parmigiano OK ma besciamella separata → ROSSO", d: tx("Pasta, parmigiano reggiano (latte, sale), spinaci, besciamella (latte, amido di mais)"), v: "red", inc: "Latte vaccino/capra/pecora" },
+    { n: "Panna dopo formaggio → ROSSO (panna ≠ latte)", d: tx("Parmigiano reggiano (latte, sale), panna"), v: "red", inc: "Panna" }
   ];
 
   async function run() {
