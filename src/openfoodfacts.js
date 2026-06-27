@@ -115,10 +115,25 @@ export async function lookup(barcode, options) {
       headers: { Accept: "application/json" },
       signal: controller ? controller.signal : undefined
     });
-    if (!res.ok) {
-      throw new Error("Open Food Facts ha risposto con stato " + res.status + ".");
+
+    // OFF risponde 404 con JSON {"status":0,"status_verbose":"product not found"}
+    // per i barcode NON presenti nel database: non e' un errore di rete, ma un
+    // "prodotto non trovato" (verdetto unknown). Quindi proviamo sempre a leggere
+    // il JSON e trattiamo come errore reale solo cio' che non e' una risposta OFF
+    // valida (HTML di challenge, 5xx, rete caduta).
+    let data = null;
+    try {
+      data = await res.json();
+    } catch (e) {
+      data = null;
     }
-    const data = await res.json();
+    if (!data || typeof data.status === "undefined") {
+      if (!res.ok) {
+        throw new Error("Open Food Facts ha risposto con stato " + res.status + ".");
+      }
+      data = {};
+    }
+
     const normalized = normalizeProduct(data);
     if (useCache && normalized.found) {
       try {
