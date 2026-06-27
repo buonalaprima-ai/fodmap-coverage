@@ -1,1 +1,20 @@
-[]
+[
+  {
+    "receivedAt": "2026-06-27T17:31:53.482Z",
+    "message": "Altro errore. Qui mi dice giallo perché segnala semi di girasole, ma questo è olio di semi di girasole.",
+    "barcode": "8001120969361",
+    "verdict": "yellow",
+    "product": {
+      "name": "Patatine Fritte da Forno",
+      "brand": "Coop"
+    },
+    "triggers": [
+      {
+        "nome": "Semi di girasole",
+        "stato": "limite",
+        "dose": "1 piccola mano"
+      }
+    ],
+    "analyzedIngredients": "Patate prefritte 96%, olio di semi di girasole 4%."
+  }
+]
