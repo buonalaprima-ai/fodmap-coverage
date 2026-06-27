@@ -23,7 +23,8 @@
     { "nome": "Zucchero di barbabietola (e' zucchero, non barbabietola)", "match": ["beet sugar", "sugar beet", "sugar-beet"] },
     { "nome": "Estratto di malto d'orzo (low-FODMAP; orzo/farina/perlato restano rossi)", "match": ["estratto di malto d'orzo", "malto d'orzo", "barley malt extract", "barley malt", "malt extract", "matto d'orzo", "estratto di matto d'orzo"] },
     { "nome": "Crusca di grano saraceno/riso (low-FODMAP, non di frumento)", "match": ["crusca di grano saraceno", "crusca di saraceno", "buckwheat bran", "crusca di riso", "rice bran"] },
-    { "nome": "Formaggi stagionati con lisozima (Grana/Parmigiano: lattosio trascurabile)", "match": ["latte lisozima da uovo", "latte lisozima"] }
+    { "nome": "Formaggi stagionati con lisozima (Grana/Parmigiano: lattosio trascurabile)", "match": ["latte lisozima da uovo", "latte lisozima"] },
+    { "nome": "Oli di semi/frutta a guscio (sono grassi, non il seme/frutto)", "match": ["olio di semi di girasole", "sunflower oil", "sunflower seed oil", "olio di mandorle", "olio di mandorla", "almond oil", "olio di nocciole", "olio di nocciola", "hazelnut oil", "olio di semi di lino", "olio di lino", "linseed oil", "flaxseed oil", "olio di semi di chia", "chia oil", "olio di avocado", "avocado oil", "olio di pinoli", "pine nut oil"] }
   ],
 
   "override": {

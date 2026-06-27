@@ -95,7 +95,14 @@
     { n: "Mozzarella (fresco) → ROSSO (lattosio)", d: tx("Pomodoro, mozzarella (latte, sale)"), v: "red", inc: "Latte vaccino/capra/pecora" },
     { n: "Pecorino FRESCO → ROSSO (solo 'pecorino romano' whitelistato)", d: tx("Pasta, pecorino fresco (latte di pecora, sale)"), v: "red", inc: "Latte vaccino/capra/pecora" },
     { n: "LASAGNA: parmigiano OK ma besciamella separata → ROSSO", d: tx("Pasta, parmigiano reggiano (latte, sale), spinaci, besciamella (latte, amido di mais)"), v: "red", inc: "Latte vaccino/capra/pecora" },
-    { n: "Panna dopo formaggio → ROSSO (panna ≠ latte)", d: tx("Parmigiano reggiano (latte, sale), panna"), v: "red", inc: "Panna" }
+    { n: "Panna dopo formaggio → ROSSO (panna ≠ latte)", d: tx("Parmigiano reggiano (latte, sale), panna"), v: "red", inc: "Panna" },
+
+    // Oli di semi/frutta a guscio (grassi, low-FODMAP): non scattano; i semi/farine veri sì.
+    { n: "olio di semi di girasole → verde (segnalazione patatine)", d: tx("Patate prefritte 96%, olio di semi di girasole 4%"), v: "green" },
+    { n: "almond oil → verde", d: tx("Chocolate, almond oil, sugar"), v: "green" },
+    { n: "olio di avocado → verde", d: tx("Patate, olio di avocado, sale"), v: "green" },
+    { n: "semi di girasole VERI → GIALLO (i semi restano)", d: tx("Pane, semi di girasole, sale"), v: "yellow", dose: "Semi di girasole" },
+    { n: "farina di mandorle → GIALLO (resta)", d: tx("Farina di mandorle, uova, zucchero"), v: "yellow", dose: "Mandorle" }
   ];
 
   async function run() {
