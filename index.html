@@ -133,12 +133,12 @@
 
   <script>
     // Versione della pagina attualmente caricata (deve combaciare con version.json).
-    window.APP_VERSION = "2026.06.26-11";
+    window.APP_VERSION = "2026.06.26-12";
     // Blocca il pinch-zoom su iOS Safari (che ignora user-scalable=no).
     document.addEventListener("gesturestart", function (e) { e.preventDefault(); });
     document.addEventListener("gesturechange", function (e) { e.preventDefault(); });
     document.addEventListener("gestureend", function (e) { e.preventDefault(); });
   </script>
-  <script type="module" src="src/main.js"></script>
+  <script type="module" src="src/main.js?v=2026.06.26-12"></script>
 </body>
 </html>

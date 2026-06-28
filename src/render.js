@@ -2,7 +2,7 @@
 // Costruzione via nodi DOM + textContent: niente innerHTML su dati esterni
 // (nome prodotto, ingredienti) per evitare injection.
 
-import { submitReport } from "./reports.js";
+import { submitReport } from "./reports.js?v=2026.06.26-12";
 
 function el(tag, className, text) {
   const node = document.createElement(tag);

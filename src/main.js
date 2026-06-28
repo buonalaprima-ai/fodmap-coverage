@@ -1,10 +1,10 @@
 // Entry point: collega UI, scanner, lookup OFF e motore FODMAP.
 
-import { lookup } from "./openfoodfacts.js";
-import { analyze } from "./engine.js";
-import { startScanner, stopScanner, isScanning } from "./scanner.js";
-import { renderResult, renderStatus } from "./render.js";
-import { flushQueue, pendingCount } from "./reports.js";
+import { lookup } from "./openfoodfacts.js?v=2026.06.26-12";
+import { analyze } from "./engine.js?v=2026.06.26-12";
+import { startScanner, stopScanner, isScanning } from "./scanner.js?v=2026.06.26-12";
+import { renderResult, renderStatus } from "./render.js?v=2026.06.26-12";
+import { flushQueue, pendingCount } from "./reports.js?v=2026.06.26-12";
 
 const $ = function (id) { return document.getElementById(id); };
 
@@ -22,22 +22,25 @@ async function fetchJson(path) {
 }
 
 // Carica la base dati generica + il livello personale una sola volta all'avvio.
+// I file JSON vengono cache-bustati con la versione: altrimenti il browser puo'
+// servire dati vecchi anche dopo un aggiornamento (stessa causa dei moduli .js).
 async function loadDb() {
+  const v = "?v=" + (window.APP_VERSION || "");
   try {
-    db = await fetchJson("high-fodmap.json");
+    db = await fetchJson("high-fodmap.json" + v);
   } catch (e) {
     dbError = e;
   }
   // Il livello personale e' opzionale: se manca, si ricade sul verdetto generico.
   try {
-    personal = await fetchJson("personal-fodmap.json");
+    personal = await fetchJson("personal-fodmap.json" + v);
   } catch (e) {
     personal = null;
   }
   // La mappa tassonomia (id OFF -> concetto FODMAP) e' opzionale: se manca, il motore
   // usa il solo path lessicale.
   try {
-    taxmap = await fetchJson("taxonomy-fodmap.json");
+    taxmap = await fetchJson("taxonomy-fodmap.json" + v);
   } catch (e) {
     taxmap = null;
   }
