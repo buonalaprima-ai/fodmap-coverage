@@ -1,18 +1,22 @@
-// Motore di matching FODMAP — il cuore dell'app.
+// Motore di matching FODMAP — il cuore dell'app (IBRIDO: tassonomia-first + fallback lessicale).
 //
-// Verdetto BINARIO e a 3 stati (vedi analyze):
-//   'red'     -> trovato >= 1 ingrediente FODMAP (elenca TUTTI i trigger)
+// Verdetto a 3 stati (vedi analyze):
+//   'red'     -> almeno un ingrediente "no" (da evitare)
+//   'yellow'  -> nessun "no" ma almeno un "limite" (ok in piccola dose)
 //   'green'   -> ingredienti letti correttamente e nessun trigger
 //   'unknown' -> prodotto non trovato / senza lista ingredienti (MAI verde)
 //
-// Matching a CONFINE DI PAROLA: l'haystack e le stringhe "match"/"exclude" vengono
-// normalizzati (vedi normalize.js) in token separati da spazio, poi si cerca
-// " termine " (con spazi ai bordi). Cosi' "fos" NON scatta dentro "fosfato",
-// "caco" NON scatta dentro "cacao", ma "garlic powder" combacia regolarmente.
-//
-// Logica "exclude" (da _meta.exclude_logic): per le voci che hanno "exclude", le frasi
-// low-FODMAP vengono azzerate nell'haystack PRIMA di cercare le "match" di quella voce
-// (es. "olio di soia" non deve far scattare il trigger "Soia").
+// COME RICONOSCE I FODMAP:
+//   1) PRIMARIO — tassonomia: ogni ingrediente parsato da Open Food Facts ha un id
+//      canonico (es. "en:sunflower-oil") indipendente dalla lingua. taxonomy-fodmap.json
+//      mappa id->concetto FODMAP. Cosi' "olio di semi di girasole" (en:sunflower-oil) NON
+//      e' confuso col seme (en:sunflower-seed), e i prodotti in qualunque lingua funzionano.
+//      Si sfrutta anche la STRUTTURA ad albero (il latte figlio di un formaggio stagionato
+//      ha lattosio trascurabile) e il flag is_in_taxonomy per sapere cosa e' riconosciuto.
+//   2) FALLBACK — lessicale: per i nodi NON riconosciuti dalla tassonomia (typo, lingue
+//      rare, parsing fallito) e per i prodotti senza albero strutturato, si torna al match
+//      a confine di parola su high-fodmap.json (con i "consentiti" personali).
+// Il livello PERSONALE (personal-fodmap.json) decide poi lo stato per te (no/limite/si).
 
 import { normalizeText } from "./normalize.js";
 
@@ -21,8 +25,7 @@ function pad(normalized) {
   return " " + normalized + " ";
 }
 
-// Azzera (sostituisce con spazi) ogni occorrenza della frase `phrasePadded` in `hayPadded`,
-// preservando i confini di parola. `phrasePadded` e `hayPadded` sono gia' paddati.
+// Azzera (sostituisce con spazi) ogni occorrenza della frase `phrasePadded` in `hayPadded`.
 function blankOut(hayPadded, phrasePadded) {
   if (phrasePadded.trim() === "") {
     return hayPadded;
@@ -30,8 +33,6 @@ function blankOut(hayPadded, phrasePadded) {
   let out = hayPadded;
   let idx = out.indexOf(phrasePadded);
   while (idx >= 0) {
-    // sostituisce la frase (spazi di confine inclusi) con due spazi, cosi' i token
-    // adiacenti restano separati e i loro confini di parola sono preservati.
     out = out.slice(0, idx) + "  " + out.slice(idx + phrasePadded.length);
     idx = out.indexOf(phrasePadded);
   }
@@ -50,8 +51,18 @@ function matchOne(haystackPadded, terms) {
   return null;
 }
 
-// Cerca i trigger FODMAP in un haystack gia' normalizzato+paddato.
-// Ritorna un array di trigger deduplicati per `nome`.
+// Avvertenze "puo' contenere tracce di..." (multi-lingua): NON sono ingredienti.
+const TRACE_MARK = /(pu[oò]'?\s*contenere|potrebbe\s+contenere|tracce\s+(?:eventuali\s+)?di|may\s+contain|peut\s+contenir|kann\s+spuren|trazas\s+de|spuren\s+von)/i;
+
+// Formaggi stagionati a lattosio trascurabile: il loro "en:milk" figlio non e' un trigger.
+const AGED_CHEESE_IDS = {
+  "en:grana-padano": 1, "en:parmigiano-reggiano": 1, "en:parmesan": 1, "en:pecorino-romano": 1,
+  "en:cheddar": 1, "en:cheddar-cheese": 1, "en:emmental": 1, "en:emmentaler": 1, "en:gruyere": 1,
+  "en:comte": 1, "en:provolone": 1, "en:gouda": 1, "en:montasio": 1, "en:sbrinz": 1,
+  "en:caciocavallo": 1, "en:hard-cheese": 1, "en:grated-cheese": 1, "en:aged-cheese": 1
+};
+
+// Cerca i trigger FODMAP in un haystack gia' normalizzato+paddato (path LESSICALE).
 export function findTriggers(haystackPadded, db) {
   const labels = (db && db._meta && db._meta.categorie_label) || {};
   const entries = (db && db.ingredienti) || [];
@@ -59,13 +70,11 @@ export function findTriggers(haystackPadded, db) {
   const seen = {};
 
   for (const entry of entries) {
-    // Haystack locale: se la voce ha "exclude", azzera quelle frasi prima del match.
     let hay = haystackPadded;
     if (Array.isArray(entry.exclude) && entry.exclude.length) {
       for (const ex of entry.exclude) {
         hay = blankOut(hay, pad(normalizeText(ex)));
       }
-      // ricompatta eventuali spazi multipli introdotti dall'azzeramento
       hay = pad(hay.replace(/\s+/g, " ").trim());
     }
 
@@ -85,7 +94,7 @@ export function findTriggers(haystackPadded, db) {
         nome: entry.nome,
         categoryKey: entry.category,
         categoryLabel: labels[entry.category] || entry.category,
-        nota: entry.nota, // nota divulgativa da mostrare all'utente (se presente)
+        nota: entry.nota,
         matchedOn: matchedOn
       });
     }
@@ -94,16 +103,120 @@ export function findTriggers(haystackPadded, db) {
   return triggers;
 }
 
-// Analizza un prodotto normalizzato (vedi openfoodfacts.normalizeProduct) contro il db
-// generico e, se fornito, il livello PERSONALE (personal-fodmap.json).
-//
-// Senza `personal`: verdetto a 2 stati (red/green) come la lista generica.
-// Con `personal`: verdetto a 3 stati personalizzato:
-//   'red'    -> almeno un ingrediente "no" (da evitare per te)
-//   'yellow' -> nessun "no" ma almeno un "limite" (ok solo in piccola dose)
-//   'green'  -> tutto ok per te
-// I trigger riportano `stato` ('no'|'limite') e `dose` (per i 'limite').
-export function analyze(input, db, personal) {
+// Costruisce l'haystack normalizzato+ripulito dai "consentiti" e dalla regola formaggi
+// (usato dal path lessicale, dalle voci "extra" e dal claim "senza lattosio").
+function buildHaystack(text, personal) {
+  let haystack = pad(normalizeText(text));
+
+  if (personal && Array.isArray(personal.consentiti)) {
+    for (const c of personal.consentiti) {
+      const terms = Array.isArray(c.match) ? c.match : [];
+      for (const m of terms) {
+        haystack = blankOut(haystack, pad(normalizeText(m)));
+      }
+    }
+    haystack = pad(haystack.replace(/\s+/g, " ").trim());
+  }
+
+  // Formaggi stagionati (path lessicale): azzera SOLO il primo latte/milk entro 3 token
+  // dopo il nome del formaggio, cosi' la besciamella separata di una lasagna resta rossa.
+  if (personal && Array.isArray(personal.formaggi_stagionati)) {
+    const WINDOW = 3;
+    const MILK = { latte: true, milk: true };
+    const toks = haystack.trim().split(/\s+/);
+    for (const cheese of personal.formaggi_stagionati) {
+      const cToks = normalizeText(cheese).split(" ").filter(function (x) { return x !== ""; });
+      if (cToks.length === 0) {
+        continue;
+      }
+      for (let i = 0; i + cToks.length <= toks.length; i++) {
+        let hit = true;
+        for (let j = 0; j < cToks.length; j++) {
+          if (toks[i + j] !== cToks[j]) {
+            hit = false;
+            break;
+          }
+        }
+        if (!hit) {
+          continue;
+        }
+        const start = i + cToks.length;
+        const end = Math.min(start + WINDOW, toks.length);
+        for (let k = start; k < end; k++) {
+          if (MILK[toks[k]]) {
+            toks[k] = "";
+            break;
+          }
+        }
+      }
+    }
+    haystack = pad(toks.filter(function (x) { return x !== ""; }).join(" "));
+  }
+
+  return haystack;
+}
+
+// PATH TASSONOMIA: percorre l'albero `ingredients` di OFF.
+// Ritorna { triggers: [...], fallbackText: "<testo dei nodi NON riconosciuti>" }.
+function taxonomyTriggers(tree, taxmap, db) {
+  const labels = (db && db._meta && db._meta.categorie_label) || {};
+  const noteByNome = {};
+  for (const e of ((db && db.ingredienti) || [])) {
+    noteByNome[e.nome] = e.nota;
+  }
+  // id che rappresentano "latte" (per sopprimere il latte dei formaggi stagionati)
+  const milkIds = {};
+  for (const id in taxmap) {
+    if (taxmap[id] && taxmap[id].nome === "Latte vaccino/capra/pecora") {
+      milkIds[id] = 1;
+    }
+  }
+
+  const triggers = [];
+  const seen = {};
+  const fallback = [];
+
+  function walk(nodes, parentAged) {
+    for (const nd of nodes) {
+      const id = String((nd && nd.id) || "");
+      const text = (nd && nd.text) || "";
+      const isTrace = TRACE_MARK.test(text);
+      const suppressed = parentAged && milkIds[id]; // latte del formaggio stagionato
+
+      if (!isTrace && !suppressed) {
+        const concept = taxmap[id];
+        if (concept) {
+          if (!seen[concept.nome]) {
+            seen[concept.nome] = true;
+            triggers.push({
+              nome: concept.nome,
+              categoryKey: concept.category,
+              categoryLabel: labels[concept.category] || concept.category,
+              nota: noteByNome[concept.nome],
+              matchedOn: id
+            });
+          }
+        } else if (nd && nd.is_in_taxonomy === 1) {
+          // riconosciuto dalla tassonomia e non-FODMAP -> ok
+        } else if (text) {
+          fallback.push(text); // non riconosciuto -> al fallback lessicale
+        }
+      }
+
+      if (nd && Array.isArray(nd.ingredients) && nd.ingredients.length && !isTrace) {
+        walk(nd.ingredients, AGED_CHEESE_IDS[id] === 1);
+      }
+    }
+  }
+
+  walk(Array.isArray(tree) ? tree : [], false);
+  return { triggers: triggers, fallbackText: fallback.join("  ") };
+}
+
+// Analizza un prodotto normalizzato (vedi openfoodfacts.normalizeProduct).
+// `taxmap` (taxonomy-fodmap.json) e' opzionale: se assente o senza albero, si usa il
+// solo path lessicale (retro-compatibile).
+export function analyze(input, db, personal, taxmap) {
   const product = {
     name: (input && input.name) || "",
     brand: (input && input.brand) || "",
@@ -131,65 +244,35 @@ export function analyze(input, db, personal) {
   }
 
   const sources = Array.isArray(input.textSources) ? input.textSources : [];
-  let haystack = pad(normalizeText(sources.join("  ")));
+  // Haystack completo (per "extra", claim "senza lattosio" e per il fallback lessicale).
+  const haystack = buildHaystack(sources.join("  "), personal);
 
-  // 1) Azzera le frasi "consentiti" (SI personali) per gestire la specificita'
-  //    (es. "latte di mandorla" non deve far scattare la voce "Mandorle").
-  if (personal && Array.isArray(personal.consentiti)) {
-    for (const c of personal.consentiti) {
-      const terms = Array.isArray(c.match) ? c.match : [];
-      for (const m of terms) {
-        haystack = blankOut(haystack, pad(normalizeText(m)));
+  const tree = (input && Array.isArray(input.tree)) ? input.tree : [];
+  let generic;
+  if (taxmap && tree.length) {
+    // 1) PRIMARIO: tassonomia sull'albero strutturato.
+    const tax = taxonomyTriggers(tree, taxmap, db);
+    generic = tax.triggers;
+    // 2) FALLBACK: lessicale sui SOLI nodi non riconosciuti dalla tassonomia.
+    if (tax.fallbackText.trim() !== "") {
+      const fbHay = buildHaystack(tax.fallbackText, personal);
+      const seenNomi = {};
+      for (const t of generic) {
+        seenNomi[t.nome] = true;
       }
-    }
-    haystack = pad(haystack.replace(/\s+/g, " ").trim());
-  }
-
-  // 1b) Formaggi stagionati ~senza lattosio: il "latte"/"milk" elencato come
-  //     sotto-ingrediente di un formaggio stagionato (Grana, Parmigiano, Pecorino,
-  //     Cheddar stagionato...) ha lattosio trascurabile. Azzera i token latte/milk
-  //     che compaiono ENTRO una finestra di token DOPO il nome del formaggio, cosi'
-  //     il latte di una besciamella separata (es. lasagna) resta un trigger valido.
-  if (personal && Array.isArray(personal.formaggi_stagionati)) {
-    // Finestra stretta + si azzera SOLO il primo token-latte dopo il nome (= il latte
-    // del formaggio). Cosi' una besciamella/panna elencata poco dopo conserva il suo
-    // latte e resta un trigger valido (es. lasagna -> rossa).
-    const WINDOW = 3;
-    const MILK = { latte: true, milk: true };
-    const toks = haystack.trim().split(/\s+/);
-    for (const cheese of personal.formaggi_stagionati) {
-      const cToks = normalizeText(cheese).split(" ").filter(function (x) { return x !== ""; });
-      if (cToks.length === 0) {
-        continue;
-      }
-      for (let i = 0; i + cToks.length <= toks.length; i++) {
-        let hit = true;
-        for (let j = 0; j < cToks.length; j++) {
-          if (toks[i + j] !== cToks[j]) {
-            hit = false;
-            break;
-          }
-        }
-        if (!hit) {
-          continue;
-        }
-        const start = i + cToks.length;
-        const end = Math.min(start + WINDOW, toks.length);
-        for (let k = start; k < end; k++) {
-          if (MILK[toks[k]]) {
-            toks[k] = "";
-            break; // solo il latte del formaggio, non quello di ingredienti successivi
-          }
+      for (const t of findTriggers(fbHay, db)) {
+        if (!seenNomi[t.nome]) {
+          seenNomi[t.nome] = true;
+          generic.push(t);
         }
       }
     }
-    haystack = pad(toks.filter(function (x) { return x !== ""; }).join(" "));
+  } else {
+    // Nessun albero/tassonomia: solo path lessicale (retro-compatibile).
+    generic = findTriggers(haystack, db);
   }
 
-  // 2) Trigger generici sull'haystack (eventualmente ripulito dai "consentiti").
-  const generic = findTriggers(haystack, db);
-
-  // 3) Applica gli override personali per nome; default 'no' per le voci non elencate.
+  // 3) Override personali per nome; default 'no' per le voci non elencate.
   const overrides = (personal && personal.override) || {};
   const defaultStato = (personal && personal._meta && personal._meta.default_generico) || "no";
   const triggers = [];
@@ -198,7 +281,7 @@ export function analyze(input, db, personal) {
     const ov = overrides[t.nome];
     const stato = ov ? (typeof ov === "string" ? ov : ov.stato) : defaultStato;
     if (stato === "si") {
-      continue; // OK per te: non e' un problema, non lo segnalo
+      continue;
     }
     if (!seen[t.nome]) {
       seen[t.nome] = true;
@@ -214,7 +297,7 @@ export function analyze(input, db, personal) {
     }
   }
 
-  // 4) Voci extra personali (no/limite) non presenti nel generico.
+  // 4) Voci extra personali (no/limite) cercate sul testo completo.
   if (personal && Array.isArray(personal.extra)) {
     for (const e of personal.extra) {
       if (seen[e.nome]) {
@@ -236,9 +319,7 @@ export function analyze(input, db, personal) {
     }
   }
 
-  // 5) Claim "senza lattosio": se il prodotto e' dichiarato delattosato, i trigger
-  //    di categoria lattosio (latticini) non si applicano — la dieta consente i
-  //    latticini senza lattosio. NB: non tocca i FODMAP non-caseari (es. Lattulosio).
+  // 5) Claim "senza lattosio": i trigger di categoria lattosio non si applicano.
   const lactoseFree =
     haystack.indexOf(" senza lattosio ") >= 0 ||
     haystack.indexOf(" delattosat") >= 0 ||
@@ -249,8 +330,7 @@ export function analyze(input, db, personal) {
     ? triggers.filter(function (t) { return t.categoryKey !== "lattosio"; })
     : triggers;
 
-  // 6) Verdetto: rosso se almeno un 'no'; giallo se nessun 'no' ma almeno un 'limite';
-  //    altrimenti verde.
+  // 6) Verdetto.
   let verdict = "green";
   if (finalTriggers.some(function (t) { return t.stato === "no"; })) {
     verdict = "red";

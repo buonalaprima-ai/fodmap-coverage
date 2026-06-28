@@ -1,0 +1,4178 @@
+{
+"en:garlic": {
+"nome": "Aglio",
+"category": "fruttani"
+},
+"en:onion": {
+"nome": "Cipolla",
+"category": "fruttani"
+},
+"en:shallot": {
+"nome": "Scalogno",
+"category": "fruttani"
+},
+"en:leek": {
+"nome": "Porro",
+"category": "fruttani"
+},
+"en:spring-onion": {
+"nome": "Cipollotto",
+"category": "fruttani"
+},
+"en:scallion": {
+"nome": "Cipollotto",
+"category": "fruttani"
+},
+"en:wheat": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:wheat-flour": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:durum-wheat": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:wheat-bran": {
+"nome": "Crusca di frumento",
+"category": "fruttani"
+},
+"en:wheat-germ": {
+"nome": "Germe di grano",
+"category": "fruttani"
+},
+"en:wheat-gluten": {
+"nome": "Seitan",
+"category": "fruttani"
+},
+"en:seitan": {
+"nome": "Seitan",
+"category": "fruttani"
+},
+"en:barley": {
+"nome": "Orzo",
+"category": "fruttani"
+},
+"en:rye": {
+"nome": "Segale",
+"category": "fruttani"
+},
+"en:spelt": {
+"nome": "Farro / Spelta",
+"category": "fruttani"
+},
+"en:farro": {
+"nome": "Farro / Spelta",
+"category": "fruttani"
+},
+"en:bulgur": {
+"nome": "Bulgur",
+"category": "fruttani"
+},
+"en:couscous": {
+"nome": "Couscous",
+"category": "fruttani"
+},
+"en:freekeh": {
+"nome": "Freekeh",
+"category": "fruttani"
+},
+"en:kamut": {
+"nome": "Farro / Spelta",
+"category": "fruttani"
+},
+"en:inulin": {
+"nome": "Inulina / fibra di cicoria",
+"category": "fruttani"
+},
+"en:chicory-root": {
+"nome": "Inulina / fibra di cicoria",
+"category": "fruttani"
+},
+"en:fructo-oligosaccharides": {
+"nome": "FOS / oligofruttosio",
+"category": "fruttani"
+},
+"en:oligofructose": {
+"nome": "FOS / oligofruttosio",
+"category": "fruttani"
+},
+"en:artichoke": {
+"nome": "Carciofo",
+"category": "fruttani"
+},
+"en:jerusalem-artichoke": {
+"nome": "Topinambur",
+"category": "fruttani"
+},
+"en:chicory": {
+"nome": "Cicoria (foglie)",
+"category": "fruttani"
+},
+"en:radicchio": {
+"nome": "Radicchio",
+"category": "fruttani"
+},
+"en:dandelion": {
+"nome": "Tarassaco",
+"category": "fruttani"
+},
+"en:beetroot": {
+"nome": "Barbabietola",
+"category": "fruttani"
+},
+"en:banana": {
+"nome": "Banana matura",
+"category": "fruttani"
+},
+"en:sweetcorn": {
+"nome": "Mais dolce",
+"category": "fruttani"
+},
+"en:sunflower-seed": {
+"nome": "Semi di girasole",
+"category": "fruttani"
+},
+"en:fennel": {
+"nome": "Finocchio (bulbo)",
+"category": "fruttani"
+},
+"en:taro": {
+"nome": "Taro",
+"category": "fruttani"
+},
+"en:cassava": {
+"nome": "Manioca / Cassava",
+"category": "fruttani"
+},
+"en:manioc": {
+"nome": "Manioca / Cassava",
+"category": "fruttani"
+},
+"en:snow-pea": {
+"nome": "Taccole dolci",
+"category": "fruttani"
+},
+"en:mangetout": {
+"nome": "Taccole dolci",
+"category": "fruttani"
+},
+"en:pomegranate": {
+"nome": "Melagrana",
+"category": "fruttani"
+},
+"en:grapefruit": {
+"nome": "Pompelmo",
+"category": "fruttani"
+},
+"en:lychee": {
+"nome": "Litchi",
+"category": "fruttani"
+},
+"en:goji-berry": {
+"nome": "Goji",
+"category": "fruttani"
+},
+"en:feijoa": {
+"nome": "Feijoa",
+"category": "fruttani"
+},
+"en:cabbage": {
+"nome": "Cavolo cappuccio",
+"category": "fruttani"
+},
+"en:savoy-cabbage": {
+"nome": "Cavolo verza",
+"category": "fruttani"
+},
+"en:brussels-sprout": {
+"nome": "Cavoletti di Bruxelles",
+"category": "fruttani"
+},
+"en:raisin": {
+"nome": "Uvetta / Uva sultanina",
+"category": "fruttani"
+},
+"en:sultana": {
+"nome": "Uvetta / Uva sultanina",
+"category": "fruttani"
+},
+"en:date": {
+"nome": "Datteri",
+"category": "fruttani"
+},
+"en:dried-tomato": {
+"nome": "Pomodori secchi",
+"category": "fruttosio"
+},
+"en:sun-dried-tomato": {
+"nome": "Pomodori secchi",
+"category": "fruttosio"
+},
+"en:dried-fruit": {
+"nome": "Frutta disidratata (generica)",
+"category": "misto"
+},
+"en:agave-syrup": {
+"nome": "Agave",
+"category": "fruttosio"
+},
+"en:agave": {
+"nome": "Agave",
+"category": "fruttosio"
+},
+"en:honey": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"en:molasses": {
+"nome": "Melassa",
+"category": "fruttosio"
+},
+"en:mango": {
+"nome": "Mango",
+"category": "fruttosio"
+},
+"en:guava": {
+"nome": "Guava",
+"category": "fruttosio"
+},
+"en:strawberry": {
+"nome": "Fragola",
+"category": "fruttosio"
+},
+"en:tamarillo": {
+"nome": "Tamarillo",
+"category": "fruttosio"
+},
+"en:redcurrant": {
+"nome": "Ribes",
+"category": "fruttosio"
+},
+"en:blackcurrant": {
+"nome": "Ribes",
+"category": "fruttosio"
+},
+"en:high-fructose-corn-syrup": {
+"nome": "Sciroppo di glucosio-fruttosio (HFCS)",
+"category": "fruttosio"
+},
+"en:glucose-fructose-syrup": {
+"nome": "Sciroppo di glucosio-fruttosio (HFCS)",
+"category": "fruttosio"
+},
+"en:fructose": {
+"nome": "Sciroppo di glucosio-fruttosio (HFCS)",
+"category": "fruttosio"
+},
+"en:apple-juice": {
+"nome": "Succo di mela",
+"category": "fruttosio"
+},
+"en:rum": {
+"nome": "Rum",
+"category": "fruttosio"
+},
+"en:soya-bean": {
+"nome": "Soia (fagioli)",
+"category": "gos"
+},
+"en:soybean": {
+"nome": "Soia (fagioli)",
+"category": "gos"
+},
+"en:chickpea": {
+"nome": "Ceci",
+"category": "gos"
+},
+"en:lentil": {
+"nome": "Lenticchie",
+"category": "gos"
+},
+"en:lentils": {
+"nome": "Lenticchie",
+"category": "gos"
+},
+"en:bean": {
+"nome": "Fagioli (generico)",
+"category": "gos"
+},
+"en:beans": {
+"nome": "Fagioli (generico)",
+"category": "gos"
+},
+"en:kidney-bean": {
+"nome": "Fagioli rossi/kidney",
+"category": "gos"
+},
+"en:black-bean": {
+"nome": "Fagioli neri",
+"category": "gos"
+},
+"en:borlotti-bean": {
+"nome": "Borlotti",
+"category": "gos"
+},
+"en:cannellini-bean": {
+"nome": "Cannellini",
+"category": "gos"
+},
+"en:mung-bean": {
+"nome": "Fagioli mung",
+"category": "gos"
+},
+"en:navy-bean": {
+"nome": "Fagioli navy / haricot",
+"category": "gos"
+},
+"en:lima-bean": {
+"nome": "Fagioli di Spagna / Lima",
+"category": "gos"
+},
+"en:broad-bean": {
+"nome": "Fave",
+"category": "gos"
+},
+"en:fava-bean": {
+"nome": "Fave",
+"category": "gos"
+},
+"en:baked-beans": {
+"nome": "Fagioli al forno (baked beans)",
+"category": "gos"
+},
+"en:split-pea": {
+"nome": "Piselli spezzati",
+"category": "gos"
+},
+"en:lupin": {
+"nome": "Farina di lupini",
+"category": "gos"
+},
+"en:lupin-flour": {
+"nome": "Farina di lupini",
+"category": "gos"
+},
+"en:falafel": {
+"nome": "Falafel",
+"category": "gos"
+},
+"en:cashew-nut": {
+"nome": "Anacardi",
+"category": "gos"
+},
+"en:cashew": {
+"nome": "Anacardi",
+"category": "gos"
+},
+"en:pistachio": {
+"nome": "Pistacchi",
+"category": "gos"
+},
+"en:almond": {
+"nome": "Mandorle",
+"category": "gos"
+},
+"en:hazelnut": {
+"nome": "Nocciole",
+"category": "gos"
+},
+"en:pine-nut": {
+"nome": "Pinoli",
+"category": "gos"
+},
+"en:milk": {
+"nome": "Latte vaccino/capra/pecora",
+"category": "lattosio"
+},
+"en:cream": {
+"nome": "Panna",
+"category": "lattosio"
+},
+"en:whey": {
+"nome": "Siero di latte (concentrato)",
+"category": "lattosio"
+},
+"en:lactose": {
+"nome": "Latte vaccino/capra/pecora",
+"category": "lattosio"
+},
+"en:buttermilk": {
+"nome": "Latticello",
+"category": "lattosio"
+},
+"en:yogurt": {
+"nome": "Yogurt",
+"category": "lattosio"
+},
+"en:ice-cream": {
+"nome": "Gelato",
+"category": "lattosio"
+},
+"en:ricotta": {
+"nome": "Ricotta",
+"category": "lattosio"
+},
+"en:mascarpone": {
+"nome": "Mascarpone",
+"category": "lattosio"
+},
+"en:cottage-cheese": {
+"nome": "Fiocchi di latte / Cottage",
+"category": "lattosio"
+},
+"en:cream-cheese": {
+"nome": "Formaggio spalmabile / Cream cheese",
+"category": "lattosio"
+},
+"en:quark": {
+"nome": "Quark",
+"category": "lattosio"
+},
+"en:kefir": {
+"nome": "Kefir",
+"category": "lattosio"
+},
+"en:mozzarella": {
+"nome": "Caciotta / formaggi freschi molli",
+"category": "lattosio"
+},
+"en:condensed-milk": {
+"nome": "Latte condensato/evaporato",
+"category": "lattosio"
+},
+"en:evaporated-milk": {
+"nome": "Latte condensato/evaporato",
+"category": "lattosio"
+},
+"en:halloumi": {
+"nome": "Halloumi",
+"category": "lattosio"
+},
+"en:custard": {
+"nome": "Crema pasticcera / Custard",
+"category": "lattosio"
+},
+"en:sorbitol": {
+"nome": "Sorbitolo (E420)",
+"category": "polioli"
+},
+"en:e420": {
+"nome": "Sorbitolo (E420)",
+"category": "polioli"
+},
+"en:mannitol": {
+"nome": "Mannitolo (E421)",
+"category": "polioli"
+},
+"en:e421": {
+"nome": "Mannitolo (E421)",
+"category": "polioli"
+},
+"en:xylitol": {
+"nome": "Xilitolo (E967)",
+"category": "polioli"
+},
+"en:e967": {
+"nome": "Xilitolo (E967)",
+"category": "polioli"
+},
+"en:maltitol": {
+"nome": "Maltitolo (E965)",
+"category": "polioli"
+},
+"en:e965": {
+"nome": "Maltitolo (E965)",
+"category": "polioli"
+},
+"en:isomalt": {
+"nome": "Isomalto (E953)",
+"category": "polioli"
+},
+"en:e953": {
+"nome": "Isomalto (E953)",
+"category": "polioli"
+},
+"en:lactitol": {
+"nome": "Lattitolo (E966)",
+"category": "polioli"
+},
+"en:e966": {
+"nome": "Lattitolo (E966)",
+"category": "polioli"
+},
+"en:mushroom": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:cauliflower": {
+"nome": "Cavolfiore",
+"category": "polioli"
+},
+"en:avocado": {
+"nome": "Avocado",
+"category": "polioli"
+},
+"en:celery": {
+"nome": "Sedano",
+"category": "polioli"
+},
+"en:sweet-potato": {
+"nome": "Patata dolce",
+"category": "polioli"
+},
+"en:apricot": {
+"nome": "Albicocca",
+"category": "polioli"
+},
+"en:cherry": {
+"nome": "Ciliegia",
+"category": "polioli"
+},
+"en:nectarine": {
+"nome": "Nettarina",
+"category": "polioli"
+},
+"en:peach": {
+"nome": "Pesca",
+"category": "polioli"
+},
+"en:plum": {
+"nome": "Prugna / Susina",
+"category": "polioli"
+},
+"en:prune": {
+"nome": "Prugne secche",
+"category": "polioli"
+},
+"en:blackberry": {
+"nome": "More",
+"category": "polioli"
+},
+"en:boysenberry": {
+"nome": "Boysenberry",
+"category": "polioli"
+},
+"en:butternut-squash": {
+"nome": "Zucca butternut",
+"category": "polioli"
+},
+"en:coconut-water": {
+"nome": "Acqua di cocco",
+"category": "polioli"
+},
+"en:watermelon": {
+"nome": "Anguria",
+"category": "misto"
+},
+"en:asparagus": {
+"nome": "Asparago",
+"category": "misto"
+},
+"en:persimmon": {
+"nome": "Cachi / Kaki",
+"category": "misto"
+},
+"en:fig": {
+"nome": "Fichi",
+"category": "misto"
+},
+"en:apple": {
+"nome": "Mela",
+"category": "misto"
+},
+"en:pear": {
+"nome": "Pera",
+"category": "misto"
+},
+"en:pea": {
+"nome": "Piselli",
+"category": "misto"
+},
+"en:chia-seed": {
+"nome": "Semi di chia",
+"category": "misto"
+},
+"en:flaxseed": {
+"nome": "Semi di lino",
+"category": "misto"
+},
+"en:linseed": {
+"nome": "Semi di lino",
+"category": "misto"
+},
+"en:hummus": {
+"nome": "Hummus",
+"category": "misto"
+},
+"en:kombucha": {
+"nome": "Kombucha",
+"category": "misto"
+},
+"en:garlic-powder": {
+"nome": "Aglio",
+"category": "fruttani"
+},
+"en:garlic-salt": {
+"nome": "Aglio",
+"category": "fruttani"
+},
+"en:dehydrated-garlic": {
+"nome": "Aglio",
+"category": "fruttani"
+},
+"en:dried-garlic": {
+"nome": "Aglio",
+"category": "fruttani"
+},
+"en:roasted-garlic": {
+"nome": "Aglio",
+"category": "fruttani"
+},
+"en:garlic-puree": {
+"nome": "Aglio",
+"category": "fruttani"
+},
+"en:onion-powder": {
+"nome": "Cipolla",
+"category": "fruttani"
+},
+"en:onion-salt": {
+"nome": "Cipolla",
+"category": "fruttani"
+},
+"en:dried-onion": {
+"nome": "Cipolla",
+"category": "fruttani"
+},
+"en:onion-puree": {
+"nome": "Cipolla",
+"category": "fruttani"
+},
+"en:caramelized-onion": {
+"nome": "Cipolla",
+"category": "fruttani"
+},
+"en:khorasan-wheat": {
+"nome": "Farro / Spelta",
+"category": "fruttani"
+},
+"en:red-lentils": {
+"nome": "Lenticchie",
+"category": "gos"
+},
+"en:cannellini-beans": {
+"nome": "Cannellini",
+"category": "gos"
+},
+"en:brussels-sprouts": {
+"nome": "Cavoletti di Bruxelles",
+"category": "fruttani"
+},
+"en:goji": {
+"nome": "Goji",
+"category": "fruttani"
+},
+"en:dried-tomatoes": {
+"nome": "Pomodori secchi",
+"category": "fruttosio"
+},
+"en:sundried-tomatoes": {
+"nome": "Pomodori secchi",
+"category": "fruttosio"
+},
+"en:dried-fruits": {
+"nome": "Frutta disidratata (generica)",
+"category": "misto"
+},
+"en:concentrated-apple-juice": {
+"nome": "Succo di mela",
+"category": "fruttosio"
+},
+"en:apple-puree": {
+"nome": "Mela",
+"category": "misto"
+},
+"en:dried-apple": {
+"nome": "Mela",
+"category": "misto"
+},
+"en:pear-juice": {
+"nome": "Succo di pera",
+"category": "fruttosio"
+},
+"en:pear-juice-concentrate": {
+"nome": "Succo di pera",
+"category": "fruttosio"
+},
+"en:pear-puree": {
+"nome": "Pera",
+"category": "misto"
+},
+"en:dried-pear": {
+"nome": "Pera",
+"category": "misto"
+},
+"en:pomegranate-juice": {
+"nome": "Melagrana",
+"category": "fruttani"
+},
+"en:gram-flour": {
+"nome": "Ceci",
+"category": "gos"
+},
+"en:chickpea-flour": {
+"nome": "Ceci",
+"category": "gos"
+},
+"en:besan": {
+"nome": "Ceci",
+"category": "gos"
+},
+"fr:oignon-et-ail-en-poudre": {
+"nome": "Aglio",
+"category": "fruttani"
+},
+"en:tender-garlic": {
+"nome": "Aglio",
+"category": "fruttani"
+},
+"en:garlic-vinegar": {
+"nome": "Aglio",
+"category": "fruttani"
+},
+"en:garlic-paste": {
+"nome": "Aglio",
+"category": "fruttani"
+},
+"en:wild-garlic": {
+"nome": "Aglio",
+"category": "fruttani"
+},
+"en:garlic-extract": {
+"nome": "Aglio",
+"category": "fruttani"
+},
+"en:garlic-oil": {
+"nome": "Aglio",
+"category": "fruttani"
+},
+"en:fresh-garlic": {
+"nome": "Aglio",
+"category": "fruttani"
+},
+"en:black-garlic": {
+"nome": "Aglio",
+"category": "fruttani"
+},
+"en:fresh-onions": {
+"nome": "Cipolla",
+"category": "fruttani"
+},
+"fr:jus-d-oignon-concentre": {
+"nome": "Cipolla",
+"category": "fruttani"
+},
+"en:onion-sproute": {
+"nome": "Cipolla",
+"category": "fruttani"
+},
+"en:dehydrated-onion": {
+"nome": "Cipolla",
+"category": "fruttani"
+},
+"en:red-onion": {
+"nome": "Cipolla",
+"category": "fruttani"
+},
+"en:onion-paster": {
+"nome": "Cipolla",
+"category": "fruttani"
+},
+"en:raw-onion": {
+"nome": "Cipolla",
+"category": "fruttani"
+},
+"en:onion-oil": {
+"nome": "Cipolla",
+"category": "fruttani"
+},
+"en:pearl-onion": {
+"nome": "Cipolla",
+"category": "fruttani"
+},
+"en:white-onion": {
+"nome": "Cipolla",
+"category": "fruttani"
+},
+"en:onion-extract": {
+"nome": "Cipolla",
+"category": "fruttani"
+},
+"en:yellow-onion": {
+"nome": "Cipolla",
+"category": "fruttani"
+},
+"pl:cebula-dymka": {
+"nome": "Cipolla",
+"category": "fruttani"
+},
+"en:small-white-onions": {
+"nome": "Cipolla",
+"category": "fruttani"
+},
+"en:roscoff-onions": {
+"nome": "Cipolla",
+"category": "fruttani"
+},
+"en:roscoff-pdo-onions": {
+"nome": "Cipolla",
+"category": "fruttani"
+},
+"en:raw-shallot": {
+"nome": "Scalogno",
+"category": "fruttani"
+},
+"en:concentrated-shallot-juice": {
+"nome": "Scalogno",
+"category": "fruttani"
+},
+"en:red-shallot": {
+"nome": "Scalogno",
+"category": "fruttani"
+},
+"en:concentrated-leek-juice": {
+"nome": "Porro",
+"category": "fruttani"
+},
+"en:leek-sprouts": {
+"nome": "Porro",
+"category": "fruttani"
+},
+"en:hard-red-winter-wheat": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:wheat-malt": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:barley-and-wheat-malt": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"fr:ble-malte-torrefie-concasse": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:emmer": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:emmer-flour": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:wheat-grit": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:semolina": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:enriched-semolina": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:semolina-flour": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:durum-wheat-semolina": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:semi-whole-durum-wheat-semolina": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:whole-durum-wheat-semolina": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:organic-whole-durum-wheat-semolina": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"fr:semoule-de-ble-dur-precuite": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:superior-quality-durum-wheat-semolina": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"fr:semoule-blanche-de-ble-dur": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"fr:semoule-de-ble-dur-blanche-biologique": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"fr:semoule-blanche-de-ble-dur-biologique-de-sicile": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:semolina-blend": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:wheat-semolina": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"fr:semoule-de-ble-tendre": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:soft-red-winter-wheat": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:wheat-grain": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:wheat-flakes": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:whole-wheat-flakes": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:malted-wheat-flakes": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:whole-wheat": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:whole-wheat-kernels": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:whole-spelt-and-wheat-kernels": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:whole-wheat-groats": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:british-wholegrain-wheat": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:einkorn-wheat": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:einkorn-flour": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:whole-grain-einkorn-flour": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:sprouted-wheat": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:wheat-sourdough": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:devitalised-wheat-sourdough": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:durum-wheat-sourdough": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:rye-and-durum-wheat-sourdough": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:whole-rye-and-durum-wheat-sourdough": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:dehydrated-wheat-sourdough": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:wheat-sourdough-powder": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:natural-wheat-sourdough": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:rye-and-wheat-sourdough": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:wheat-and-whole-rye-sourdough": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:hard-white-wheat": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:whole-grain-durum-wheat": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:durum-wheat-kernels": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:finely-ground-durum-wheat": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:pre-cooked-durum-wheat": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"fr:grains-de-ble-dur-precuits": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"fr:ble-dur-precuit-concasse": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:whole-wheat-bulgur": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:durum-wheat-bulgur": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:wheat-bulgur": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"fr:ble-dur-concasse": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:wheat-groats": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"az:manna-yarması": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:hard-red-spring-wheat": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:puffed-wheat": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:cooked-wheat": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"hr:pšenično-brašno-1850": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"pl:mąka-pszenna-typ-750": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:malted-wheat-flour": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:caramelized-malted-wheat-flour": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"fr:farine-de-ble-malte-torrefie": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:fortified-wheat-flour": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:fortified-british-wheat-flour": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:soft-wheat-flour": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:soft-whole-wheat-flour": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:semi-wholemeal-wheat-flour": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"fr:farine-de-ble-type-55": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:pre-gelatinized-wheat-flour": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"bg:био-пшенично-брашно": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:wheat-flour-preparation": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:dextrinated-wheat-flour": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:wheat-flour-type-1": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:whole-wheat-flour": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"fr:farine-de-froment-t65": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:refined-wheat-flour": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:wheat-flour-type-2": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"fr:farine-de-ble-complete-type-110": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:wheat-flour-type-00": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:wheat-flour-type-55": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:wheat-flour-t-1050": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:wheat-flour-type-550": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"bg:пшенично-брашно-тип-800": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:dark-wheat-flour": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"fr:farine-de-froment-t55": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:wheat-flour-type-850-semi-white": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"fr:farine-de-gonflement-de-ble": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"es:harina-de-trigo-enriquecida-segun-ley-25630": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:wheat-flour-type-110": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:wheat-flour-type-150": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"bg:бяло-пшенично-брашно": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:durum-wheat-flour": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:durum-whole-wheat-flour": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:dark-durum-wheat-flour": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"hr:pšenično-brašno-tip-400": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"bg:пшенично-брашно-тип-450": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"fr:farine-mi-blanche": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:wheat-flour-type-0": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"fr:farine-de-germes-de-ble-stabilise": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"fr:farine-de-ble-type-65": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:wheat-flour-type-65": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:wheat-flour-type-500": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:graham-flour": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:rivet-wheat": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"fr:petanielle-noire-de-nice": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"fr:poulard-d-auvergne": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"fr:poulard-d-australie": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:soft-wheat": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:soft-white-wheat": {
+"nome": "Frumento / Grano",
+"category": "fruttani"
+},
+"en:barley-extract": {
+"nome": "Orzo",
+"category": "fruttani"
+},
+"en:natural-barley-extract": {
+"nome": "Orzo",
+"category": "fruttani"
+},
+"en:barley-starch": {
+"nome": "Orzo",
+"category": "fruttani"
+},
+"en:sprouted-barley": {
+"nome": "Orzo",
+"category": "fruttani"
+},
+"en:barley-flour": {
+"nome": "Orzo",
+"category": "fruttani"
+},
+"fr:farine-d-orge-malte-toaste": {
+"nome": "Orzo",
+"category": "fruttani"
+},
+"en:dextrinated-barley-flour": {
+"nome": "Orzo",
+"category": "fruttani"
+},
+"en:wholemeal-barley-flour": {
+"nome": "Orzo",
+"category": "fruttani"
+},
+"en:barley-malt-flour": {
+"nome": "Orzo",
+"category": "fruttani"
+},
+"en:organic-barley": {
+"nome": "Orzo",
+"category": "fruttani"
+},
+"en:barley-syrup": {
+"nome": "Orzo",
+"category": "fruttani"
+},
+"en:wholemeal-barley": {
+"nome": "Orzo",
+"category": "fruttani"
+},
+"en:whole-grain-barley-flakes": {
+"nome": "Orzo",
+"category": "fruttani"
+},
+"en:raw-pearled-barley": {
+"nome": "Orzo",
+"category": "fruttani"
+},
+"en:barley-flakes": {
+"nome": "Orzo",
+"category": "fruttani"
+},
+"en:barley-wort": {
+"nome": "Orzo",
+"category": "fruttani"
+},
+"en:barley-groats": {
+"nome": "Orzo",
+"category": "fruttani"
+},
+"en:pearl-barley": {
+"nome": "Orzo",
+"category": "fruttani"
+},
+"en:pot-barley": {
+"nome": "Orzo",
+"category": "fruttani"
+},
+"en:hulled-barley": {
+"nome": "Orzo",
+"category": "fruttani"
+},
+"pl:pęczak-obtaczany": {
+"nome": "Orzo",
+"category": "fruttani"
+},
+"de:roggengrießkleie": {
+"nome": "Segale",
+"category": "fruttani"
+},
+"en:rye-flakes": {
+"nome": "Segale",
+"category": "fruttani"
+},
+"en:whole-grain-rye-flakes": {
+"nome": "Segale",
+"category": "fruttani"
+},
+"en:malted-wholemeal-rye-flakes": {
+"nome": "Segale",
+"category": "fruttani"
+},
+"en:malted-wholemeal-rye-flakes-and-flour": {
+"nome": "Segale",
+"category": "fruttani"
+},
+"en:malted-rye-flakes": {
+"nome": "Segale",
+"category": "fruttani"
+},
+"en:rye-kernels": {
+"nome": "Segale",
+"category": "fruttani"
+},
+"en:rye-sourdough": {
+"nome": "Segale",
+"category": "fruttani"
+},
+"en:whole-rye-sourdough": {
+"nome": "Segale",
+"category": "fruttani"
+},
+"en:rye-sourdough-powder": {
+"nome": "Segale",
+"category": "fruttani"
+},
+"en:natural-rye-sourdough": {
+"nome": "Segale",
+"category": "fruttani"
+},
+"en:devitalised-rye-sourdough": {
+"nome": "Segale",
+"category": "fruttani"
+},
+"en:dehydrated-and-devitalised-rye-sourdough": {
+"nome": "Segale",
+"category": "fruttani"
+},
+"en:rye-grain": {
+"nome": "Segale",
+"category": "fruttani"
+},
+"en:rye-malt": {
+"nome": "Segale",
+"category": "fruttani"
+},
+"en:fermented-rye-malt": {
+"nome": "Segale",
+"category": "fruttani"
+},
+"en:ground-rye-malt": {
+"nome": "Segale",
+"category": "fruttani"
+},
+"en:rye-malt-extract": {
+"nome": "Segale",
+"category": "fruttani"
+},
+"fi:ruismallas-ja-ruismallasuute": {
+"nome": "Segale",
+"category": "fruttani"
+},
+"en:rye-malt-grist": {
+"nome": "Segale",
+"category": "fruttani"
+},
+"en:rye-bran": {
+"nome": "Segale",
+"category": "fruttani"
+},
+"en:rye-scalding": {
+"nome": "Segale",
+"category": "fruttani"
+},
+"en:wholemeal-rye": {
+"nome": "Segale",
+"category": "fruttani"
+},
+"en:wholemeal-rye-groats": {
+"nome": "Segale",
+"category": "fruttani"
+},
+"en:whole-spelt": {
+"nome": "Farro / Spelta",
+"category": "fruttani"
+},
+"en:whole-spelt-kernels": {
+"nome": "Farro / Spelta",
+"category": "fruttani"
+},
+"en:whole-grain-spelt-flakes": {
+"nome": "Farro / Spelta",
+"category": "fruttani"
+},
+"en:spelt-flakes": {
+"nome": "Farro / Spelta",
+"category": "fruttani"
+},
+"en:inflated-spelt": {
+"nome": "Farro / Spelta",
+"category": "fruttani"
+},
+"en:cooked-spelt": {
+"nome": "Farro / Spelta",
+"category": "fruttani"
+},
+"en:grunkern": {
+"nome": "Farro / Spelta",
+"category": "fruttani"
+},
+"en:pearled-farro": {
+"nome": "Farro / Spelta",
+"category": "fruttani"
+},
+"en:spelled-krispies": {
+"nome": "Farro / Spelta",
+"category": "fruttani"
+},
+"fr:flocons-d-epeautre": {
+"nome": "Farro / Spelta",
+"category": "fruttani"
+},
+"en:sprouted-spelt": {
+"nome": "Farro / Spelta",
+"category": "fruttani"
+},
+"en:spelt-bran": {
+"nome": "Farro / Spelta",
+"category": "fruttani"
+},
+"en:raw-spelt": {
+"nome": "Farro / Spelta",
+"category": "fruttani"
+},
+"nl:speltschroot": {
+"nome": "Farro / Spelta",
+"category": "fruttani"
+},
+"en:spelt-groats": {
+"nome": "Farro / Spelta",
+"category": "fruttani"
+},
+"en:spelt-sourdough": {
+"nome": "Farro / Spelta",
+"category": "fruttani"
+},
+"en:spelt-sourdough-powder": {
+"nome": "Farro / Spelta",
+"category": "fruttani"
+},
+"de:inulin-aus-topinambur": {
+"nome": "Inulina / fibra di cicoria",
+"category": "fruttani"
+},
+"en:glucoligosaccharide": {
+"nome": "FOS / oligofruttosio",
+"category": "fruttani"
+},
+"fr:fibres-vegetales-d-oligofructose": {
+"nome": "FOS / oligofruttosio",
+"category": "fruttani"
+},
+"en:oligofructose-fibre": {
+"nome": "FOS / oligofruttosio",
+"category": "fruttani"
+},
+"en:fiber-from-chicory-root-oligofructose": {
+"nome": "FOS / oligofruttosio",
+"category": "fruttani"
+},
+"en:oligofructose-syrup": {
+"nome": "FOS / oligofruttosio",
+"category": "fruttani"
+},
+"en:artichoke-heart": {
+"nome": "Carciofo",
+"category": "fruttani"
+},
+"en:frozen-raw-artichoke-bottom": {
+"nome": "Carciofo",
+"category": "fruttani"
+},
+"en:chicory-fibre": {
+"nome": "Cicoria (foglie)",
+"category": "fruttani"
+},
+"en:chicory-extract": {
+"nome": "Cicoria (foglie)",
+"category": "fruttani"
+},
+"fr:chicoree-soluble": {
+"nome": "Cicoria (foglie)",
+"category": "fruttani"
+},
+"en:raw-radicchio": {
+"nome": "Radicchio",
+"category": "fruttani"
+},
+"en:red-beetroot": {
+"nome": "Barbabietola",
+"category": "fruttani"
+},
+"en:cooked-red-beetroot": {
+"nome": "Barbabietola",
+"category": "fruttani"
+},
+"en:red-beetroot-juice": {
+"nome": "Barbabietola",
+"category": "fruttani"
+},
+"en:red-beetroot-juice-concentrate": {
+"nome": "Barbabietola",
+"category": "fruttani"
+},
+"fr:concentre-de-betterave": {
+"nome": "Barbabietola",
+"category": "fruttani"
+},
+"en:beetroot-syrup": {
+"nome": "Barbabietola",
+"category": "fruttani"
+},
+"fr:fibres-de-betterave": {
+"nome": "Barbabietola",
+"category": "fruttani"
+},
+"en:beetroot-juice": {
+"nome": "Barbabietola",
+"category": "fruttani"
+},
+"en:beetroot-juice-concentrate": {
+"nome": "Barbabietola",
+"category": "fruttani"
+},
+"en:beetroot-powder": {
+"nome": "Barbabietola",
+"category": "fruttani"
+},
+"en:beetroot-sprouts": {
+"nome": "Barbabietola",
+"category": "fruttani"
+},
+"en:plantain-banana": {
+"nome": "Banana matura",
+"category": "fruttani"
+},
+"en:dried-banana": {
+"nome": "Banana matura",
+"category": "fruttani"
+},
+"en:green-banana-flour": {
+"nome": "Banana matura",
+"category": "fruttani"
+},
+"en:matoki": {
+"nome": "Banana matura",
+"category": "fruttani"
+},
+"en:cavendish-banana": {
+"nome": "Banana matura",
+"category": "fruttani"
+},
+"es:platano-de-canarias-i-g-p": {
+"nome": "Banana matura",
+"category": "fruttani"
+},
+"en:baby-corn": {
+"nome": "Mais dolce",
+"category": "fruttani"
+},
+"fr:mais-doux-en-grains": {
+"nome": "Mais dolce",
+"category": "fruttani"
+},
+"fr:mais-doux-en-grains-sans-ogm": {
+"nome": "Mais dolce",
+"category": "fruttani"
+},
+"en:sunflower-seed-flour": {
+"nome": "Semi di girasole",
+"category": "fruttani"
+},
+"en:reduced-fat-sunflower-seed-flour": {
+"nome": "Semi di girasole",
+"category": "fruttani"
+},
+"en:partially-defatted-sunflower-seed-flour": {
+"nome": "Semi di girasole",
+"category": "fruttani"
+},
+"en:dried-sunflower-seed-kernels": {
+"nome": "Semi di girasole",
+"category": "fruttani"
+},
+"en:sunflower-seed-paste": {
+"nome": "Semi di girasole",
+"category": "fruttani"
+},
+"en:raw-taro": {
+"nome": "Taro",
+"category": "fruttani"
+},
+"en:taro-tuber": {
+"nome": "Taro",
+"category": "fruttani"
+},
+"en:raw-cassava": {
+"nome": "Manioca / Cassava",
+"category": "fruttani"
+},
+"en:cassava-flour": {
+"nome": "Manioca / Cassava",
+"category": "fruttani"
+},
+"en:pomegranate-ruby-red": {
+"nome": "Melagrana",
+"category": "fruttani"
+},
+"fr:ecorces-de-grenade": {
+"nome": "Melagrana",
+"category": "fruttani"
+},
+"es:granada-variedada-mollar-de-elche": {
+"nome": "Melagrana",
+"category": "fruttani"
+},
+"en:pomegranate-seeds": {
+"nome": "Melagrana",
+"category": "fruttani"
+},
+"en:yellow-grapefruit": {
+"nome": "Pompelmo",
+"category": "fruttani"
+},
+"en:pink-grapefruit": {
+"nome": "Pompelmo",
+"category": "fruttani"
+},
+"en:pink-grapefruit-juice": {
+"nome": "Pompelmo",
+"category": "fruttani"
+},
+"en:pink-grapefruit-juice-from-concentrate": {
+"nome": "Pompelmo",
+"category": "fruttani"
+},
+"de:pink-grapefruitöl": {
+"nome": "Pompelmo",
+"category": "fruttani"
+},
+"en:grapefruit-pulp": {
+"nome": "Pompelmo",
+"category": "fruttani"
+},
+"en:grapefruit-or-pomelo": {
+"nome": "Pompelmo",
+"category": "fruttani"
+},
+"en:grapefruit-juice": {
+"nome": "Pompelmo",
+"category": "fruttani"
+},
+"en:concentrated-grapefruit-juice": {
+"nome": "Pompelmo",
+"category": "fruttani"
+},
+"en:grapefruit-or-pomelo-juice-from-concentrate": {
+"nome": "Pompelmo",
+"category": "fruttani"
+},
+"en:grapefruit-juice-based-on-concentrate": {
+"nome": "Pompelmo",
+"category": "fruttani"
+},
+"en:pomelo": {
+"nome": "Pompelmo",
+"category": "fruttani"
+},
+"en:red-pomelo": {
+"nome": "Pompelmo",
+"category": "fruttani"
+},
+"fr:pomelo-ruby-red": {
+"nome": "Pompelmo",
+"category": "fruttani"
+},
+"en:pomelo-juice": {
+"nome": "Pompelmo",
+"category": "fruttani"
+},
+"en:pomelo-juice-from-concentrate": {
+"nome": "Pompelmo",
+"category": "fruttani"
+},
+"en:french-pomelo-juice-from-concentrate": {
+"nome": "Pompelmo",
+"category": "fruttani"
+},
+"en:corsican-pomelo": {
+"nome": "Pompelmo",
+"category": "fruttani"
+},
+"en:star-ruby-pomelo": {
+"nome": "Pompelmo",
+"category": "fruttani"
+},
+"en:pomelo-pulp": {
+"nome": "Pompelmo",
+"category": "fruttani"
+},
+"fr:extrait-naturel-de-pomelo": {
+"nome": "Pompelmo",
+"category": "fruttani"
+},
+"fr:ecorces-de-pamplemousse": {
+"nome": "Pompelmo",
+"category": "fruttani"
+},
+"en:raw-lychee": {
+"nome": "Litchi",
+"category": "fruttani"
+},
+"en:lychee-pulp": {
+"nome": "Litchi",
+"category": "fruttani"
+},
+"es:lichis-deshuesados": {
+"nome": "Litchi",
+"category": "fruttani"
+},
+"en:raisin-concentrate": {
+"nome": "Uvetta / Uva sultanina",
+"category": "fruttani"
+},
+"en:seeded-raisin": {
+"nome": "Uvetta / Uva sultanina",
+"category": "fruttani"
+},
+"en:california-seedless-raisins": {
+"nome": "Uvetta / Uva sultanina",
+"category": "fruttani"
+},
+"en:california-seedless-thompson-raisin": {
+"nome": "Uvetta / Uva sultanina",
+"category": "fruttani"
+},
+"fr:raisins-secs-rehydrates": {
+"nome": "Uvetta / Uva sultanina",
+"category": "fruttani"
+},
+"en:sultana-raisin": {
+"nome": "Uvetta / Uva sultanina",
+"category": "fruttani"
+},
+"en:deglet-nour-dates": {
+"nome": "Datteri",
+"category": "fruttani"
+},
+"en:kenta-dates": {
+"nome": "Datteri",
+"category": "fruttani"
+},
+"en:mazafati-dates": {
+"nome": "Datteri",
+"category": "fruttani"
+},
+"en:date-paste": {
+"nome": "Datteri",
+"category": "fruttani"
+},
+"en:khudri-dates": {
+"nome": "Datteri",
+"category": "fruttani"
+},
+"en:sukkary-dates": {
+"nome": "Datteri",
+"category": "fruttani"
+},
+"en:ajwa-dates": {
+"nome": "Datteri",
+"category": "fruttani"
+},
+"en:organic-dates": {
+"nome": "Datteri",
+"category": "fruttani"
+},
+"en:medjool-dates": {
+"nome": "Datteri",
+"category": "fruttani"
+},
+"en:kalooteh-dates": {
+"nome": "Datteri",
+"category": "fruttani"
+},
+"en:sayer-dates": {
+"nome": "Datteri",
+"category": "fruttani"
+},
+"en:date-juice": {
+"nome": "Datteri",
+"category": "fruttani"
+},
+"en:concentrated-date-juice": {
+"nome": "Datteri",
+"category": "fruttani"
+},
+"en:organic-agave-syrup": {
+"nome": "Agave",
+"category": "fruttosio"
+},
+"en:concentrated-agave-syrup": {
+"nome": "Agave",
+"category": "fruttosio"
+},
+"en:organic-concentrated-agave-syrup": {
+"nome": "Agave",
+"category": "fruttosio"
+},
+"en:flower-honey": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"fr:miel-toutes-fleurs": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"en:organic-mixed-flower-honey": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"en:wildflower-honey": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"fr:miel-de-fleurs-de-france": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"fr:miel-de-litchi": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"en:bee-honey": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"en:honey-from-new-zealand": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"en:linden-honey": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"fr:miel-de-tilleul-de-picardie": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"fr:miel-de-mandarinier": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"en:lavander-honey": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"fr:miel-de-lavande-origine-france": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"en:lavander-honey-from-the-provence": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"fr:miel-de-bruyere": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"fr:miel-de-bruyere-blanche": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"en:orange-blossom-honey": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"fr:miel-d-oranger-biologique": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"fr:miel-d-oranger-d-espagne": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"fr:miel-de-framboisier": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"fr:miel-de-sarrasin-recolte-dans-le-loiret": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"fr:miel-de-garrigue": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"en:eucalyptus-honey": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"en:rosemary-honey": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"fr:miel-de-romarin-du-languedoc": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"fr:miel-de-chataignier": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"fr:miel-de-chataignier-origine-france": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"fr:miel-de-maquis-de-printemps": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"fr:miel-de-carotte-sauvage": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"fr:miel-de-sapin": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"fr:miel-de-sapin-recolte-en-france": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"en:creamy-honey": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"fr:miel-cremeux-bio": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"en:blend-of-honeys": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"en:mix-of-flower-honeys": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"en:blend-of-eu-and-non-eu-honeys": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"fr:melanges-de-miels-d-acacia-originaires-et-non-originaires-de-l-union-europeenne": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"en:blend-of-eu-honeys": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"en:blend-of-non-eu-honey": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"en:honey-from-spain": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"fr:miel-de-thym-d-espagne": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"fr:miel-de-montagne-d-espagne": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"fr:miel-de-citronnier-d-espagne": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"en:forest-honey": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"fr:miel-de-foret-d-italie": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"fr:miel-de-foret-de-france": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"en:manuka-honey": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"fr:miel-de-citronnier": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"fr:miel-de-ronce": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"fr:miel-de-carotte-recolte-dans-le-gatinais": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"en:clover-honey": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"en:sunflower-honey": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"en:liquid-honey": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"en:acacia-honey": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"en:acacia-honey-from-france": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"fr:miel-italien-d-acacia": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"fr:miel-d-acacia-des-forets-preservees-d-europe": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"fr:miel-et-propolis-verte": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"en:organic-honey-from-romania": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"en:mountain-honey": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"fr:miel-de-montagne-de-france": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"en:organic-mountain-honey": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"fr:miel-de-montagne-du-chili": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"fr:miel-de-campagne": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"fr:miel-baies-roses": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"en:honey-from-france": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"en:honey-from-the-gatinais": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"en:honey-from-the-provence": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"en:spring-honey": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"fr:miel-de-luzerne": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"en:buckwheat-honey": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"fr:miel-de-bourdaine": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"en:thyme-honey": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"de:mokaranahonig": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"en:organic-honey": {
+"nome": "Miele",
+"category": "fruttosio"
+},
+"en:melado": {
+"nome": "Melassa",
+"category": "fruttosio"
+},
+"en:corn-molasses": {
+"nome": "Melassa",
+"category": "fruttosio"
+},
+"en:cane-sugar-molasses": {
+"nome": "Melassa",
+"category": "fruttosio"
+},
+"fr:mangue-importee-en-avion": {
+"nome": "Mango",
+"category": "fruttosio"
+},
+"en:mango-puree": {
+"nome": "Mango",
+"category": "fruttosio"
+},
+"fr:puree-et-jus-de-mangue-concentres": {
+"nome": "Mango",
+"category": "fruttosio"
+},
+"en:mango-puree-partially-from-concentrate": {
+"nome": "Mango",
+"category": "fruttosio"
+},
+"en:mango-puree-from-concentrate": {
+"nome": "Mango",
+"category": "fruttosio"
+},
+"en:concentrated-mango-puree": {
+"nome": "Mango",
+"category": "fruttosio"
+},
+"fr:puree-et-pure-concentree-de-mangue": {
+"nome": "Mango",
+"category": "fruttosio"
+},
+"fr:mangue-importee-en-bateau": {
+"nome": "Mango",
+"category": "fruttosio"
+},
+"en:mango-juice": {
+"nome": "Mango",
+"category": "fruttosio"
+},
+"en:concentrated-mango-juice": {
+"nome": "Mango",
+"category": "fruttosio"
+},
+"en:guava-puree": {
+"nome": "Guava",
+"category": "fruttosio"
+},
+"en:strawberry-puree": {
+"nome": "Fragola",
+"category": "fruttosio"
+},
+"en:concentrated-strawberry-puree": {
+"nome": "Fragola",
+"category": "fruttosio"
+},
+"en:wild-strawberry": {
+"nome": "Fragola",
+"category": "fruttosio"
+},
+"fi:mansikoista-valmistettu-mehu-ja-viinirypäleet": {
+"nome": "Fragola",
+"category": "fruttosio"
+},
+"en:strawberry-powder": {
+"nome": "Fragola",
+"category": "fruttosio"
+},
+"en:strawberry-juice": {
+"nome": "Fragola",
+"category": "fruttosio"
+},
+"en:strawberry-juice-concentrate": {
+"nome": "Fragola",
+"category": "fruttosio"
+},
+"en:strawberry-juice-from-concentrate": {
+"nome": "Fragola",
+"category": "fruttosio"
+},
+"en:raw-strawberry": {
+"nome": "Fragola",
+"category": "fruttosio"
+},
+"en:red-currant-juice": {
+"nome": "Ribes",
+"category": "fruttosio"
+},
+"en:blackcurrant-pieces": {
+"nome": "Ribes",
+"category": "fruttosio"
+},
+"en:blackcurrant-juice-from-concentrate": {
+"nome": "Ribes",
+"category": "fruttosio"
+},
+"en:pieces-and-juice-of-blackcurrant": {
+"nome": "Ribes",
+"category": "fruttosio"
+},
+"en:wheat-glucose-fructose-syrup": {
+"nome": "Sciroppo di glucosio-fruttosio (HFCS)",
+"category": "fruttosio"
+},
+"en:glucose-fructose": {
+"nome": "Sciroppo di glucosio-fruttosio (HFCS)",
+"category": "fruttosio"
+},
+"en:fructose-syrup": {
+"nome": "Sciroppo di glucosio-fruttosio (HFCS)",
+"category": "fruttosio"
+},
+"de:fruktosepulver": {
+"nome": "Sciroppo di glucosio-fruttosio (HFCS)",
+"category": "fruttosio"
+},
+"fr:fructose-de-ble": {
+"nome": "Sciroppo di glucosio-fruttosio (HFCS)",
+"category": "fruttosio"
+},
+"en:cider-apple-juice": {
+"nome": "Succo di mela",
+"category": "fruttosio"
+},
+"en:organic-cider-apple-juice": {
+"nome": "Succo di mela",
+"category": "fruttosio"
+},
+"en:squeezed-apple-juice": {
+"nome": "Succo di mela",
+"category": "fruttosio"
+},
+"fr:pur-jus-de-pommes-a-cidre-de-bretagne": {
+"nome": "Succo di mela",
+"category": "fruttosio"
+},
+"en:unfiltered-apple-juice": {
+"nome": "Succo di mela",
+"category": "fruttosio"
+},
+"en:granny-smith-apple-juice": {
+"nome": "Succo di mela",
+"category": "fruttosio"
+},
+"fr:jus-et-puree-de-pomme": {
+"nome": "Succo di mela",
+"category": "fruttosio"
+},
+"fr:jus-et-puree-de-pomme-biologiques": {
+"nome": "Succo di mela",
+"category": "fruttosio"
+},
+"en:cripps-pink-apple-juice": {
+"nome": "Succo di mela",
+"category": "fruttosio"
+},
+"en:apple-juice-from-concentrate": {
+"nome": "Succo di mela",
+"category": "fruttosio"
+},
+"fi:omena-päärynä-ja-rypäletäysmehu-tiivisteestä": {
+"nome": "Succo di mela",
+"category": "fruttosio"
+},
+"en:organic-apple-juice": {
+"nome": "Succo di mela",
+"category": "fruttosio"
+},
+"en:white-rum": {
+"nome": "Rum",
+"category": "fruttosio"
+},
+"fr:rhum-blanc-agricole": {
+"nome": "Rum",
+"category": "fruttosio"
+},
+"en:dark-rum": {
+"nome": "Rum",
+"category": "fruttosio"
+},
+"en:green-soy-bean": {
+"nome": "Soia (fagioli)",
+"category": "gos"
+},
+"en:soya-bean-fiber": {
+"nome": "Soia (fagioli)",
+"category": "gos"
+},
+"en:black-soy-bean": {
+"nome": "Soia (fagioli)",
+"category": "gos"
+},
+"en:soy-bran": {
+"nome": "Soia (fagioli)",
+"category": "gos"
+},
+"en:soya-bean-paste": {
+"nome": "Soia (fagioli)",
+"category": "gos"
+},
+"en:sprouted-soybeans": {
+"nome": "Soia (fagioli)",
+"category": "gos"
+},
+"en:hulled-soya-bean": {
+"nome": "Soia (fagioli)",
+"category": "gos"
+},
+"en:gmo-free-hulled-soya-bean": {
+"nome": "Soia (fagioli)",
+"category": "gos"
+},
+"en:soya-flour": {
+"nome": "Soia (fagioli)",
+"category": "gos"
+},
+"en:low-fat-soy-flour": {
+"nome": "Soia (fagioli)",
+"category": "gos"
+},
+"en:restructured-soya-flour": {
+"nome": "Soia (fagioli)",
+"category": "gos"
+},
+"en:soya-flour-restructured-and-rehydrated": {
+"nome": "Soia (fagioli)",
+"category": "gos"
+},
+"en:whole-soybean-grain": {
+"nome": "Soia (fagioli)",
+"category": "gos"
+},
+"en:edamame": {
+"nome": "Soia (fagioli)",
+"category": "gos"
+},
+"en:mukimame": {
+"nome": "Soia (fagioli)",
+"category": "gos"
+},
+"en:okara": {
+"nome": "Soia (fagioli)",
+"category": "gos"
+},
+"en:dried-chickpea": {
+"nome": "Ceci",
+"category": "gos"
+},
+"en:rehydrated-chickpeas": {
+"nome": "Ceci",
+"category": "gos"
+},
+"en:pedrosillano-chickpeas": {
+"nome": "Ceci",
+"category": "gos"
+},
+"en:cooked-chickpeas": {
+"nome": "Ceci",
+"category": "gos"
+},
+"fr:pois-chiches-secs-trempes": {
+"nome": "Ceci",
+"category": "gos"
+},
+"en:soaked-chickpeas": {
+"nome": "Ceci",
+"category": "gos"
+},
+"en:black-chickpea": {
+"nome": "Ceci",
+"category": "gos"
+},
+"de:gelbe-linsen": {
+"nome": "Lenticchie",
+"category": "gos"
+},
+"en:yellow-lentils": {
+"nome": "Lenticchie",
+"category": "gos"
+},
+"en:lentil-flour": {
+"nome": "Lenticchie",
+"category": "gos"
+},
+"en:wholemeal-lentil-flour": {
+"nome": "Lenticchie",
+"category": "gos"
+},
+"en:dried-lentils": {
+"nome": "Lenticchie",
+"category": "gos"
+},
+"en:pardina-lentils": {
+"nome": "Lenticchie",
+"category": "gos"
+},
+"fr:lentillons": {
+"nome": "Lenticchie",
+"category": "gos"
+},
+"en:precooked-lentils": {
+"nome": "Lenticchie",
+"category": "gos"
+},
+"en:red-lentil-flour": {
+"nome": "Lenticchie",
+"category": "gos"
+},
+"fr:lentilles-rouges-decortiquees": {
+"nome": "Lenticchie",
+"category": "gos"
+},
+"en:green-and-red-lentils": {
+"nome": "Lenticchie",
+"category": "gos"
+},
+"en:organic-red-lentils": {
+"nome": "Lenticchie",
+"category": "gos"
+},
+"en:raw-lentils": {
+"nome": "Lenticchie",
+"category": "gos"
+},
+"fr:lentilles-rehydratees": {
+"nome": "Lenticchie",
+"category": "gos"
+},
+"en:black-lentils": {
+"nome": "Lenticchie",
+"category": "gos"
+},
+"en:beluga-lentils": {
+"nome": "Lenticchie",
+"category": "gos"
+},
+"en:black-lentil-flour": {
+"nome": "Lenticchie",
+"category": "gos"
+},
+"en:green-lentils": {
+"nome": "Lenticchie",
+"category": "gos"
+},
+"en:cooked-green-lentils": {
+"nome": "Lenticchie",
+"category": "gos"
+},
+"fr:lentilles-vertes-du-berry": {
+"nome": "Lenticchie",
+"category": "gos"
+},
+"fr:lentilles-vertes-precuites": {
+"nome": "Lenticchie",
+"category": "gos"
+},
+"en:puy-lentils": {
+"nome": "Lenticchie",
+"category": "gos"
+},
+"en:organic-green-lentils": {
+"nome": "Lenticchie",
+"category": "gos"
+},
+"en:brown-lentils": {
+"nome": "Lenticchie",
+"category": "gos"
+},
+"en:sprouted-lentils": {
+"nome": "Lenticchie",
+"category": "gos"
+},
+"en:bean-sprouts": {
+"nome": "Fagioli (generico)",
+"category": "gos"
+},
+"en:black-turtle-bean": {
+"nome": "Fagioli neri",
+"category": "gos"
+},
+"en:black-bean-flour": {
+"nome": "Fagioli neri",
+"category": "gos"
+},
+"en:mung-bean-sprout": {
+"nome": "Fagioli mung",
+"category": "gos"
+},
+"en:large-lima-beans": {
+"nome": "Fagioli di Spagna / Lima",
+"category": "gos"
+},
+"en:baby-lima-beans": {
+"nome": "Fagioli di Spagna / Lima",
+"category": "gos"
+},
+"en:dried-lima-bean": {
+"nome": "Fagioli di Spagna / Lima",
+"category": "gos"
+},
+"en:dried-broad-bean": {
+"nome": "Fave",
+"category": "gos"
+},
+"en:fresh-broad-bean-to-shell": {
+"nome": "Fave",
+"category": "gos"
+},
+"en:yellow-split-pea": {
+"nome": "Piselli spezzati",
+"category": "gos"
+},
+"en:green-split-pea": {
+"nome": "Piselli spezzati",
+"category": "gos"
+},
+"fr:farine-de-pois-casses": {
+"nome": "Piselli spezzati",
+"category": "gos"
+},
+"en:cooked-split-peas": {
+"nome": "Piselli spezzati",
+"category": "gos"
+},
+"en:home-preparedfalafel": {
+"nome": "Falafel",
+"category": "gos"
+},
+"en:almond-flour": {
+"nome": "Mandorle",
+"category": "gos"
+},
+"fr:amandes-decortiquees": {
+"nome": "Mandorle",
+"category": "gos"
+},
+"en:organic-almond-flour": {
+"nome": "Mandorle",
+"category": "gos"
+},
+"fr:amandes-biologiques": {
+"nome": "Mandorle",
+"category": "gos"
+},
+"en:nonpareil-almonds": {
+"nome": "Mandorle",
+"category": "gos"
+},
+"en:almond-pulp": {
+"nome": "Mandorle",
+"category": "gos"
+},
+"fr:amandes-caramelisees": {
+"nome": "Mandorle",
+"category": "gos"
+},
+"en:almond-paste": {
+"nome": "Mandorle",
+"category": "gos"
+},
+"en:prepacked-almond-paste": {
+"nome": "Mandorle",
+"category": "gos"
+},
+"fr:amande-coque": {
+"nome": "Mandorle",
+"category": "gos"
+},
+"en:almond-without-skin": {
+"nome": "Mandorle",
+"category": "gos"
+},
+"en:almond-with-skin": {
+"nome": "Mandorle",
+"category": "gos"
+},
+"en:blanches-almonds": {
+"nome": "Mandorle",
+"category": "gos"
+},
+"fr:amandes-blanchies-en-poudre": {
+"nome": "Mandorle",
+"category": "gos"
+},
+"en:raw-blanched-almonds": {
+"nome": "Mandorle",
+"category": "gos"
+},
+"en:flaked-almonds": {
+"nome": "Mandorle",
+"category": "gos"
+},
+"en:almonds-pieces": {
+"nome": "Mandorle",
+"category": "gos"
+},
+"en:roasted-almonds": {
+"nome": "Mandorle",
+"category": "gos"
+},
+"en:whole-almonds": {
+"nome": "Mandorle",
+"category": "gos"
+},
+"en:ground-almonds": {
+"nome": "Mandorle",
+"category": "gos"
+},
+"en:marcona-almond": {
+"nome": "Mandorle",
+"category": "gos"
+},
+"en:raw-almonds": {
+"nome": "Mandorle",
+"category": "gos"
+},
+"en:powdered-almonds": {
+"nome": "Mandorle",
+"category": "gos"
+},
+"en:piedmont-hazelnut": {
+"nome": "Nocciole",
+"category": "gos"
+},
+"en:ground-piedmont-hazelnut": {
+"nome": "Nocciole",
+"category": "gos"
+},
+"en:piedmont-hazelnut-paste": {
+"nome": "Nocciole",
+"category": "gos"
+},
+"en:hazelnut-kernel": {
+"nome": "Nocciole",
+"category": "gos"
+},
+"fr:noisettes-entieres-torrefiees": {
+"nome": "Nocciole",
+"category": "gos"
+},
+"en:toasted-hazelnuts": {
+"nome": "Nocciole",
+"category": "gos"
+},
+"en:blanched-hazelnut": {
+"nome": "Nocciole",
+"category": "gos"
+},
+"en:chopped-hazelnuts": {
+"nome": "Nocciole",
+"category": "gos"
+},
+"en:roasted-nibbed-hazelnuts": {
+"nome": "Nocciole",
+"category": "gos"
+},
+"fr:noisettes-decortiquees": {
+"nome": "Nocciole",
+"category": "gos"
+},
+"fr:noisettes-avec-peau": {
+"nome": "Nocciole",
+"category": "gos"
+},
+"fr:noisettes-en-poudre-avec-peau": {
+"nome": "Nocciole",
+"category": "gos"
+},
+"en:ground-hazelnuts": {
+"nome": "Nocciole",
+"category": "gos"
+},
+"en:nibbed-and-ground-hazelnuts": {
+"nome": "Nocciole",
+"category": "gos"
+},
+"fr:eclats-de-noisettes": {
+"nome": "Nocciole",
+"category": "gos"
+},
+"en:hazelnut-paste": {
+"nome": "Nocciole",
+"category": "gos"
+},
+"en:low-sodium-fluid-milk": {
+"nome": "Latte vaccino/capra/pecora",
+"category": "lattosio"
+},
+"en:buffalo-milk": {
+"nome": "Latte vaccino/capra/pecora",
+"category": "lattosio"
+},
+"en:pasteurised-buffalo-milk": {
+"nome": "Latte vaccino/capra/pecora",
+"category": "lattosio"
+},
+"en:second-age-baby-milk-powder": {
+"nome": "Latte vaccino/capra/pecora",
+"category": "lattosio"
+},
+"en:sheeps-milk": {
+"nome": "Latte vaccino/capra/pecora",
+"category": "lattosio"
+},
+"en:whole-sheep-milk": {
+"nome": "Latte vaccino/capra/pecora",
+"category": "lattosio"
+},
+"en:skimmed-sheeps-milk": {
+"nome": "Latte vaccino/capra/pecora",
+"category": "lattosio"
+},
+"en:sheep-and-goat-milk": {
+"nome": "Latte vaccino/capra/pecora",
+"category": "lattosio"
+},
+"en:sheeps-or-goat-milk": {
+"nome": "Latte vaccino/capra/pecora",
+"category": "lattosio"
+},
+"fr:lait-de-brebis-thermise": {
+"nome": "Latte vaccino/capra/pecora",
+"category": "lattosio"
+},
+"en:fluid-sheep-milk": {
+"nome": "Latte vaccino/capra/pecora",
+"category": "lattosio"
+},
+"en:sweetened-condensed-milk": {
+"nome": "Latte vaccino/capra/pecora",
+"category": "lattosio"
+},
+"en:sweetened-condensed-semi-skimmed-milk": {
+"nome": "Latte vaccino/capra/pecora",
+"category": "lattosio"
+},
+"en:dulce-de-leche": {
+"nome": "Latte vaccino/capra/pecora",
+"category": "lattosio"
+},
+"en:sweetened-condensed-whole-milk": {
+"nome": "Latte vaccino/capra/pecora",
+"category": "lattosio"
+},
+"en:sweetened-condensed-skimmed-milk": {
+"nome": "Latte vaccino/capra/pecora",
+"category": "lattosio"
+},
+"en:goat-milk": {
+"nome": "Latte vaccino/capra/pecora",
+"category": "lattosio"
+},
+"en:pasteurised-goat-milk": {
+"nome": "Latte vaccino/capra/pecora",
+"category": "lattosio"
+},
+"en:whole-goat-milk-uht": {
+"nome": "Latte vaccino/capra/pecora",
+"category": "lattosio"
+},
+"en:skimmed-goat-milk": {
+"nome": "Latte vaccino/capra/pecora",
+"category": "lattosio"
+},
+"en:semi-skimmed-goat-milk": {
+"nome": "Latte vaccino/capra/pecora",
+"category": "lattosio"
+},
+"en:semi-skimmed-pasteurized-goat-milk-uht": {
+"nome": "Latte vaccino/capra/pecora",
+"category": "lattosio"
+},
+"en:whole-goat-milk": {
+"nome": "Latte vaccino/capra/pecora",
+"category": "lattosio"
+},
+"de:käsereimilch": {
+"nome": "Latte vaccino/capra/pecora",
+"category": "lattosio"
+},
+"en:cow-s-milk": {
+"nome": "Latte vaccino/capra/pecora",
+"category": "lattosio"
+},
+"en:milk-from-france": {
+"nome": "Latte vaccino/capra/pecora",
+"category": "lattosio"
+},
+"en:coffee-cream": {
+"nome": "Latte vaccino/capra/pecora",
+"category": "lattosio"
+},
+"en:semi-skimmed-milk": {
+"nome": "Latte vaccino/capra/pecora",
+"category": "lattosio"
+},
+"en:pasteurized-semi-skimmed-milk": {
+"nome": "Latte vaccino/capra/pecora",
+"category": "lattosio"
+},
+"fr:lait-demi-ecreme-uht": {
+"nome": "Latte vaccino/capra/pecora",
+"category": "lattosio"
+},
+"en:haymilk": {
+"nome": "Latte vaccino/capra/pecora",
+"category": "lattosio"
+},
+"en:whole-milk": {
+"nome": "Latte vaccino/capra/pecora",
+"category": "lattosio"
+},
+"en:uht-pasteurised-whole-milk": {
+"nome": "Latte vaccino/capra/pecora",
+"category": "lattosio"
+},
+"en:pasteurised-whole-milk": {
+"nome": "Latte vaccino/capra/pecora",
+"category": "lattosio"
+},
+"en:condensed-whole-milk": {
+"nome": "Latte vaccino/capra/pecora",
+"category": "lattosio"
+},
+"fr:lait-de-montagne": {
+"nome": "Latte vaccino/capra/pecora",
+"category": "lattosio"
+},
+"en:first-age-baby-milk-powder": {
+"nome": "Latte vaccino/capra/pecora",
+"category": "lattosio"
+},
+"en:skimmed-milk": {
+"nome": "Latte vaccino/capra/pecora",
+"category": "lattosio"
+},
+"en:pasteurized-skimmed-milk": {
+"nome": "Latte vaccino/capra/pecora",
+"category": "lattosio"
+},
+"en:skim-milk-and-pasteurized-cream": {
+"nome": "Latte vaccino/capra/pecora",
+"category": "lattosio"
+},
+"en:uht-sterilised-skimmed-milk": {
+"nome": "Latte vaccino/capra/pecora",
+"category": "lattosio"
+},
+"en:milk-enriched-with-cream": {
+"nome": "Latte vaccino/capra/pecora",
+"category": "lattosio"
+},
+"en:heavy-cream": {
+"nome": "Panna",
+"category": "lattosio"
+},
+"en:cream-with-33-milk-fat": {
+"nome": "Panna",
+"category": "lattosio"
+},
+"fr:creme-epaisse": {
+"nome": "Panna",
+"category": "lattosio"
+},
+"en:cream-with-10-milk-fat": {
+"nome": "Panna",
+"category": "lattosio"
+},
+"en:cream-with-20-milk-fat": {
+"nome": "Panna",
+"category": "lattosio"
+},
+"fr:creme-fleurette": {
+"nome": "Panna",
+"category": "lattosio"
+},
+"en:uht-cream": {
+"nome": "Panna",
+"category": "lattosio"
+},
+"en:sterilized-uht-cream": {
+"nome": "Panna",
+"category": "lattosio"
+},
+"en:refrigerated-30-fat-thick-cream": {
+"nome": "Panna",
+"category": "lattosio"
+},
+"en:raw-cream": {
+"nome": "Panna",
+"category": "lattosio"
+},
+"en:light-cream": {
+"nome": "Panna",
+"category": "lattosio"
+},
+"fr:creme-fraiche-legere-epaisse": {
+"nome": "Panna",
+"category": "lattosio"
+},
+"en:whipped-cream": {
+"nome": "Panna",
+"category": "lattosio"
+},
+"en:single-cream": {
+"nome": "Panna",
+"category": "lattosio"
+},
+"fr:creme-fraiche-liquide": {
+"nome": "Panna",
+"category": "lattosio"
+},
+"en:cream-with-25-milk-fat": {
+"nome": "Panna",
+"category": "lattosio"
+},
+"en:cream-with-12-milk-fat": {
+"nome": "Panna",
+"category": "lattosio"
+},
+"en:cream-with-36-milk-fat": {
+"nome": "Panna",
+"category": "lattosio"
+},
+"en:cream-with-22-milk-fat": {
+"nome": "Panna",
+"category": "lattosio"
+},
+"en:fresh-cream": {
+"nome": "Panna",
+"category": "lattosio"
+},
+"en:buffalo-milk-cream": {
+"nome": "Panna",
+"category": "lattosio"
+},
+"en:sour-cream": {
+"nome": "Panna",
+"category": "lattosio"
+},
+"en:reduced-fat-sour-cream": {
+"nome": "Panna",
+"category": "lattosio"
+},
+"de:schmand": {
+"nome": "Panna",
+"category": "lattosio"
+},
+"en:smetana": {
+"nome": "Panna",
+"category": "lattosio"
+},
+"en:fat-free-sour-cream": {
+"nome": "Panna",
+"category": "lattosio"
+},
+"en:creme-fraiche": {
+"nome": "Panna",
+"category": "lattosio"
+},
+"en:sterilized-cream": {
+"nome": "Panna",
+"category": "lattosio"
+},
+"en:liquid-30-fat-uht-cream": {
+"nome": "Panna",
+"category": "lattosio"
+},
+"en:cream-from-normandy": {
+"nome": "Panna",
+"category": "lattosio"
+},
+"en:cream-powder": {
+"nome": "Panna",
+"category": "lattosio"
+},
+"en:double-cream": {
+"nome": "Panna",
+"category": "lattosio"
+},
+"en:british-cream": {
+"nome": "Panna",
+"category": "lattosio"
+},
+"en:pasteurized-milk-and-cream": {
+"nome": "Panna",
+"category": "lattosio"
+},
+"en:cream-with-18-milk-fat": {
+"nome": "Panna",
+"category": "lattosio"
+},
+"en:whipping-cream": {
+"nome": "Panna",
+"category": "lattosio"
+},
+"en:pasteurized-whipping-cream": {
+"nome": "Panna",
+"category": "lattosio"
+},
+"en:lactose-free-cream": {
+"nome": "Panna",
+"category": "lattosio"
+},
+"en:whole-cream": {
+"nome": "Panna",
+"category": "lattosio"
+},
+"en:pasteurized-creme-fraiche": {
+"nome": "Panna",
+"category": "lattosio"
+},
+"en:acid-whey": {
+"nome": "Siero di latte (concentrato)",
+"category": "lattosio"
+},
+"en:fluid-acid-whey": {
+"nome": "Siero di latte (concentrato)",
+"category": "lattosio"
+},
+"en:dried-acid-whey": {
+"nome": "Siero di latte (concentrato)",
+"category": "lattosio"
+},
+"de:sauermolke": {
+"nome": "Siero di latte (concentrato)",
+"category": "lattosio"
+},
+"de:verarbeitungsbüffelmolke": {
+"nome": "Siero di latte (concentrato)",
+"category": "lattosio"
+},
+"en:sweet-whey": {
+"nome": "Siero di latte (concentrato)",
+"category": "lattosio"
+},
+"en:fluid-sweet-whey": {
+"nome": "Siero di latte (concentrato)",
+"category": "lattosio"
+},
+"en:sweet-whey-powder": {
+"nome": "Siero di latte (concentrato)",
+"category": "lattosio"
+},
+"en:skimmed-sweet-whey": {
+"nome": "Siero di latte (concentrato)",
+"category": "lattosio"
+},
+"en:concentrated-whey": {
+"nome": "Siero di latte (concentrato)",
+"category": "lattosio"
+},
+"en:condensed-whey": {
+"nome": "Siero di latte (concentrato)",
+"category": "lattosio"
+},
+"en:demineralised-whey": {
+"nome": "Siero di latte (concentrato)",
+"category": "lattosio"
+},
+"fr:lactoserum-partiellement-demineralise": {
+"nome": "Siero di latte (concentrato)",
+"category": "lattosio"
+},
+"en:whey-permeate": {
+"nome": "Siero di latte (concentrato)",
+"category": "lattosio"
+},
+"en:reconstituted-whey-permeate": {
+"nome": "Siero di latte (concentrato)",
+"category": "lattosio"
+},
+"en:whey-permeate-powder": {
+"nome": "Siero di latte (concentrato)",
+"category": "lattosio"
+},
+"en:whey-powder": {
+"nome": "Siero di latte (concentrato)",
+"category": "lattosio"
+},
+"nl:vegetarisch-weipoeder": {
+"nome": "Siero di latte (concentrato)",
+"category": "lattosio"
+},
+"nl:gezoet-vegetarisch-weipoeder": {
+"nome": "Siero di latte (concentrato)",
+"category": "lattosio"
+},
+"en:filtered-whey-powder": {
+"nome": "Siero di latte (concentrato)",
+"category": "lattosio"
+},
+"en:partially-demineralized-powdered-whey": {
+"nome": "Siero di latte (concentrato)",
+"category": "lattosio"
+},
+"de:eiweißangereichertes-molkenpulver": {
+"nome": "Siero di latte (concentrato)",
+"category": "lattosio"
+},
+"de:molkeneiweißkäse": {
+"nome": "Siero di latte (concentrato)",
+"category": "lattosio"
+},
+"en:sheep-s-whey": {
+"nome": "Siero di latte (concentrato)",
+"category": "lattosio"
+},
+"en:whey-product": {
+"nome": "Siero di latte (concentrato)",
+"category": "lattosio"
+},
+"en:lactose-and-milk-proteins": {
+"nome": "Latte vaccino/capra/pecora",
+"category": "lattosio"
+},
+"fr:lactose-et-mineraux-du-lait": {
+"nome": "Latte vaccino/capra/pecora",
+"category": "lattosio"
+},
+"en:buttermilk-solids": {
+"nome": "Latticello",
+"category": "lattosio"
+},
+"en:buttermilk-powder": {
+"nome": "Latticello",
+"category": "lattosio"
+},
+"es:suero-de-mantequilla-rehidratada": {
+"nome": "Latticello",
+"category": "lattosio"
+},
+"en:skim-milk-plain-yogurt": {
+"nome": "Yogurt",
+"category": "lattosio"
+},
+"en:whole-yogurt": {
+"nome": "Yogurt",
+"category": "lattosio"
+},
+"en:mild-whole-yogurt": {
+"nome": "Yogurt",
+"category": "lattosio"
+},
+"en:goat-s-milk-yogurt": {
+"nome": "Yogurt",
+"category": "lattosio"
+},
+"en:plain-goat-s-milk-yogurt-with-around-5-fat": {
+"nome": "Yogurt",
+"category": "lattosio"
+},
+"de:joghurterzeugnis": {
+"nome": "Yogurt",
+"category": "lattosio"
+},
+"en:yogurt-powder": {
+"nome": "Yogurt",
+"category": "lattosio"
+},
+"en:skimmed-milk-yogurt-powder": {
+"nome": "Yogurt",
+"category": "lattosio"
+},
+"en:mild-yogurt": {
+"nome": "Yogurt",
+"category": "lattosio"
+},
+"en:skimmed-mild-yogurt": {
+"nome": "Yogurt",
+"category": "lattosio"
+},
+"de:joghurt-mild-mit-magermilchpulverzusatz": {
+"nome": "Yogurt",
+"category": "lattosio"
+},
+"de:speisequarkzubereitung": {
+"nome": "Yogurt",
+"category": "lattosio"
+},
+"en:semi-skimmed-mild-yogurt": {
+"nome": "Yogurt",
+"category": "lattosio"
+},
+"fr:yaourt-brasse-sucre": {
+"nome": "Yogurt",
+"category": "lattosio"
+},
+"en:plain-yogurt": {
+"nome": "Yogurt",
+"category": "lattosio"
+},
+"en:sweetened-plain-yogurt": {
+"nome": "Yogurt",
+"category": "lattosio"
+},
+"en:skimmed-yogurt": {
+"nome": "Yogurt",
+"category": "lattosio"
+},
+"fr:yaourt-britannique-a-faible-teneur-en-matieres-grasses": {
+"nome": "Yogurt",
+"category": "lattosio"
+},
+"en:whole-milk-yogurt": {
+"nome": "Yogurt",
+"category": "lattosio"
+},
+"en:whole-milk-yogurt-powder": {
+"nome": "Yogurt",
+"category": "lattosio"
+},
+"en:pasteurized-milk-yogurt": {
+"nome": "Yogurt",
+"category": "lattosio"
+},
+"en:yogurt-from-pasteurized-milk-with-milk-fat": {
+"nome": "Yogurt",
+"category": "lattosio"
+},
+"en:yogurt-from-pasteurized-milk-with-3-5-milk-fat": {
+"nome": "Yogurt",
+"category": "lattosio"
+},
+"en:solid-yogurt-made-from-pasteurized-milk-with-3-2-milk-fat": {
+"nome": "Yogurt",
+"category": "lattosio"
+},
+"en:greek-yogurt": {
+"nome": "Yogurt",
+"category": "lattosio"
+},
+"en:plain-greek-style-yogurt": {
+"nome": "Yogurt",
+"category": "lattosio"
+},
+"en:organic-yogurt": {
+"nome": "Yogurt",
+"category": "lattosio"
+},
+"fr:yogourt-partiellement-ecreme": {
+"nome": "Yogurt",
+"category": "lattosio"
+},
+"en:british-yogurt": {
+"nome": "Yogurt",
+"category": "lattosio"
+},
+"en:chocolate-ice-cream": {
+"nome": "Gelato",
+"category": "lattosio"
+},
+"en:vanilla-ice-cream": {
+"nome": "Gelato",
+"category": "lattosio"
+},
+"fr:ricotta-de-brebis": {
+"nome": "Ricotta",
+"category": "lattosio"
+},
+"en:fresh-cream-cheese": {
+"nome": "Formaggio spalmabile / Cream cheese",
+"category": "lattosio"
+},
+"en:lactose-free-quark": {
+"nome": "Quark",
+"category": "lattosio"
+},
+"fi:rasvaton-rahka": {
+"nome": "Quark",
+"category": "lattosio"
+},
+"de:sauermilchquark": {
+"nome": "Quark",
+"category": "lattosio"
+},
+"nl:volle-kwark": {
+"nome": "Quark",
+"category": "lattosio"
+},
+"en:lean-stern": {
+"nome": "Quark",
+"category": "lattosio"
+},
+"de:magerquarkpulver": {
+"nome": "Quark",
+"category": "lattosio"
+},
+"en:whole-kefir": {
+"nome": "Kefir",
+"category": "lattosio"
+},
+"en:mild-whole-kefir": {
+"nome": "Kefir",
+"category": "lattosio"
+},
+"en:mild-kefir": {
+"nome": "Kefir",
+"category": "lattosio"
+},
+"en:cow-mozzarella": {
+"nome": "Caciotta / formaggi freschi molli",
+"category": "lattosio"
+},
+"en:whole-milk-mozzarella": {
+"nome": "Caciotta / formaggi freschi molli",
+"category": "lattosio"
+},
+"en:low-moisture-whole-milk-mozzarella": {
+"nome": "Caciotta / formaggi freschi molli",
+"category": "lattosio"
+},
+"en:part-skim-mozzarella": {
+"nome": "Caciotta / formaggi freschi molli",
+"category": "lattosio"
+},
+"en:low-moisture-part-skim-mozzarella": {
+"nome": "Caciotta / formaggi freschi molli",
+"category": "lattosio"
+},
+"en:buffalo-mozzarella": {
+"nome": "Caciotta / formaggi freschi molli",
+"category": "lattosio"
+},
+"en:low-moisture-mozzarella": {
+"nome": "Caciotta / formaggi freschi molli",
+"category": "lattosio"
+},
+"en:e420i": {
+"nome": "Sorbitolo (E420)",
+"category": "polioli"
+},
+"en:e420ii": {
+"nome": "Sorbitolo (E420)",
+"category": "polioli"
+},
+"bg:сорбитолов-сироп": {
+"nome": "Sorbitolo (E420)",
+"category": "polioli"
+},
+"fr:sorbitols-et-glycerol": {
+"nome": "Sorbitolo (E420)",
+"category": "polioli"
+},
+"en:e965i": {
+"nome": "Maltitolo (E965)",
+"category": "polioli"
+},
+"en:e965ii": {
+"nome": "Maltitolo (E965)",
+"category": "polioli"
+},
+"en:shiitake": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"fr:champignon-noir-rehydrate": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:shiitake-extract": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:dehydrated-shiitake": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:wood-ear": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:mushroom-extract": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:sweet-toothm-wood-hedgehog": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:concentrated-mushroom-juice": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:truffle": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:tuber-magnatum": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:black-truffle": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:summer-truffle": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:milkcap": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:bloody-milk-cap": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:lactarius-sanguifluus": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:saffron-milk-cap": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:craterellus": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:horn-of-plenty": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:yellow-foot": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:cantharellus": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:golden-chanterelle": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:field-mushroom": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:morel": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"la:morchella-conica": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:common-morel": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"la:morchella-esculenta": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"fr:morilles-sechees": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:imleria": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:imleria-badia": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:cultivated-mushroom": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"fr:champignons-de-paris-eminces": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:chestnut-mushroom": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:white-mushroom": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:mushroom-powder": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:dark-cep": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:leccinum": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:scaber-stalk": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:red-capped-scaber-stalk": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:straw-mushroom": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:suillus": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:slippery-jack": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:weeping-bolete": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:velvet-bolete": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:greek-style-marinated-mushrooms": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:portobello": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:pine-bolete": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:pholiota": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:nameko": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:sheathed-woodtuft": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"fr:chanterelle": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:mixed-mushrooms": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:fairy-ring-mushroom": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:kikurage-mushroom": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:tremella-fuciformis": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:forest-mushroom": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:boletus": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:summer-cep": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:cep": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"de:steinpilzpulver": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:dried-cep": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:pleurotus": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:oyster-mushroom": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:honey-mushroom": {
+"nome": "Funghi",
+"category": "polioli"
+},
+"en:cauliflower-florets": {
+"nome": "Cavolfiore",
+"category": "polioli"
+},
+"en:raw-cauliflower": {
+"nome": "Cavolfiore",
+"category": "polioli"
+},
+"en:hass-avocado": {
+"nome": "Avocado",
+"category": "polioli"
+},
+"en:celery-leaves": {
+"nome": "Sedano",
+"category": "polioli"
+},
+"en:celery-seed": {
+"nome": "Sedano",
+"category": "polioli"
+},
+"fr:jus-concentre-de-celeri-et-de-carotte": {
+"nome": "Sedano",
+"category": "polioli"
+},
+"fr:arome-naturel-de-celeri": {
+"nome": "Sedano",
+"category": "polioli"
+},
+"en:celery-stalk": {
+"nome": "Sedano",
+"category": "polioli"
+},
+"fr:extrait-de-celeri": {
+"nome": "Sedano",
+"category": "polioli"
+},
+"en:celery-puree": {
+"nome": "Sedano",
+"category": "polioli"
+},
+"en:celery-juice": {
+"nome": "Sedano",
+"category": "polioli"
+},
+"en:concentrated-celery-juice": {
+"nome": "Sedano",
+"category": "polioli"
+},
+"en:powdered-concentrated-celery-juice": {
+"nome": "Sedano",
+"category": "polioli"
+},
+"en:celery-powder": {
+"nome": "Sedano",
+"category": "polioli"
+},
+"en:raw-celery": {
+"nome": "Sedano",
+"category": "polioli"
+},
+"fr:garniture-de-celeri": {
+"nome": "Sedano",
+"category": "polioli"
+},
+"en:purple-sweet-potato": {
+"nome": "Patata dolce",
+"category": "polioli"
+},
+"en:organic-sweet-potato": {
+"nome": "Patata dolce",
+"category": "polioli"
+},
+"en:apricot-puree": {
+"nome": "Albicocca",
+"category": "polioli"
+},
+"en:apricot-juice-and-puree": {
+"nome": "Albicocca",
+"category": "polioli"
+},
+"en:apricot-juice-from-concentrate-and-puree": {
+"nome": "Albicocca",
+"category": "polioli"
+},
+"fr:puree-d-abricots-bergeron": {
+"nome": "Albicocca",
+"category": "polioli"
+},
+"en:apricot-puree-concentrate": {
+"nome": "Albicocca",
+"category": "polioli"
+},
+"en:dried-apricots": {
+"nome": "Albicocca",
+"category": "polioli"
+},
+"en:pitted-dried-apricots": {
+"nome": "Albicocca",
+"category": "polioli"
+},
+"en:apricot-juice": {
+"nome": "Albicocca",
+"category": "polioli"
+},
+"en:apricot-juice-from-concentrate": {
+"nome": "Albicocca",
+"category": "polioli"
+},
+"fr:demi-abricots": {
+"nome": "Albicocca",
+"category": "polioli"
+},
+"en:apricot-pulp": {
+"nome": "Albicocca",
+"category": "polioli"
+},
+"en:bergeron-apricot": {
+"nome": "Albicocca",
+"category": "polioli"
+},
+"en:wild-cherry": {
+"nome": "Ciliegia",
+"category": "polioli"
+},
+"en:black-cherry": {
+"nome": "Ciliegia",
+"category": "polioli"
+},
+"en:sweet-cherry": {
+"nome": "Ciliegia",
+"category": "polioli"
+},
+"fr:bigarreaux-confits": {
+"nome": "Ciliegia",
+"category": "polioli"
+},
+"en:sour-cherry": {
+"nome": "Ciliegia",
+"category": "polioli"
+},
+"en:cherry-paste": {
+"nome": "Ciliegia",
+"category": "polioli"
+},
+"en:pitted-cherry": {
+"nome": "Ciliegia",
+"category": "polioli"
+},
+"en:white-cherry": {
+"nome": "Ciliegia",
+"category": "polioli"
+},
+"en:organic-cherry": {
+"nome": "Ciliegia",
+"category": "polioli"
+},
+"en:cherry-puree": {
+"nome": "Ciliegia",
+"category": "polioli"
+},
+"en:cherry-stem": {
+"nome": "Ciliegia",
+"category": "polioli"
+},
+"de:nektarinenmark": {
+"nome": "Nettarina",
+"category": "polioli"
+},
+"en:white-peach": {
+"nome": "Pesca",
+"category": "polioli"
+},
+"fr:jus-de-peche-blanche-a-base-de-concentre": {
+"nome": "Pesca",
+"category": "polioli"
+},
+"en:flat-peach": {
+"nome": "Pesca",
+"category": "polioli"
+},
+"en:peach-puree": {
+"nome": "Pesca",
+"category": "polioli"
+},
+"en:peach-juice": {
+"nome": "Pesca",
+"category": "polioli"
+},
+"en:peach-juice-from-concentrate": {
+"nome": "Pesca",
+"category": "polioli"
+},
+"en:peach-pulp": {
+"nome": "Pesca",
+"category": "polioli"
+},
+"en:dried-peach": {
+"nome": "Pesca",
+"category": "polioli"
+},
+"en:peach-syrup": {
+"nome": "Pesca",
+"category": "polioli"
+},
+"fr:peche-au-sirop": {
+"nome": "Pesca",
+"category": "polioli"
+},
+"en:peach-paste": {
+"nome": "Pesca",
+"category": "polioli"
+},
+"en:prunes-from-agen": {
+"nome": "Prugna / Susina",
+"category": "polioli"
+},
+"en:prunes-from-ente": {
+"nome": "Prugna / Susina",
+"category": "polioli"
+},
+"en:plum-sugar": {
+"nome": "Prugna / Susina",
+"category": "polioli"
+},
+"en:organic-plum": {
+"nome": "Prugna / Susina",
+"category": "polioli"
+},
+"en:plum-spread": {
+"nome": "Prugna / Susina",
+"category": "polioli"
+},
+"en:rubus-fruticosus": {
+"nome": "More",
+"category": "polioli"
+},
+"fr:jus-de-mure-a-base-de-jus-concentre": {
+"nome": "More",
+"category": "polioli"
+},
+"en:raw-blackberry": {
+"nome": "More",
+"category": "polioli"
+},
+"en:boysenberry-juice": {
+"nome": "Boysenberry",
+"category": "polioli"
+},
+"en:coconut-water-made-from-concentrate-coconut-water": {
+"nome": "Acqua di cocco",
+"category": "polioli"
+},
+"en:natural-coconut-water": {
+"nome": "Acqua di cocco",
+"category": "polioli"
+},
+"en:raw-watermelon": {
+"nome": "Anguria",
+"category": "misto"
+},
+"en:watermelon-pulp": {
+"nome": "Anguria",
+"category": "misto"
+},
+"fr:asperges-fraiches": {
+"nome": "Asparago",
+"category": "misto"
+},
+"en:asparagus-heads": {
+"nome": "Asparago",
+"category": "misto"
+},
+"en:green-asparagus-heads": {
+"nome": "Asparago",
+"category": "misto"
+},
+"en:white-asparagus-heads": {
+"nome": "Asparago",
+"category": "misto"
+},
+"en:violet-asparagus": {
+"nome": "Asparago",
+"category": "misto"
+},
+"en:raw-asparagus": {
+"nome": "Asparago",
+"category": "misto"
+},
+"en:green-asparagus": {
+"nome": "Asparago",
+"category": "misto"
+},
+"es:esparragos-verdes-sin-pelar": {
+"nome": "Asparago",
+"category": "misto"
+},
+"en:white-asparagus": {
+"nome": "Asparago",
+"category": "misto"
+},
+"en:persimmon-pulp": {
+"nome": "Cachi / Kaki",
+"category": "misto"
+},
+"en:persimmon-juice": {
+"nome": "Cachi / Kaki",
+"category": "misto"
+},
+"en:dried-fig": {
+"nome": "Fichi",
+"category": "misto"
+},
+"en:organic-fig": {
+"nome": "Fichi",
+"category": "misto"
+},
+"en:dried-organic-fig": {
+"nome": "Fichi",
+"category": "misto"
+},
+"en:pajarero-figs": {
+"nome": "Fichi",
+"category": "misto"
+},
+"en:fig-paste": {
+"nome": "Fichi",
+"category": "misto"
+},
+"en:raw-fig": {
+"nome": "Fichi",
+"category": "misto"
+},
+"en:dried-chia-seeds": {
+"nome": "Semi di chia",
+"category": "misto"
+},
+"en:white-chia-seed": {
+"nome": "Semi di chia",
+"category": "misto"
+},
+"en:chili-hummus": {
+"nome": "Hummus",
+"category": "misto"
+},
+"en:sundried-tomato-hummus": {
+"nome": "Hummus",
+"category": "misto"
+},
+"en:raw-kombucha": {
+"nome": "Kombucha",
+"category": "misto"
+},
+"en:uncooked-kamut-khorasan-wheat": {
+"nome": "Farro / Spelta",
+"category": "fruttani"
+},
+"en:khorasan-wheat-flour": {
+"nome": "Farro / Spelta",
+"category": "fruttani"
+},
+"en:whole-grain-khorasan-flour": {
+"nome": "Farro / Spelta",
+"category": "fruttani"
+},
+"en:raw-brussels-sprouts": {
+"nome": "Cavoletti di Bruxelles",
+"category": "fruttani"
+},
+"en:dried-goji-berries": {
+"nome": "Goji",
+"category": "fruttani"
+},
+"fr:tomates-sechees-rehydratees": {
+"nome": "Pomodori secchi",
+"category": "fruttosio"
+},
+"fr:puree-de-pommes-concentree": {
+"nome": "Mela",
+"category": "misto"
+},
+"fr:puree-de-pommes-francaises": {
+"nome": "Mela",
+"category": "misto"
+},
+"en:bramley-apple-puree": {
+"nome": "Mela",
+"category": "misto"
+},
+"da:tørrede-æbleskiver": {
+"nome": "Mela",
+"category": "misto"
+},
+"en:dried-apple-pieces": {
+"nome": "Mela",
+"category": "misto"
+},
+"en:pear-juice-from-concentrate": {
+"nome": "Succo di pera",
+"category": "fruttosio"
+},
+"en:pear-juice-and-puree": {
+"nome": "Succo di pera",
+"category": "fruttosio"
+},
+"en:concentrated-pear-puree": {
+"nome": "Pera",
+"category": "misto"
+},
+"en:williams-pear-puree": {
+"nome": "Pera",
+"category": "misto"
+},
+"en:pure-pomegranate-juice": {
+"nome": "Melagrana",
+"category": "fruttani"
+},
+"en:organic-pomegranate-juice": {
+"nome": "Melagrana",
+"category": "fruttani"
+},
+"es:zumo-de-granada-variedad-mollar-de-elche": {
+"nome": "Melagrana",
+"category": "fruttani"
+},
+"en:bottled-pomegranate-juice": {
+"nome": "Melagrana",
+"category": "fruttani"
+},
+"en:pomegranate-juice-from-concentrate": {
+"nome": "Melagrana",
+"category": "fruttani"
+},
+"en:directly-squeezed-natural-pomegranate-juice": {
+"nome": "Melagrana",
+"category": "fruttani"
+},
+"en:oat-bran": {
+"nome": "Crusca d'avena",
+"category": "fruttani"
+}
+}

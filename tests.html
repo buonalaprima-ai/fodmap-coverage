@@ -26,6 +26,9 @@
   function tx(t, tags) { const p = { product_name: "X", ingredients_text: t }; if (tags) { p.ingredients_tags = tags; } return { status: 1, product: p }; }
   function notFound() { return { status: 0, product: null }; }
   function noIngr() { return { status: 1, product: { product_name: "X", brands: "Y" } }; }
+  // Albero strutturato OFF (path tassonomia). node(id, testo, is_in_taxonomy=1, figli)
+  function node(id, text, intax, kids) { const n = { id: id, text: text, is_in_taxonomy: (intax === undefined ? 1 : intax) }; if (kids) { n.ingredients = kids; } return n; }
+  function txTree(nodes) { return { status: 1, product: { product_name: "X", ingredients: nodes } }; }
 
   const CASES = [
     { n: "latte di mandorla → verde", d: tx("Acqua, latte di mandorla, sale"), v: "green" },
@@ -102,15 +105,28 @@
     { n: "almond oil → verde", d: tx("Chocolate, almond oil, sugar"), v: "green" },
     { n: "olio di avocado → verde", d: tx("Patate, olio di avocado, sale"), v: "green" },
     { n: "semi di girasole VERI → GIALLO (i semi restano)", d: tx("Pane, semi di girasole, sale"), v: "yellow", dose: "Semi di girasole" },
-    { n: "farina di mandorle → GIALLO (resta)", d: tx("Farina di mandorle, uova, zucchero"), v: "yellow", dose: "Mandorle" }
+    { n: "farina di mandorle → GIALLO (resta)", d: tx("Farina di mandorle, uova, zucchero"), v: "yellow", dose: "Mandorle" },
+
+    // PATH TASSONOMIA (albero strutturato OFF, id canonici) — nessuna eccezione per-frase:
+    { n: "TAX: en:sunflower-oil → verde (olio ≠ seme)", d: txTree([node("en:potato", "patate"), node("en:sunflower-oil", "olio di semi di girasole")]), v: "green" },
+    { n: "TAX: en:garlic → ROSSO", d: txTree([node("en:tomato", "pomodoro"), node("en:garlic", "aglio")]), v: "red", inc: "Aglio" },
+    { n: "TAX: Weizenmehl (en:wheat-flour, tedesco) → ROSSO", d: txTree([node("en:wheat-flour", "Weizenmehl")]), v: "red", inc: "Frumento / Grano" },
+    { n: "TAX: en:soya-lecithin → verde (≠ soia-fagiolo)", d: txTree([node("en:sugar", "zucchero"), node("en:soya-lecithin", "lecitina di soia")]), v: "green" },
+    { n: "TAX: Grana(latte figlio)+mandorle → GIALLO", d: txTree([node("en:grana-padano", "Grana Padano", 1, [node("en:milk", "latte")]), node("en:almond", "mandorle")]), v: "yellow", dose: "Mandorle" },
+    { n: "TAX: lasagna parmigiano+besciamella → ROSSO (besciamella resta)", d: txTree([node("en:parmigiano-reggiano", "Parmigiano", 1, [node("en:milk", "latte")]), node("en:bechamel-sauce", "besciamella", 1, [node("en:milk", "latte")])]), v: "red", inc: "Latte vaccino/capra/pecora" },
+    { n: "TAX: nodo non riconosciuto (is_in_taxonomy=0) 'aglio' → fallback ROSSO", d: txTree([node("en:rice", "riso"), node("en:blob", "aglio in polvere", 0)]), v: "red", inc: "Aglio" },
+    { n: "TAX: tracce 'può contenere latte' → ignorato → verde", d: txTree([node("en:rice", "riso"), node("en:milk", "può contenere tracce di latte", 1)]), v: "green" },
+    { n: "TAX: en:milk-fat → verde (grasso, non lattosio)", d: txTree([node("en:sugar", "zucchero"), node("en:milk-fat", "grasso del latte")]), v: "green" },
+    { n: "TAX: en:dextrose → verde (glucosio ≠ fruttosio)", d: txTree([node("en:dextrose", "destrosio")]), v: "green" }
   ];
 
   async function run() {
     const out = document.getElementById("out");
-    let db, personal;
+    let db, personal, taxmap;
     try {
       db = await (await fetch("high-fodmap.json")).json();
       personal = await (await fetch("personal-fodmap.json")).json();
+      taxmap = await (await fetch("taxonomy-fodmap.json")).json();
     } catch (e) {
       out.textContent = "Impossibile caricare i JSON: " + e.message + " (servi via http, non file://).";
       return;
@@ -119,7 +135,7 @@
     let pass = 0, fail = 0;
     const frag = document.createDocumentFragment();
     for (const c of CASES) {
-      const res = analyze(normalizeProduct(c.d), db, personal);
+      const res = analyze(normalizeProduct(c.d), db, personal, taxmap);
       const names = res.triggers.map(t => t.nome + "(" + t.stato + (t.dose ? ":" + t.dose : "") + ")");
       let ok = res.verdict === c.v;
       if (ok && c.inc) {

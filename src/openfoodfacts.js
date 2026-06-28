@@ -86,8 +86,11 @@ export function normalizeProduct(data) {
     imageUrl: p.image_front_small_url || "",
     // testo mostrato all'utente per verifica a occhio (preferisci IT, poi default, poi array)
     ingredientsText: textIt || textDefault || arrTexts.join(", "),
-    // fonti per il matching: testo + array; i tag SOLO se non c'e' nient'altro
-    textSources: realSources.length ? realSources : tagTexts
+    // fonti per il matching lessicale (fallback): testo + array; i tag SOLO se non c'e' altro
+    textSources: realSources.length ? realSources : tagTexts,
+    // albero strutturato OFF (id canonici + is_in_taxonomy + sotto-ingredienti) per il
+    // path tassonomia del motore; [] se OFF non ha parsato gli ingredienti.
+    tree: arr
   };
 }
 

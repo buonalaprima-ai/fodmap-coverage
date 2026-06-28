@@ -10,6 +10,7 @@ const $ = function (id) { return document.getElementById(id); };
 
 let db = null;
 let personal = null;
+let taxmap = null;
 let dbError = null;
 
 async function fetchJson(path) {
@@ -32,6 +33,13 @@ async function loadDb() {
     personal = await fetchJson("personal-fodmap.json");
   } catch (e) {
     personal = null;
+  }
+  // La mappa tassonomia (id OFF -> concetto FODMAP) e' opzionale: se manca, il motore
+  // usa il solo path lessicale.
+  try {
+    taxmap = await fetchJson("taxonomy-fodmap.json");
+  } catch (e) {
+    taxmap = null;
   }
 }
 
@@ -58,7 +66,7 @@ async function handleBarcode(raw) {
   renderStatus($("result"), "Cerco il prodotto " + code + "…", "loading");
   try {
     const product = await lookup(code, { timeoutMs: 12000 });
-    const result = analyze(product, db, personal);
+    const result = analyze(product, db, personal, taxmap);
     renderResult($("result"), result, code);
   } catch (e) {
     const offline = (typeof navigator !== "undefined" && navigator.onLine === false);
