@@ -5,7 +5,7 @@
 // Se l'invio fallisce (offline o endpoint non ancora configurato) la segnalazione
 // finisce in una CODA in localStorage e viene reinviata al prossimo avvio / invio.
 
-import { REPORT_ENDPOINT } from "./config.js?v=2026.06.26-12";
+import { REPORT_ENDPOINT } from "./config.js?v=2026.06.26-13";
 
 const QUEUE_KEY = "fodmap-reports-queue-v1";
 

@@ -2,7 +2,7 @@
 // Costruzione via nodi DOM + textContent: niente innerHTML su dati esterni
 // (nome prodotto, ingredienti) per evitare injection.
 
-import { submitReport } from "./reports.js?v=2026.06.26-12";
+import { submitReport } from "./reports.js?v=2026.06.26-13";
 
 function el(tag, className, text) {
   const node = document.createElement(tag);
@@ -177,4 +177,53 @@ export function renderResult(container, result, barcode) {
 
   // Segnala un problema (sempre, qualunque sia il verdetto).
   container.appendChild(reportBlock(result, barcode));
+}
+
+// Rendering della RICERCA TESTUALE di un ingrediente (lista multi-match a 3 stati).
+const STATO_META = {
+  no: { icon: "🔴", word: "Da evitare" },
+  limite: { icon: "🟡", word: "OK in piccola dose" },
+  si: { icon: "🟢", word: "OK per te" }
+};
+
+export function renderFoodSearch(container, query, items) {
+  container.innerHTML = "";
+  if (!items || !items.length) {
+    container.appendChild(el("div", "status",
+      "🤔 Non so risponderti per «" + query + "». Prova con un nome più comune "
+      + "(es. «cipolla», «broccoli», «fagiolini»), oppure scansiona il prodotto."));
+    // permetti comunque di segnalarlo, così ampliamo il dataset
+    container.appendChild(reportBlock(
+      { verdict: "unknown", product: { name: query }, triggers: [], analyzedIngredients: "ricerca: " + query }, ""));
+    return;
+  }
+  container.appendChild(el("p", "sub", "Risultati per «" + query + "» — verdetto FODMAP per te:"));
+  const group = el("div", "triggers");
+  items.forEach(function (it) {
+    const m = STATO_META[it.stato] || STATO_META.si;
+    const row = el("div", "trigger");
+    const head = el("div", "trigger-head");
+    head.appendChild(el("span", "trigger-name", m.icon + " " + it.label));
+    if (it.cat) {
+      head.appendChild(el("span", "trigger-cat", it.cat));
+    }
+    row.appendChild(head);
+    if (it.dose) {
+      row.appendChild(el("div", "trigger-nota",
+        it.stato === "limite" ? ("Piccola dose: " + it.dose) : it.dose));
+    }
+    group.appendChild(row);
+  });
+  container.appendChild(group);
+  container.appendChild(el("p", "hint",
+    "Prodotti lavorati/composti (es. «cioccolato bianco»): la ricerca per nome può non bastare — "
+    + "scansiona il barcode per il verdetto sui sotto-ingredienti."));
+  const top = items[0];
+  container.appendChild(reportBlock(
+    {
+      verdict: top.stato === "no" ? "red" : (top.stato === "limite" ? "yellow" : "green"),
+      product: { name: query },
+      triggers: items.map(function (it) { return { nome: it.label, stato: it.stato, dose: it.dose || "" }; }),
+      analyzedIngredients: "ricerca testuale: " + query
+    }, ""));
 }

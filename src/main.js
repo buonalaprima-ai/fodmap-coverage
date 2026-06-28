@@ -1,16 +1,18 @@
 // Entry point: collega UI, scanner, lookup OFF e motore FODMAP.
 
-import { lookup } from "./openfoodfacts.js?v=2026.06.26-12";
-import { analyze } from "./engine.js?v=2026.06.26-12";
-import { startScanner, stopScanner, isScanning } from "./scanner.js?v=2026.06.26-12";
-import { renderResult, renderStatus } from "./render.js?v=2026.06.26-12";
-import { flushQueue, pendingCount } from "./reports.js?v=2026.06.26-12";
+import { lookup } from "./openfoodfacts.js?v=2026.06.26-13";
+import { analyze } from "./engine.js?v=2026.06.26-13";
+import { startScanner, stopScanner, isScanning } from "./scanner.js?v=2026.06.26-13";
+import { renderResult, renderStatus, renderFoodSearch } from "./render.js?v=2026.06.26-13";
+import { flushQueue, pendingCount } from "./reports.js?v=2026.06.26-13";
+import { searchFoods, classifyFood } from "./foodsearch.js?v=2026.06.26-13";
 
 const $ = function (id) { return document.getElementById(id); };
 
 let db = null;
 let personal = null;
 let taxmap = null;
+let foodIndex = null;
 let dbError = null;
 
 async function fetchJson(path) {
@@ -50,6 +52,50 @@ function setBusy(busy) {
   $("scanBtn").disabled = busy;
   $("analyzeBtn").disabled = busy;
   $("barcode").disabled = busy;
+}
+
+// Indice di ricerca alimenti (food-search.json): caricato pigramente alla prima
+// ricerca testuale (non penalizza il flusso di scansione barcode).
+async function ensureFoodIndex() {
+  if (foodIndex) {
+    return foodIndex;
+  }
+  try {
+    foodIndex = await fetchJson("food-search.json?v=" + (window.APP_VERSION || ""));
+  } catch (e) {
+    foodIndex = [];
+  }
+  return foodIndex;
+}
+
+// Dispatcher: se l'input contiene lettere -> ricerca ingrediente; altrimenti -> barcode.
+function handleInput(raw) {
+  const v = (raw || "").trim();
+  if (v === "") {
+    return;
+  }
+  if (/[a-zA-Z]/.test(v)) {
+    handleTextSearch(v);
+  } else {
+    handleBarcode(v);
+  }
+}
+
+// Ricerca testuale di un ingrediente: dizionario -> match multipli -> verdetto a 3 stati.
+async function handleTextSearch(query) {
+  if (!db) {
+    renderStatus($("result"), "Base dati FODMAP non ancora pronta, riprova tra un istante.", "error");
+    return;
+  }
+  renderStatus($("result"), "Cerco «" + query + "»…", "loading");
+  const index = await ensureFoodIndex();
+  const labels = (db._meta && db._meta.categorie_label) || {};
+  const results = searchFoods(query, index, 8).map(function (e) {
+    const c = classifyFood(e, personal);
+    return { label: e.label, stato: c.stato, dose: c.dose, cat: c.cat ? (labels[c.cat] || "") : "" };
+  });
+  renderFoodSearch($("result"), query, results);
+  $("barcode").value = "";
 }
 
 // Flusso principale: codice -> lookup OFF -> analisi -> render.
@@ -157,10 +203,10 @@ async function checkForUpdate() {
 function init() {
   checkForUpdate();
   $("scanBtn").addEventListener("click", toggleScan);
-  $("analyzeBtn").addEventListener("click", function () { handleBarcode($("barcode").value); });
+  $("analyzeBtn").addEventListener("click", function () { handleInput($("barcode").value); });
   $("barcode").addEventListener("keydown", function (e) {
     if (e.key === "Enter") {
-      handleBarcode($("barcode").value);
+      handleInput($("barcode").value);
     }
   });
   $("retry-reports").addEventListener("click", async function () {

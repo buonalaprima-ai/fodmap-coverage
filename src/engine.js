@@ -18,7 +18,7 @@
 //      a confine di parola su high-fodmap.json (con i "consentiti" personali).
 // Il livello PERSONALE (personal-fodmap.json) decide poi lo stato per te (no/limite/si).
 
-import { normalizeText } from "./normalize.js?v=2026.06.26-12";
+import { normalizeText } from "./normalize.js?v=2026.06.26-13";
 
 // Avvolge una stringa gia' normalizzata con spazi ai bordi, per il match a confine di parola.
 function pad(normalized) {

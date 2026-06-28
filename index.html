@@ -111,12 +111,12 @@
 </head>
 <body>
   <h1>FODMAP Scanner</h1>
-  <p class="sub">Scansiona o digita il codice a barre: il verdetto è personalizzato sulla tua dieta FODMAP. 🔴 da evitare · 🟡 ok in piccola dose (con la dose) · 🟢 ok per te.</p>
+  <p class="sub">Scansiona/digita un codice a barre, <b>oppure scrivi un ingrediente</b> (es. «broccoli», «fagiolini»): il verdetto è personalizzato sulla tua dieta FODMAP. 🔴 da evitare · 🟡 ok in piccola dose (con la dose) · 🟢 ok per te.</p>
 
   <video id="video" playsinline></video>
 
   <div class="row">
-    <input id="barcode" type="text" inputmode="numeric" placeholder="Codice a barre (EAN), poi Invio" autocomplete="off" />
+    <input id="barcode" type="text" placeholder="Codice a barre (EAN) o nome ingrediente, poi Invio" autocomplete="off" />
     <button id="analyzeBtn">Analizza</button>
     <button id="scanBtn" class="secondary">📷 Scansiona</button>
   </div>
@@ -133,12 +133,12 @@
 
   <script>
     // Versione della pagina attualmente caricata (deve combaciare con version.json).
-    window.APP_VERSION = "2026.06.26-12";
+    window.APP_VERSION = "2026.06.26-13";
     // Blocca il pinch-zoom su iOS Safari (che ignora user-scalable=no).
     document.addEventListener("gesturestart", function (e) { e.preventDefault(); });
     document.addEventListener("gesturechange", function (e) { e.preventDefault(); });
     document.addEventListener("gestureend", function (e) { e.preventDefault(); });
   </script>
-  <script type="module" src="src/main.js?v=2026.06.26-12"></script>
+  <script type="module" src="src/main.js?v=2026.06.26-13"></script>
 </body>
 </html>
