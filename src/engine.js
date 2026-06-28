@@ -320,12 +320,23 @@ export function analyze(input, db, personal, taxmap) {
   }
 
   // 5) Claim "senza lattosio": i trigger di categoria lattosio non si applicano.
+  //    Il claim puo' essere negli ingredienti, MA anche solo nell'etichetta OFF
+  //    ("en:no-lactose"/"en:lactose-free") o nel nome del prodotto (es. "Philadelphia
+  //    senza lattosio") — quindi controlliamo tutte e tre le fonti.
+  const labels = (input && Array.isArray(input.labelsTags)) ? input.labelsTags : [];
+  const nameHay = pad(normalizeText((input && input.name) || ""));
   const lactoseFree =
     haystack.indexOf(" senza lattosio ") >= 0 ||
     haystack.indexOf(" delattosat") >= 0 ||
     haystack.indexOf(" lactose free ") >= 0 ||
     haystack.indexOf(" zero lattosio ") >= 0 ||
-    haystack.indexOf("contenuto di lattosio") >= 0;
+    haystack.indexOf("contenuto di lattosio") >= 0 ||
+    labels.indexOf("en:no-lactose") >= 0 ||
+    labels.indexOf("en:lactose-free") >= 0 ||
+    nameHay.indexOf(" senza lattosio ") >= 0 ||
+    nameHay.indexOf(" delattosat") >= 0 ||
+    nameHay.indexOf(" lactose free ") >= 0 ||
+    nameHay.indexOf(" zero lattosio ") >= 0;
   const finalTriggers = lactoseFree
     ? triggers.filter(function (t) { return t.categoryKey !== "lattosio"; })
     : triggers;

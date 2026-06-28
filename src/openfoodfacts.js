@@ -14,6 +14,7 @@ const API_FIELDS = [
   "ingredients",
   "ingredients_tags",
   "allergens_tags",
+  "labels_tags",
   "countries_tags"
 ].join(",");
 
@@ -90,7 +91,10 @@ export function normalizeProduct(data) {
     textSources: realSources.length ? realSources : tagTexts,
     // albero strutturato OFF (id canonici + is_in_taxonomy + sotto-ingredienti) per il
     // path tassonomia del motore; [] se OFF non ha parsato gli ingredienti.
-    tree: arr
+    tree: arr,
+    // etichette OFF (es. "en:no-lactose"): il claim "senza lattosio" spesso e' qui o
+    // nel nome, NON nella lista ingredienti.
+    labelsTags: Array.isArray(p.labels_tags) ? p.labels_tags : []
   };
 }
 

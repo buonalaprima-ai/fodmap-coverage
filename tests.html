@@ -117,7 +117,12 @@
     { n: "TAX: nodo non riconosciuto (is_in_taxonomy=0) 'aglio' → fallback ROSSO", d: txTree([node("en:rice", "riso"), node("en:blob", "aglio in polvere", 0)]), v: "red", inc: "Aglio" },
     { n: "TAX: tracce 'può contenere latte' → ignorato → verde", d: txTree([node("en:rice", "riso"), node("en:milk", "può contenere tracce di latte", 1)]), v: "green" },
     { n: "TAX: en:milk-fat → verde (grasso, non lattosio)", d: txTree([node("en:sugar", "zucchero"), node("en:milk-fat", "grasso del latte")]), v: "green" },
-    { n: "TAX: en:dextrose → verde (glucosio ≠ fruttosio)", d: txTree([node("en:dextrose", "destrosio")]), v: "green" }
+    { n: "TAX: en:dextrose → verde (glucosio ≠ fruttosio)", d: txTree([node("en:dextrose", "destrosio")]), v: "green" },
+
+    // Claim "senza lattosio" da etichetta/nome (non dagli ingredienti) — segnalazione Philadelphia:
+    { n: "lactose-free via label en:no-lactose → verde", d: { status: 1, product: { product_name: "Philadelphia senza lattosio", labels_tags: ["en:no-lactose"], ingredients: [node("en:milk", "latte"), node("en:cream", "crema di latte")] } }, v: "green" },
+    { n: "lactose-free via NOME → verde", d: { status: 1, product: { product_name: "Stracchino senza lattosio", ingredients: [node("en:milk", "latte")] } }, v: "green" },
+    { n: "latte VERO senza claim → ROSSO (controllo)", d: txTree([node("en:milk", "latte")]), v: "red", inc: "Latte vaccino/capra/pecora" }
   ];
 
   async function run() {
