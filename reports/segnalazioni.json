@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "receivedAt": "2026-06-29T08:32:40.587Z",
+    "message": "Tutte le parti del pollo e di qualsiasi carne in generale si possono mangiare. Petto di pollo, cosci, ali, ecc ecc",
+    "barcode": "",
+    "verdict": "unknown",
+    "product": {
+      "name": "Petto di pollo",
+      "brand": ""
+    },
+    "triggers": [],
+    "analyzedIngredients": "ricerca: Petto di pollo"
+  }
+]
