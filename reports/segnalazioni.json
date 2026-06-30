@@ -10,5 +10,17 @@
     },
     "triggers": [],
     "analyzedIngredients": "ricerca: Petto di pollo"
+  },
+  {
+    "receivedAt": "2026-06-30T17:41:54.811Z",
+    "message": "Informati sul glucosio fermentato.",
+    "barcode": "",
+    "verdict": "unknown",
+    "product": {
+      "name": "Glucosio fermentato",
+      "brand": ""
+    },
+    "triggers": [],
+    "analyzedIngredients": "ricerca: Glucosio fermentato"
   }
 ]
